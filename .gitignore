@@ -66,6 +66,7 @@ CMakeLists.txt
 .vscode/tasks.json
 .vscode/temp.sql
 tags
+*massdrop_ctrl_JG.c
 
 # Ignore image/font files
 *.bmp

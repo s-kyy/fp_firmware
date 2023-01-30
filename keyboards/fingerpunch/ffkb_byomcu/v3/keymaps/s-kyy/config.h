@@ -2,6 +2,7 @@
 // Key config
 // =============================================
 #define FP_SUPER_TAB_TIMEOUT 1000
+#define ENCODER_RESOLUTION 4 //input commands more than once.
 
 // =============================================
 // Trackball config
@@ -12,10 +13,12 @@
     //Mouse trackball acceleration
 #define FP_POINTING_SCROLLING_DPI 50 
     // Dareu LM108 = 1000/1600
-// #define FP_POINTING_LAYER_ENABLE 
-// #define FP_POINTING_ZOOM_LAYER 1
-// #define FP_POINTING_SCROLLING_LAYER_ENABLE
-// #define FP_POINTING_SCROLLING_LAYER 2
+#define FP_POINTING_LAYER_ENABLE 
+#define FP_POINTING_ZOOM_LAYER 1
+#define FP_POINTING_SCROLLING_LAYER_ENABLE
+#define FP_POINTING_SCROLLING_LAYER 2
+#define FP_POINTING_SNIPING_LAYER_ENABLE
+#define FP_POINTING_SNIPING_LAYER 3
 
 // Default Settings
 // #define FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY 3 //default
@@ -30,6 +33,8 @@
 #ifdef RGB_MATRIX_ENABLE //udate vial.json if using it. 
     #define RGB_DISABLE_WHEN_USB_SUSPENDED
     #define RGB_MATRIX_LED_COUNT 42
+
+
     // #define DISABLE_RGB_MATRIX_BREATHING
     // #define DISABLE_RGB_MATRIX_BAND_SAT
     // #define DISABLE_RGB_MATRIX_BAND_VAL

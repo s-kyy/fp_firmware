@@ -13,28 +13,36 @@ uint16_t alt_tab_timer = 0;
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
     _COLEMAK, //0
-    _RAISE,   //1
-    _LOWER,   //2
-    _RGB_NUM, //3
-    _GAME,    //4
-    _QWERTY,  //5
+    _QWERTY,  //1
+    _GAME,    //2
+    _RAISE,   //3
+    _LOWER,   //4
+    _RGB_NUM, //5
     _LAYER6,  //6
     _LAYER7   //7
 };
 
 //custom keycodes
 #define COLDH TO(_COLEMAK)
+#define QWERTY TO(_QWERTY)
+#define GAME  TO(_GAME)
 #define RAISE MO(_RAISE)
 #define LOWER MO(_LOWER)
-#define MOUSE TO(_RGB_NUM)
-#define GAME  TO(_GAME)
-#define QWERTY TO(_QWERTY)
-#define REDO LCTL(KC_Y)
+#define RGB_NUM TO(_RGB_NUM)
+// #define REDO LCTL(KC_Y)
+#define CUT LCTL(KC_X)
+#define COPY LCTL(KC_C)
+#define PASTE LCTL(KC_V)
+#define WPAST G(KC_V)
+#define UNDO C(KC_Z)
+#define REDO C(KC_Y)
 #define SFTT LSFT_T(KC_TAB) //Tab-tap Shift-hold
 #define SPALT LALT_T(KC_SPC) //Space-tap LALT-hold
 #define SFTE LSFT_T(KC_ENT) //Enter-tap Shift-hold
 #define LDESK G(C(KC_LEFT)) 
 #define RDESK G(C(KC_RIGHT))
+#define EXITPARSEC C(A(KC_TILD))
+#define TASKMAN C(A(KC_DEL))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -42,63 +50,65 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer 0 - Colemak-DH
 // ============================================================
 [_COLEMAK] = LAYOUT_ffkb(
-  KC_ESC,   KC_Q,     KC_W,     KC_F,   KC_P,   KC_B,       KC_J,   KC_L,   KC_U,     KC_Y,     KC_SCLN,    KC_BSPC,
-  KC_LCTL,  KC_A,     KC_R,     KC_S,   KC_T,   KC_G,       KC_M,   KC_N,   KC_E,     KC_I,     KC_O,       KC_QUOT,
-  SFTT,     KC_Z,     KC_X,     KC_C,   KC_D,   KC_V,       KC_K,   KC_H,   KC_COMM,  KC_DOT,   KC_SLSH,    KC_APP,
-                      KC_MUTE,  RAISE,  SFTE,   KC_BTN1,    KC_LWIN,  SPALT, LOWER,    KC_RALT
+  KC_ESC,         KC_Q,     KC_W,     KC_F,   KC_P,   KC_B,       KC_J,   KC_L,   KC_U,     KC_Y,     KC_SCLN,    KC_BSPC,
+  OSM(MOD_LCTL),  KC_A,     KC_R,     KC_S,   KC_T,   KC_G,       KC_M,   KC_N,   KC_E,     KC_I,     KC_O,       KC_QUOT,
+  KC_LWIN,        KC_Z,     KC_X,     KC_C,   KC_D,   KC_V,       KC_K,   KC_H,   KC_COMM,  KC_DOT,   KC_SLSH,    KC_APP,
+                            KC_MUTE,  RAISE,  SFTE,   KC_BTN1,    MT(MOD_RALT,KC_TAB),  KC_SPC, LOWER,    KC_RALT
 ),
 
 // ============================================================
-// Layer 1 - RAISE
+// Layer 1 - QWERTY
+// ============================================================
+[_QWERTY] = LAYOUT_ffkb(
+  _______, KC_Q,   KC_W,     KC_E,   KC_R,     KC_T,         KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     _______,
+  _______, KC_A,   KC_S,     KC_D,   KC_F,     KC_G,         KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  _______,
+  _______, KC_Z,   KC_X,     KC_C,   KC_V,     KC_B,         KC_N,     KC_M,     _______,  _______,  _______,  _______,
+                   _______,  _______,_______,  _______,      _______,  _______,  _______,  _______
+),
+
+// ============================================================
+// Layer 2 - Game
+// ============================================================
+[_GAME] = LAYOUT_ffkb(
+  _______, _______, KC_1, KC_2, KC_3, KC_4,                 KC_5,  KC_6,    KC_7,     KC_8,    KC_9,     _______,
+  KC_TAB,  KC_BTN1, KC_Q, KC_W, KC_E, KC_R,                 KC_Y,  KC_M,    KC_WH_U,  _______, _______,  COLDH,
+  KC_LSFT, KC_V,    KC_A, KC_S, KC_D, KC_F,                 KC_C,  KC_WH_L, KC_WH_D,  KC_WH_R, _______,  QWERTY,
+           KC_MUTE, _______, KC_SPC,  KC_BTN1,              KC_LWIN, LALT_T(KC_ENT),  _______,  EXITPARSEC 
+),
+
+// ============================================================
+// Layer 3 - RAISE
 // ============================================================
 // Pointing Device Zoom Layer
 [_RAISE] = LAYOUT_ffkb(
   KC_SLEP, KC_F1,  KC_F2,   KC_F3,   KC_F4,   KC_F5,         KC_F6,     KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_DEL,  
   KC_F11,  KC_1,   KC_2,    KC_3,    KC_4,    KC_5,          KC_TILD,   KC_LBRC,  KC_RBRC,  KC_MINS,  KC_PLUS,  KC_UNDS,
   KC_F12,  KC_6,   KC_7,    KC_8,    KC_9,    KC_0,          KC_GRV,    KC_LPRN,  KC_RPRN,  KC_PSLS,  KC_BSLS,  KC_EQL,
-                    _______, _______, _______, _______,       KC_BTN2,   SFTE,  MOUSE,    _______
+                    _______, _______, _______, _______,      KC_BTN2,   SFTE,    RGB_NUM,    KC_RALT
 ),  
 
+
 // ============================================================
-// Layer 2 - LOWER
+// Layer 4 - LOWER
 // ============================================================
 // Pointing Device Scroll Layer
 [_LOWER] = LAYOUT_ffkb(
-  _______, KC_MYCM, _______,  REDO,    _______, _______,      _______,            KC_HOME,    KC_UP,    KC_END,    _______, KC_DEL,
-  _______, KC_CAPS, KC_CUT,   KC_COPY, KC_PSTE, _______,      FP_SUPER_CTRL_TAB,  KC_LEFT,    KC_DOWN,  KC_RGHT,   KC_LALT, _______,
-  _______, _______, LDESK,    KC_UNDO, RDESK,   _______,      _______,            C(KC_BSPC), _______,  C(KC_DEL), _______, _______,
-                    KC_RALT,  MOUSE,   _______, _______,      _______,            _______,    _______,  _______
+  KC_ESC,        KC_MYCM,       TASKMAN,     UNDO,    WPAST,      TO(_COLEMAK),         C(KC_MINS),  KC_HOME,       KC_UP,              KC_END,      _______,  KC_DEL,
+  OSM(MOD_LCTL), OSM(MOD_LSFT), CUT,         COPY,    PASTE,      TO(_QWERTY),          C(KC_PLUS),  KC_LEFT,       KC_DOWN,            KC_RGHT,     KC_LALT,  KC_PGUP,
+  KC_LWIN,       _______,       LDESK,       REDO,    RDESK,      TO(_GAME),            _______,     C(KC_LEFT),    FP_SUPER_CTRL_TAB,  C(KC_RIGHT), _______,  KC_PGDN,
+                                KC_RALT,     RGB_NUM, SFTE,       KC_BTN1,              _______,     _______,       _______,     _______
 ),
 
 // ============================================================
-// Layer 3 - RGB-Num
+// Layer 5 - RGB-Num
 // ============================================================
 [_RGB_NUM] =  LAYOUT_ffkb(
-  _______, RGB_TOG, RGB_MOD,  RGB_RMOD, _______, _______,         KC_NUM,   KC_P7,   KC_P8,   KC_P9, KC_PSLS, _______,
-  _______, RGB_SPI, RGB_HUI,  RGB_SAI, RGB_VAI, _______,         KC_CALC,  KC_P4,   KC_P5,   KC_P6, KC_PPLS, KC_PAST,
-  _______, RGB_SPD, RGB_HUD,  RGB_SAD, RGB_VAD, _______,         KC_P0,    KC_P1,   KC_P2,   KC_P3, KC_PEQL, KC_PMNS,
-                    QK_RBT,   GAME,    _______, _______,         KC_PDOT,  _______, COLDH,   COLDH
+  _______, RGB_TOG, RGB_MOD,  RGB_RMOD, _______,TO(_COLEMAK),    KC_NUM,   KC_P7,   KC_P8,   KC_P9, KC_PSLS, KC_BSPC,
+  _______, RGB_SPI, RGB_HUI,  RGB_SAI, RGB_VAI, TO(_QWERTY),     KC_CALC,  KC_P4,   KC_P5,   KC_P6, KC_PPLS, KC_PAST,
+  _______, RGB_SPD, RGB_HUD,  RGB_SAD, RGB_VAD, TO(_GAME),       KC_P0,    KC_P1,   KC_P2,   KC_P3, KC_PEQL, KC_PMNS,
+                    _______, TO(_QWERTY), SPALT, _______,        KC_PDOT,  SFTE, TO(_COLEMAK),   TO(_COLEMAK)
 ),
 
-// ============================================================
-// Layer 4 - Game
-// ============================================================
-[_GAME] = LAYOUT_ffkb(
-  _______, _______, KC_1, KC_2, KC_3, KC_4,         KC_6,  KC_7,    KC_8,            KC_9,    KC_0,     _______,
-  KC_TAB,  KC_BTN1, KC_Q, KC_W, KC_E, KC_R,         KC_Y,  KC_M,    KC_WH_U,         _______, _______,  _______,
-  KC_LSFT, KC_V,    KC_A, KC_S, KC_D, KC_F,         KC_C,  KC_WH_L, KC_WH_D,         KC_WH_R, _______,  _______,
-                    _______, QWERTY, KC_SPC, RAISE,        KC_LWIN, LALT_T(KC_ENT),  COLDH,   COLDH
-),
-
-// ============================================================
-// Layer 5 - QWERTY
-// ============================================================
-[_QWERTY] = LAYOUT_ffkb(
-  _______,  KC_Q,   KC_W,     KC_E,   KC_R,     KC_T,         KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     _______,
-  _______,  KC_A,   KC_S,     KC_D,   KC_F,     KC_G,         KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  _______,
-  _______,  KC_Z,   KC_X,     KC_C,   KC_V,     KC_B,         KC_N,     KC_M,     _______,  _______,  _______,  _______,
-                    _______,  RAISE,  _______,  _______,      _______,  _______,  LOWER,    COLDH
-),
 
 // ============================================================
 // Empty Layers
@@ -136,7 +146,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         } else {
             tap_code(KC_VOLD);
         }
-    }
+    } 
     else if (index == 1) {
       // Conditional to reverse the direction of encoder number 1
       // The reason I have this is that for some of my boards, it supports two different types of encoders, and they may differ in direction
@@ -145,19 +155,23 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
       #else
       if (clockwise) {
       #endif
-        // tap_code16(C(FP_SUPER_TAB));
-        tap_code16(KC_PGUP);
+        // tap_code16(FP_SUPER_TAB);
+        // tap_code16(KC_TAB);
+        // tap_code16(KC_PGUP);
+        press_super_tab(false);
       }
       else{
-        // tap_code16(C(LSFT_T(FP_SUPER_TAB)));
-        tap_code16(KC_PGDN);
+        // tap_code16(LSFT_T(FP_SUPER_TAB));
+        // tap_code16(LSFT_T(KC_TAB));
+        // tap_code16(KC_PGDN);
+        press_super_tab(true);
       }
     }
 
     return true;
 }
 #endif
-
+        
 // ============================================================
 // Generate Perfect Per-key RGB effects: see v3.c
 // QMK RGB Tutorial: https://github.com/sadekbaroudi/keyboard-guides/blob/master/firmware/qmk/RGB_MATRIX.md
@@ -277,14 +291,15 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 // https://github.com/qmk/qmk_firmware/blob/master/docs/feature_rgb_matrix.md#common-configuration-idcommon-configuration
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     if (host_keyboard_led_state().caps_lock) {
-        RGB_MATRIX_INDICATOR_SET_COLOR(4, 255, 0, 0); // CAPSLOCK ON | red
+        RGB_MATRIX_INDICATOR_SET_COLOR(4, 242, 191, 180); // CAPSLOCK ON | MCORRICK PAINTS CORAL #f2bfb4 https://encycolorpedia.com/f2bfb4
     } else {
-        RGB_MATRIX_INDICATOR_SET_COLOR(4, 0, 0, 0); // CAPSLOCK OFF | red
+        RGB_MATRIX_INDICATOR_SET_COLOR(4, 0, 0, 0); // CAPSLOCK OFF | BLANK
     }
     if (host_keyboard_led_state().num_lock) {
-        RGB_MATRIX_INDICATOR_SET_COLOR(26, 0, 255, 0); // NUMLOCK ON | lime
+        RGB_MATRIX_INDICATOR_SET_COLOR(26, 231, 189, 66); // NUMLOCK ON | Reaper Master New Gold (9051) #e7bd42 https://encycolorpedia.com/e7bd42
     } else {
-        RGB_MATRIX_INDICATOR_SET_COLOR(26, 0, 0, 0); // NUMLOCK OFF | lime
+        RGB_MATRIX_INDICATOR_SET_COLOR(26, 0, 0, 0); // NUMLOCK OFF | BLANK
     }
+
     return false;
 }

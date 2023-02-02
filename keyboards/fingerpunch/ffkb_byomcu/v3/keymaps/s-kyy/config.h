@@ -11,21 +11,22 @@
 // =============================================
 #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
 #define AUTO_MOUSE_DEFAULT_LAYER 7
-#define FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY 6 //3 default
+#define FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY 1 //3 default
 //     //if mouse moves while typing: 
 //     // Higher = mouse needs to move more to trigger mouse layer
 // #define MOUSE_EXTENDED_REPORT
     //Mouse trackball acceleration
     // #define FP_POINTING_EXTENDED_MOUSE_REPORT_DISABLE
-#define FP_POINTING_SCROLLING_DPI 4 //1000
+// #define FP_POINTING_DEFAULT_DPI 750 //1000 set to general v3 config file in increments of 100
+#define FP_POINTING_SCROLLING_DPI 2
     // Dareu LM108 = 1000/1600
 #define FP_POINTING_LAYER_ENABLE 
-#define FP_POINTING_ZOOM_LAYER 5
+#define FP_POINTING_ZOOM_LAYER 6 //INACCESSIBLE 
 #define FP_POINTING_SCROLLING_LAYER_ENABLE
-#define FP_POINTING_SCROLLING_LAYER 4
+#define FP_POINTING_SCROLLING_LAYER 4 //LOWER
 #define FP_POINTING_SNIPING_LAYER_ENABLE
-#define FP_POINTING_SNIPING_LAYER 6
-
+#define FP_POINTING_SNIPING_LAYER 3 //RAISE
+#define FP_POINTING_SNIPING_DPI 50 
 // =============================================
 // RGB config
 // =============================================
@@ -84,8 +85,8 @@
     #define FP_LAYER_LIGHTING_MODE_5 RGB_MATRIX_BAND_PINWHEEL_VAL
     #define FP_LAYER_LIGHTING_MODE_6 RGB_MATRIX_SOLID_COLOR
     #define FP_LAYER_LIGHTING_MODE_7 RGB_MATRIX_BAND_PINWHEEL_SAT
-    #define FP_LAYER_LIGHTING_CAPS_LOCK_HUE HSV_CORAL
-    #define FP_LAYER_LIGHTING_CAPS_LOCK_MODE RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE
+    #define FP_LAYER_LIGHTING_CAPS_LOCK_HUE FP_HSV_PEACH_ORANGE
+    #define FP_LAYER_LIGHTING_CAPS_LOCK_MODE RGB_MATRIX_BAND_PINWHEEL_VAL
 #endif
 
 // =============================================

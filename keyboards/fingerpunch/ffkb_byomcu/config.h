@@ -50,7 +50,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define RGB_MATRIX_CENTER {100, 32}
   #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 45 /* The maximum brightness level for RGB_MATRIX */
   #define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS // Sets the default brightness value, if none has been set
-  #define RGB_MATRIX_STARTUP_SPD 45
+  #define RGB_MATRIX_STARTUP_SPD 55
   #define RGB_MATRIX_KEYPRESSES
   #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
   // #define ENABLE_RGB_MATRIX_TYPING_HEATMAP

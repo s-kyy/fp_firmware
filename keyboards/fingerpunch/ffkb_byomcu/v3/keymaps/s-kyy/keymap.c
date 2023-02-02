@@ -19,7 +19,8 @@ enum layer_names {
     _LOWER,   //4
     _RGB_NUM, //5
     _LAYER6,  //6
-    _LAYER7   //7
+    _LAYER7,  //7
+    _LAYER8,  //8
 };
 
 //custom keycodes
@@ -93,22 +94,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ============================================================
 // Pointing Device Scroll Layer
 [_LOWER] = LAYOUT_ffkb(
-  KC_ESC,        KC_MYCM,       TASKMAN,     UNDO,    WPAST,      TO(_COLEMAK),         C(KC_MINS),  KC_HOME,       KC_UP,              KC_END,      KC_BRIU,  KC_DEL,
-  OSM(MOD_LCTL), OSM(MOD_LSFT), CUT,         COPY,    PASTE,      TO(_QWERTY),          C(KC_PLUS),  KC_LEFT,       KC_DOWN,            KC_RGHT,     KC_LALT,  KC_PGUP,
-  KC_LWIN,       KC_CAPS,      LDESK,       REDO,    RDESK,      TO(_GAME),            _______,     C(KC_LEFT),    FP_SUPER_CTRL_TAB,  C(KC_RIGHT),  KC_BRID,  KC_PGDN,
-                                KC_RALT,     KC_BTN1, SFTE,       RGB_NUM,              _______,     _______,       _______,     _______
+  KC_ESC,        KC_MYCM,       TASKMAN,     UNDO,    WPAST,     _______,         C(KC_MINS),  KC_HOME,       KC_UP,              KC_END,      KC_BRIU,  KC_DEL,
+  OSM(MOD_LCTL), OSM(MOD_LSFT), CUT,         COPY,    PASTE,     _______,          C(KC_PLUS),  KC_LEFT,       KC_DOWN,            KC_RGHT,     KC_LALT,  KC_PGUP,
+  KC_LWIN,       KC_CAPS,      LDESK,       REDO,    RDESK,      _______,            _______,     C(KC_LEFT),    FP_SUPER_CTRL_TAB,  C(KC_RIGHT),  KC_BRID,  KC_PGDN,
+                                KC_RALT,     KC_BTN1, SFTE,      RGB_NUM,              _______,     _______,       _______,     _______
 ),
 
 // ============================================================
 // Layer 5 - RGB-Num
 // ============================================================
 [_RGB_NUM] =  LAYOUT_ffkb(
-  _______, RGB_TOG, RGB_MOD,  RGB_RMOD, _______,TO(_COLEMAK),    KC_NUM,   KC_P7,   KC_P8,   KC_P9, KC_PSLS, KC_BSPC,
-  _______, RGB_SPI, RGB_HUI,  RGB_SAI, RGB_VAI, TO(_QWERTY),     KC_CALC,  KC_P4,   KC_P5,   KC_P6, KC_PPLS, KC_PAST,
-  _______, RGB_SPD, RGB_HUD,  RGB_SAD, RGB_VAD, TO(_GAME),       KC_P0,    KC_P1,   KC_P2,   KC_P3, KC_PEQL, KC_PMNS,
-                    QK_BOOT, _______, SPSFT, TO(_QWERTY),        TO(_COLEMAK),  SFTE, KC_PDOT,   EE_CLR
+  _______, RGB_TOG, RGB_MOD,  RGB_RMOD, _______,DF(_COLEMAK),    KC_NUM,   KC_P7,   KC_P8,   KC_P9, KC_PSLS, KC_BSPC,
+  _______, RGB_SPI, RGB_HUI,  RGB_SAI, RGB_VAI, DF(_QWERTY),     KC_CALC,  KC_P4,   KC_P5,   KC_P6, KC_PPLS, KC_PAST,
+  _______, RGB_SPD, RGB_HUD,  RGB_SAD, RGB_VAD, DF(_GAME),       KC_P0,    KC_P1,   KC_P2,   KC_P3, SFTE, KC_PMNS,
+                    QK_BOOT, _______, SPSFT, TO(_QWERTY),        TO(_COLEMAK),  TO(_GAME), KC_PDOT,   EE_CLR
 ),
-
 
 // ============================================================
 // Empty Layers
@@ -291,14 +291,48 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 // https://github.com/qmk/qmk_firmware/blob/master/docs/feature_rgb_matrix.md#common-configuration-idcommon-configuration
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     if (host_keyboard_led_state().caps_lock) {
-        RGB_MATRIX_INDICATOR_SET_COLOR(4, 242, 191, 180); // CAPSLOCK ON | MCORRICK PAINTS CORAL #f2bfb4 https://encycolorpedia.com/f2bfb4
+        RGB_MATRIX_INDICATOR_SET_COLOR(5, 242, 191, 180); // CAPSLOCK ON | MCORRICK PAINTS CORAL #f2bfb4 https://encycolorpedia.com/f2bfb4
     } else {
-        RGB_MATRIX_INDICATOR_SET_COLOR(4, 0, 0, 0); // CAPSLOCK OFF | BLANK
+        RGB_MATRIX_INDICATOR_SET_COLOR(5, 0, 0, 0); // CAPSLOCK OFF | BLANK
     }
     if (host_keyboard_led_state().num_lock) {
-        RGB_MATRIX_INDICATOR_SET_COLOR(26, 231, 189, 66); // NUMLOCK ON | Reaper Master New Gold (9051) #e7bd42 https://encycolorpedia.com/e7bd42
+        RGB_MATRIX_INDICATOR_SET_COLOR(26, 242, 191, 180); // NUMLOCK ON | Reaper Master New Gold (9051) #e7bd42 https://encycolorpedia.com/e7bd42
+        RGB_MATRIX_INDICATOR_SET_COLOR(25, 242, 191, 180); // CALC | MCORRICK PAINTS CORAL #f2bfb4 https://encycolorpedia.com/f2bfb4
+        RGB_MATRIX_INDICATOR_SET_COLOR(23, 242, 191, 180); // DOT | MCORRICK PAINTS CORAL #f2bfb4 https://encycolorpedia.com/f2bfb4
+        RGB_MATRIX_INDICATOR_SET_COLOR(37, 242, 191, 180); // PLUS | MCORRICK PAINTS CORAL #f2bfb4 https://encycolorpedia.com/f2bfb4
+        RGB_MATRIX_INDICATOR_SET_COLOR(5, 242, 191, 180); // EQUALS | MCORRICK PAINTS CORAL #f2bfb4 https://encycolorpedia.com/f2bfb4
+        RGB_MATRIX_INDICATOR_SET_COLOR(5, 242, 191, 180); // TIMES | MCORRICK PAINTS CORAL #f2bfb4 https://encycolorpedia.com/f2bfb4
+        RGB_MATRIX_INDICATOR_SET_COLOR(5, 242, 191, 180); // MINUS | MCORRICK PAINTS CORAL #f2bfb4 https://encycolorpedia.com/f2bfb4
+        
+        RGB_MATRIX_INDICATOR_SET_COLOR(24, 252, 252, 252); // 0 | WHITE
+        RGB_MATRIX_INDICATOR_SET_COLOR(29, 252, 252, 252); // 1 | WHITE
+        RGB_MATRIX_INDICATOR_SET_COLOR(30, 252, 252, 252); // 2 | WHITE
+        RGB_MATRIX_INDICATOR_SET_COLOR(35, 252, 252, 252); // 3 | WHITE
+        RGB_MATRIX_INDICATOR_SET_COLOR(28, 252, 252, 252); // 4 | WHITE
+        RGB_MATRIX_INDICATOR_SET_COLOR(31, 252, 252, 252); // 5 | WHITE
+        RGB_MATRIX_INDICATOR_SET_COLOR(34, 252, 252, 252); // 6 | WHITE
+        RGB_MATRIX_INDICATOR_SET_COLOR(27, 252, 252, 252); // 7 | WHITE
+        RGB_MATRIX_INDICATOR_SET_COLOR(32, 252, 252, 252); // 8 | WHITE
+        RGB_MATRIX_INDICATOR_SET_COLOR(33, 252, 252, 252); // 9 | WHITE
     } else {
         RGB_MATRIX_INDICATOR_SET_COLOR(26, 0, 0, 0); // NUMLOCK OFF | BLANK
+        RGB_MATRIX_INDICATOR_SET_COLOR(25, 0, 0, 0); // CALC 
+        RGB_MATRIX_INDICATOR_SET_COLOR(23, 0, 0, 0); // DOT 
+        RGB_MATRIX_INDICATOR_SET_COLOR(37, 0, 0, 0); // PLUS 
+        RGB_MATRIX_INDICATOR_SET_COLOR(5, 0, 0, 0); // EQUALS 
+        RGB_MATRIX_INDICATOR_SET_COLOR(5, 0, 0, 0); // TIMES 
+        RGB_MATRIX_INDICATOR_SET_COLOR(5, 0, 0, 0); // MINUS 
+        
+        RGB_MATRIX_INDICATOR_SET_COLOR(29, 0, 0, 0); // 1 | WHITE
+        RGB_MATRIX_INDICATOR_SET_COLOR(24, 0, 0, 0); // 0 | WHITE
+        RGB_MATRIX_INDICATOR_SET_COLOR(30, 0, 0, 0); // 2 | WHITE
+        RGB_MATRIX_INDICATOR_SET_COLOR(35, 0, 0, 0); // 3 | WHITE
+        RGB_MATRIX_INDICATOR_SET_COLOR(28, 0, 0, 0); // 4 | WHITE
+        RGB_MATRIX_INDICATOR_SET_COLOR(31, 0, 0, 0); // 5 | WHITE
+        RGB_MATRIX_INDICATOR_SET_COLOR(34, 0, 0, 0); // 6 | WHITE
+        RGB_MATRIX_INDICATOR_SET_COLOR(27, 0, 0, 0); // 7 | WHITE
+        RGB_MATRIX_INDICATOR_SET_COLOR(32, 0, 0, 0); // 8 | WHITE
+        RGB_MATRIX_INDICATOR_SET_COLOR(33, 0, 0, 0); // 9 | WHITE
     }
 
     return false;

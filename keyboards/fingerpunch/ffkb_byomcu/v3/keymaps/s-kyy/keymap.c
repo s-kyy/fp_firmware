@@ -72,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ============================================================
 [_GAME] = LAYOUT_ffkb(
   _______, _______, KC_1, KC_2, KC_3, KC_4,          KC_5,  KC_6,    KC_7,     KC_8,    KC_9,     _______,
-  KC_TAB,  KC_BTN1, KC_Q, KC_W, KC_E, KC_R,          KC_Y,  KC_M,    KC_WH_U,  _______, _______,  COLDH,
+  KC_TAB,  KC_T,    KC_Q, KC_W, KC_E, KC_R,          KC_Y,  KC_M,    KC_WH_U,  _______, _______,  COLDH,
   KC_LSFT, KC_V,    KC_A, KC_S, KC_D, KC_F,          KC_C,  KC_WH_L, KC_WH_D,  KC_WH_R, _______,  QWERTY,
            _______, _______, KC_SPC,  _______,       _______, LALT_T(KC_ENT),  KC_LWIN,  EXITPARSEC 
 ),
@@ -92,9 +92,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer 4 - LOWER
 // ============================================================
 [_LOWER] = LAYOUT_ffkb(
-  KC_ESC,        KC_MYCM,       TASKMAN,     UNDO,    WPAST,     _______,           _______,           KC_HOME,       KC_UP,              KC_END,      KC_BRIU,  KC_DEL,
-  OSM(MOD_LCTL), OSM(MOD_LSFT), CUT,         COPY,    PASTE,     C(KC_MINS),        FP_SCROLL_MOMENT,  KC_LEFT,       KC_DOWN,            KC_RGHT,     KC_LALT,  KC_PGUP,
-  KC_LWIN,       KC_CAPS,      LDESK,       REDO,     RDESK,     C(KC_PLUS),        FP_SNIPE_MOMENT,   C(KC_LEFT),    FP_SUPER_CTRL_TAB,  C(KC_RIGHT),  KC_BRID,  KC_PGDN,
+  KC_ESC,        KC_MYCM,       TASKMAN,     UNDO,    WPAST,     C(KC_MINS),        _______,           KC_HOME,       KC_UP,              KC_END,      KC_BRIU,  KC_DEL,
+  OSM(MOD_LCTL), OSM(MOD_LSFT), CUT,         COPY,    PASTE,     C(KC_PLUS),        FP_SCROLL_MOMENT,  KC_LEFT,       KC_DOWN,            KC_RGHT,     KC_LALT,  KC_PGUP,
+  KC_LWIN,       KC_CAPS,       LDESK,       REDO,     RDESK,    KC_INS,            FP_SNIPE_MOMENT,   C(KC_LEFT),    FP_SUPER_CTRL_TAB,  C(KC_RIGHT),  KC_BRID,  KC_PGDN,
                                 KC_RALT,     KC_BTN1, SFTE,      RGB_NUM,           _______,           _______,       _______,     _______
 ),
 
@@ -188,49 +188,49 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 // ============================================================
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     if (host_keyboard_led_state().caps_lock) {
-        RGB_MATRIX_INDICATOR_SET_COLOR(5, 242, 242, 0); // CAPSLOCK ON | MCORRICK PAINTS CORAL #f2bfb4 https://encycolorpedia.com/f2bfb4
+        RGB_MATRIX_INDICATOR_SET_COLOR(5, 242, 242, 0); // CAPSLOCK ON | yellow / MCORRICK PAINTS CORAL #f2bfb4 https://encycolorpedia.com/f2bfb4
     } else {
         RGB_MATRIX_INDICATOR_SET_COLOR(5, 0, 0, 0); // CAPSLOCK OFF | BLANK
     }
     if (host_keyboard_led_state().num_lock) {
         // RGB_MATRIX_INDICATOR_SET_COLOR(26, 242, 191, 180); // NUMLOCK ON | Reaper Master New Gold (9051) #e7bd42 https://encycolorpedia.com/e7bd42
         RGB_MATRIX_INDICATOR_SET_COLOR(26, 242, 242, 0); // NUMLOCK ON | yellow
-        RGB_MATRIX_INDICATOR_SET_COLOR(25, 242, 242, 0); // CALC | yellow
-        RGB_MATRIX_INDICATOR_SET_COLOR(23, 242, 242, 0); // DOT | yellow
-        RGB_MATRIX_INDICATOR_SET_COLOR(37, 242, 242, 0); // PLUS | yellow
-        RGB_MATRIX_INDICATOR_SET_COLOR(36, 242, 242, 0); // EQUALS | yellow
-        RGB_MATRIX_INDICATOR_SET_COLOR(40, 242, 242, 0); // TIMES | yellow
-        RGB_MATRIX_INDICATOR_SET_COLOR(38, 242, 242, 0); // MINUS | yellow
+        // RGB_MATRIX_INDICATOR_SET_COLOR(25, 242, 242, 0); // CALC | yellow
+        // RGB_MATRIX_INDICATOR_SET_COLOR(23, 242, 242, 0); // DOT | yellow
+        // RGB_MATRIX_INDICATOR_SET_COLOR(37, 242, 242, 0); // PLUS | yellow
+        // RGB_MATRIX_INDICATOR_SET_COLOR(36, 242, 242, 0); // EQUALS | yellow
+        // RGB_MATRIX_INDICATOR_SET_COLOR(40, 242, 242, 0); // TIMES | yellow
+        // RGB_MATRIX_INDICATOR_SET_COLOR(38, 242, 242, 0); // MINUS | yellow
         
-        RGB_MATRIX_INDICATOR_SET_COLOR(24, 252, 252, 252); // 0 | WHITE
-        RGB_MATRIX_INDICATOR_SET_COLOR(29, 252, 252, 252); // 1 | WHITE
-        RGB_MATRIX_INDICATOR_SET_COLOR(30, 252, 252, 252); // 2 | WHITE
-        RGB_MATRIX_INDICATOR_SET_COLOR(35, 252, 252, 252); // 3 | WHITE
-        RGB_MATRIX_INDICATOR_SET_COLOR(28, 252, 252, 252); // 4 | WHITE
-        RGB_MATRIX_INDICATOR_SET_COLOR(31, 252, 252, 252); // 5 | WHITE
-        RGB_MATRIX_INDICATOR_SET_COLOR(34, 252, 252, 252); // 6 | WHITE
-        RGB_MATRIX_INDICATOR_SET_COLOR(27, 252, 252, 252); // 7 | WHITE
-        RGB_MATRIX_INDICATOR_SET_COLOR(32, 252, 252, 252); // 8 | WHITE
-        RGB_MATRIX_INDICATOR_SET_COLOR(33, 252, 252, 252); // 9 | WHITE
+        // RGB_MATRIX_INDICATOR_SET_COLOR(24, 252, 252, 252); // 0 | WHITE
+        // RGB_MATRIX_INDICATOR_SET_COLOR(29, 252, 252, 252); // 1 | WHITE
+        // RGB_MATRIX_INDICATOR_SET_COLOR(30, 252, 252, 252); // 2 | WHITE
+        // RGB_MATRIX_INDICATOR_SET_COLOR(35, 252, 252, 252); // 3 | WHITE
+        // RGB_MATRIX_INDICATOR_SET_COLOR(28, 252, 252, 252); // 4 | WHITE
+        // RGB_MATRIX_INDICATOR_SET_COLOR(31, 252, 252, 252); // 5 | WHITE
+        // RGB_MATRIX_INDICATOR_SET_COLOR(34, 252, 252, 252); // 6 | WHITE
+        // RGB_MATRIX_INDICATOR_SET_COLOR(27, 252, 252, 252); // 7 | WHITE
+        // RGB_MATRIX_INDICATOR_SET_COLOR(32, 252, 252, 252); // 8 | WHITE
+        // RGB_MATRIX_INDICATOR_SET_COLOR(33, 252, 252, 252); // 9 | WHITE
     } else {
         RGB_MATRIX_INDICATOR_SET_COLOR(26, 0, 0, 0); // NUMLOCK OFF | BLANK
-        RGB_MATRIX_INDICATOR_SET_COLOR(25, 0, 0, 0); // CALC 
-        RGB_MATRIX_INDICATOR_SET_COLOR(23, 0, 0, 0); // DOT 
-        RGB_MATRIX_INDICATOR_SET_COLOR(37, 0, 0, 0); // PLUS 
-        RGB_MATRIX_INDICATOR_SET_COLOR(36, 0, 0, 0); // EQUALS 
-        RGB_MATRIX_INDICATOR_SET_COLOR(40, 0, 0, 0); // TIMES 
-        RGB_MATRIX_INDICATOR_SET_COLOR(38, 0, 0, 0); // MINUS 
+        // RGB_MATRIX_INDICATOR_SET_COLOR(25, 0, 0, 0); // CALC 
+        // RGB_MATRIX_INDICATOR_SET_COLOR(23, 0, 0, 0); // DOT 
+        // RGB_MATRIX_INDICATOR_SET_COLOR(37, 0, 0, 0); // PLUS 
+        // RGB_MATRIX_INDICATOR_SET_COLOR(36, 0, 0, 0); // EQUALS 
+        // RGB_MATRIX_INDICATOR_SET_COLOR(40, 0, 0, 0); // TIMES 
+        // RGB_MATRIX_INDICATOR_SET_COLOR(38, 0, 0, 0); // MINUS 
         
-        RGB_MATRIX_INDICATOR_SET_COLOR(29, 0, 0, 0); // 1 | WHITE
-        RGB_MATRIX_INDICATOR_SET_COLOR(24, 0, 0, 0); // 0 | WHITE
-        RGB_MATRIX_INDICATOR_SET_COLOR(30, 0, 0, 0); // 2 | WHITE
-        RGB_MATRIX_INDICATOR_SET_COLOR(35, 0, 0, 0); // 3 | WHITE
-        RGB_MATRIX_INDICATOR_SET_COLOR(28, 0, 0, 0); // 4 | WHITE
-        RGB_MATRIX_INDICATOR_SET_COLOR(31, 0, 0, 0); // 5 | WHITE
-        RGB_MATRIX_INDICATOR_SET_COLOR(34, 0, 0, 0); // 6 | WHITE
-        RGB_MATRIX_INDICATOR_SET_COLOR(27, 0, 0, 0); // 7 | WHITE
-        RGB_MATRIX_INDICATOR_SET_COLOR(32, 0, 0, 0); // 8 | WHITE
-        RGB_MATRIX_INDICATOR_SET_COLOR(33, 0, 0, 0); // 9 | WHITE
+        // RGB_MATRIX_INDICATOR_SET_COLOR(29, 0, 0, 0); // 1 | WHITE
+        // RGB_MATRIX_INDICATOR_SET_COLOR(24, 0, 0, 0); // 0 | WHITE
+        // RGB_MATRIX_INDICATOR_SET_COLOR(30, 0, 0, 0); // 2 | WHITE
+        // RGB_MATRIX_INDICATOR_SET_COLOR(35, 0, 0, 0); // 3 | WHITE
+        // RGB_MATRIX_INDICATOR_SET_COLOR(28, 0, 0, 0); // 4 | WHITE
+        // RGB_MATRIX_INDICATOR_SET_COLOR(31, 0, 0, 0); // 5 | WHITE
+        // RGB_MATRIX_INDICATOR_SET_COLOR(34, 0, 0, 0); // 6 | WHITE
+        // RGB_MATRIX_INDICATOR_SET_COLOR(27, 0, 0, 0); // 7 | WHITE
+        // RGB_MATRIX_INDICATOR_SET_COLOR(32, 0, 0, 0); // 8 | WHITE
+        // RGB_MATRIX_INDICATOR_SET_COLOR(33, 0, 0, 0); // 9 | WHITE
     }
 
     return false;

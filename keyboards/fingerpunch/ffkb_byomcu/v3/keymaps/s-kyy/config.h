@@ -3,7 +3,7 @@
 // =============================================
 #define FP_SUPER_TAB_TIMEOUT 1000
 // #define ENCODER_RESOLUTION 4 //input commands more than once.
-#define ONESHOT_TAP_TOGGLE 2
+#define ONESHOT_TAP_TOGGLE 3
 // #define ONESHOT_TIMEOUT 5000  
 
 // =============================================
@@ -11,14 +11,14 @@
 // =============================================
 #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
 #define AUTO_MOUSE_DEFAULT_LAYER 7
-#define FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY 1 //3 default
+#define FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY 3 //3 default
 //     //if mouse moves while typing: 
 //     // Higher = mouse needs to move more to trigger mouse layer
 // #define MOUSE_EXTENDED_REPORT
     //Mouse trackball acceleration
     // #define FP_POINTING_EXTENDED_MOUSE_REPORT_DISABLE
 // #define FP_POINTING_DEFAULT_DPI 750 //1000 set to general v3 config file in increments of 100
-#define FP_POINTING_SCROLLING_DPI 2
+#define FP_POINTING_SCROLLING_DPI 1
     // Dareu LM108 = 1000/1600
 // #define FP_POINTING_LAYER_ENABLE 
 // #define FP_POINTING_ZOOM_LAYER 2 // 

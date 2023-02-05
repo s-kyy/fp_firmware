@@ -84,8 +84,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer 3 - RAISE
 // ============================================================
 [_RAISE] = LAYOUT_ffkb(
-  KC_SLEP,        _______,     MBEEL,  UNDO,    WPAST,   MBEER,      TASKMAN,   KC_MYCM,  C(KC_MINS),  C(KC_PLUS),   KC_INS,   KC_DEL,  
-  KC_TAB,         KC_CALC,     CUT,  COPY,    PASTE,   MBEE,          KC_TILD,   KC_LBRC,  KC_RBRC,     KC_UNDS,      KC_AT,  KC_CAPS,  
+  KC_SLEP,        _______,     MBEEL,  UNDO,    WPAST,   MBEER,          TASKMAN,   KC_MYCM,  C(KC_MINS),  C(KC_PLUS),   KC_INS,   KC_DEL,  
+  OSM(MOD_LCTL),  KC_CALC,     CUT,    COPY,    PASTE,   MBEE,           KC_TILD,   KC_LBRC,  KC_RBRC,     KC_UNDS,      KC_AT,  KC_CAPS,  
   OSM(MOD_LSFT),  _______,     LDESK,  REDO,    RDESK,   KC_INS,         KC_GRV,    KC_LPRN,  KC_RPRN,     KC_HASH,      KC_PERC,  KC_CIRC,
                   _______,     _______, _______, _______,                RGB_NUM,   SFTE,     KC_BTN2,     KC_RALT
 ),  
@@ -95,7 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ============================================================
 [_LOWER] = LAYOUT_ffkb(
   KC_ESC,         KC_PSLS,     KC_7,  KC_8,    KC_9,   KC_PAST,        KC_NUM,            KC_HOME,       KC_UP,              KC_END,      KC_BRIU,        KC_DEL,
-  OSM(MOD_LCTL),  KC_PDOT,     KC_4,  KC_5,    KC_6,   KC_EQL,         FP_SCROLL_MOMENT,  KC_LEFT,       KC_DOWN,            KC_RGHT,     OSM(MOD_LALT),  KC_PGUP,
+  OSM(MOD_LCTL),  KC_DOT,      KC_4,  KC_5,    KC_6,   KC_EQL,         FP_SCROLL_MOMENT,  KC_LEFT,       KC_DOWN,            KC_RGHT,     OSM(MOD_LALT),  KC_PGUP,
   OSM(MOD_LSFT),  KC_0,        KC_1,  KC_2,    KC_3,   KC_MINS,        FP_SNIPE_MOMENT,   C(KC_LEFT),    FP_SUPER_CTRL_TAB,  C(KC_RIGHT), KC_BRID,        KC_PGDN,
                   KC_RALT,            KC_BTN2, SFTE,   RGB_NUM,        _______,  _______,  _______,  _______
 ),

@@ -13,33 +13,36 @@ uint16_t alt_tab_timer = 0;
 enum layer_names {
     _COLEMAK, //0
     _QWERTY,  //1
-    _GAME,    //2
-    _RAISE,   //3
-    _LOWER,   //4
-    _RGB_NUM, //5
+    _SYM,     //2
+    _FN,      //3
+    _NAV,     //4
+    _RGB,     //5
     _LAYER6,  //6
-    _LAYER7,  //7
-    _LAYER8   //8
+    _LAYER7  //7
+    // _LAYER8   
+    // _GAME, //2
 };
 
-//custom keycodes
+//Layer mods
 #define COLDH TO(_COLEMAK)
 #define QWERTY TO(_QWERTY)
-#define GAME  TO(_GAME)
-#define RAISE MO(_RAISE)
-#define MRAISE LT(_RAISE,KC_BTN1)
-#define LOWER MO(_LOWER)
-#define RGB_NUM TO(_RGB_NUM)
-// #define REDO LCTL(KC_Y)
+// #define GAME  TO(_GAME)
+// #define SYM MO(_SYM)
+// #define MSYM LT(_SYM,KC_BTN1)
+// #define NAV LT(_NAV,KC_BSPC)
+#define RGB TO(_RGB)
+// #define SP_SYM LT()
+
+// Basic custom keycodes
 #define CUT LCTL(KC_X)
 #define COPY LCTL(KC_C)
 #define PASTE LCTL(KC_V)
 #define WPAST G(KC_V)
 #define UNDO C(KC_Z)
 #define REDO C(KC_Y)
-#define SFTT LSFT_T(KC_TAB) //Tab-tap Shift-hold
-#define SPSFT LSFT_T(KC_SPC) //Space-tap Shift-hold
-#define SFTE LSFT_T(KC_ENT) //Enter-tap Shift-hold
+// #define SFTT LSFT_T(KC_TAB) //Tab-tap Shift-hold
+// #define SPSFT LSFT_T(KC_SPC) //Space-tap Shift-hold
+// #define SFTE LSFT_T(KC_ENT) //Enter-tap Shift-hold
 #define LDESK G(C(KC_LEFT)) 
 #define RDESK G(C(KC_RIGHT))
 #define EXITPARSEC C(A(KC_TILD))
@@ -48,66 +51,87 @@ enum layer_names {
 #define MBEEL C(S(KC_LBRC))
 #define MBEER C(S(KC_RBRC))
 
+// Left-hand home row mods
+#define HOME_A LCTL_T(KC_A)
+#define HOME_W LGUI_T(KC_W)
+#define HOME_F LALT_T(KC_F)
+#define HOME_T LSFT_T(KC_T)
+
+#define HOME_E LALT_T(KC_E)
+#define HOME_FS LSFT_T(KC_F)
+
+// Right-hand home row mods
+#define HOME_N RSFT_T(KC_N)
+#define HOME_U LALT_T(KC_U)
+#define HOME_Y RGUI_T(KC_Y)
+#define HOME_O RCTL_T(KC_O)
+
+#define HOME_J RSFT_T(KC_J)
+#define HOME_I LALT_T(KC_I)
+#define HOME_OG RGUI_T(KC_O)
+#define HOME_SCLN LSFT_T(KC_SCLN)
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // ============================================================
 // Layer 0 - Colemak-DH
 // ============================================================
 [_COLEMAK] = LAYOUT_ffkb(
-  KC_ESC,         KC_Q,     KC_W,     KC_F,   KC_P,   KC_B,     KC_J,   KC_L,   KC_U,     KC_Y,     KC_SCLN,    KC_BSPC,
-  OSM(MOD_LCTL),  KC_A,     KC_R,     KC_S,   KC_T,   KC_G,     KC_M,   KC_N,   KC_E,     KC_I,     KC_O,       KC_QUOT,
-  KC_LWIN,        KC_Z,     KC_X,     KC_C,   KC_D,   KC_V,     KC_K,   KC_H,   KC_COMM,  KC_DOT,   KC_SLSH,    KC_APP,
-                            KC_MUTE,  KC_BTN1,  SFTE, MRAISE,   LOWER,  SPSFT, MT(MOD_LALT,KC_TAB),    KC_RALT
+  FP_SCROLL_TOG,  KC_Q,     HOME_W,   HOME_F,   KC_P,    KC_B,                  KC_J,   KC_L,    HOME_U,   HOME_Y,   KC_SCLN,    KC_ESC,
+  KC_MS_BTN1,     HOME_A,   KC_R,     KC_S,     HOME_T,  KC_G,                  KC_M,   HOME_N,  KC_E,     KC_I,     HOME_O,     KC_QUOT,
+  KC_MS_BTN2,     KC_Z,     KC_X,     KC_C,     KC_D,    KC_V,                  KC_K,   KC_H,    KC_COMM,  KC_DOT,   KC_SLSH,    KC_APP,
+                  KC_MUTE,  KC_DEL,  LT(_SYM, KC_ENT),   LT(_FN,KC_TAB),        LT(_RGB,KC_BSPC), LT(_NAV,KC_SPC),  KC_GRV,     KC_RALT
 ),
 
 // ============================================================
 // Layer 1 - QWERTY
 // ============================================================
 [_QWERTY] = LAYOUT_ffkb(
-  _______, KC_Q,   KC_W,     KC_E,   KC_R,     KC_T,        KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     _______,
-  _______, KC_A,   KC_S,     KC_D,   KC_F,     KC_G,        KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  _______,
-  _______, KC_Z,   KC_X,     KC_C,   KC_V,     KC_B,        KC_N,     KC_M,     _______,  _______,  _______,  _______,
-                   _______,  _______,_______,  _______,     _______,  _______,  _______,  _______
+  _______, KC_Q,     HOME_W,   HOME_E,   KC_R,     KC_T,        KC_Y,     KC_U,     HOME_I,     HOME_OG,  KC_P,       _______,
+  _______, HOME_A,   KC_S,     KC_D,     HOME_FS,  KC_G,        KC_H,     HOME_J,   KC_K,       KC_L,     HOME_SCLN,  _______,
+  _______, KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,        KC_N,     KC_M,     _______,    _______,  _______,    _______,
+                   _______,  _______,   _______,  _______,      _______,  _______,  _______,  _______
 ),
 
 // ============================================================
-// Layer 2 - Game
+// Layer 2 - SYM
 // ============================================================
-[_GAME] = LAYOUT_ffkb(
-  _______, _______, KC_1, KC_2, KC_3, KC_4,          KC_5,     KC_6,    KC_7,     KC_8,    KC_9,     _______,
-  KC_TAB,  KC_T,    KC_Q, KC_W, KC_E, KC_R,          KC_BTN1,  KC_Y,    KC_B,     _______, _______,  COLDH,
-  KC_LSFT, KC_V,    KC_A, KC_S, KC_D, KC_F,          KC_LSFT,  KC_M,    _______,  _______, _______,  QWERTY,
-           _______, _______, KC_SPC,  _______,       _______, LALT_T(KC_ENT),  KC_LWIN,  EXITPARSEC 
+[_SYM] = LAYOUT_ffkb(
+  KC_ESC,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR, KC_PERC,                   KC_CIRC,  KC_AMPR,               KC_ASTR,  KC_UNDS, KC_EQL, KC_SLEP,
+  _______, KC_PMNS, KC_LCBR, KC_LBRC, KC_LPRN, KC_LABK,                  KC_RABK,  KC_RPRN,               KC_RBRC,  KC_RCBR, KC_PPLS, KC_CAPS,
+  _______, _______, _______, KC_PIPE, FP_SUPER_CTRL_TAB, LDESK,          RDESK,    S(FP_SUPER_CTRL_TAB),  KC_BSLS,  _______, _______, FP_SNIPE_TOG,
+                    _______, _______, _______, _______,                  KC_BSPC,  KC_SPC,  KC_TILD,  EE_CLR
 ),
 
 // ============================================================
-// Layer 3 - RAISE
+// Layer 3 - FN
 // ============================================================
-[_RAISE] = LAYOUT_ffkb(
-  KC_SLEP,        _______,     MBEEL,  UNDO,    WPAST,   MBEER,          TASKMAN,   KC_MYCM,  C(KC_MINS),  C(KC_PLUS),   KC_INS,   KC_DEL,  
-  OSM(MOD_LCTL),  KC_CALC,     CUT,    COPY,    PASTE,   MBEE,           KC_TILD,   KC_LBRC,  KC_RBRC,     KC_UNDS,      KC_AT,  KC_CAPS,  
-  OSM(MOD_LSFT),  _______,     LDESK,  REDO,    RDESK,   KC_INS,         KC_GRV,    KC_LPRN,  KC_RPRN,     KC_HASH,      KC_PERC,  KC_CIRC,
-                  _______,     _______, _______, _______,                RGB_NUM,   SFTE,     KC_BTN2,     KC_RALT
-),  
-
-// ============================================================
-// Layer 4 - LOWER
-// ============================================================
-[_LOWER] = LAYOUT_ffkb(
-  KC_ESC,         KC_PSLS,     KC_7,  KC_8,    KC_9,   KC_PAST,        KC_NUM,            KC_HOME,       KC_UP,              KC_END,      KC_BRIU,        KC_DEL,
-  OSM(MOD_LCTL),  KC_DOT,      KC_4,  KC_5,    KC_6,   KC_EQL,         FP_SCROLL_MOMENT,  KC_LEFT,       KC_DOWN,            KC_RGHT,     OSM(MOD_LALT),  KC_PGUP,
-  OSM(MOD_LSFT),  KC_0,        KC_1,  KC_2,    KC_3,   KC_MINS,        FP_SNIPE_MOMENT,   C(KC_LEFT),    FP_SUPER_CTRL_TAB,  C(KC_RIGHT), KC_BRID,        KC_PGDN,
-                  KC_RALT,            KC_BTN2, SFTE,   RGB_NUM,        _______,  _______,  _______,  _______
+[_FN] = LAYOUT_ffkb(
+  KC_ESC, TASKMAN,  KC_MYCM,  UNDO,    WPAST,   C(KC_PLUS),     KC_F1,  KC_F2,   KC_F3,   KC_F4,   KC_F5,  KC_SLEP,
+  MBEER, KC_CALC,   CUT,      COPY,    PASTE,   C(KC_MINS),     KC_F6,  KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_CAPS,
+  MBEEL, MBEE,      KC_BRID,  REDO,    KC_BRIU, KC_INS,         KC_F11, KC_F12,  KC_F13,  KC_F14,  KC_F15, FP_SNIPE_TOG,
+                    _______,  _______, _______, _______,        KC_BSPC, KC_SPC,  _______,  EE_CLR
 ),
 
 // ============================================================
-// Layer 5 - RGB-Num
+// Layer 4 - NAV
 // ============================================================
-[_RGB_NUM] =  LAYOUT_ffkb(
-  _______,       RGB_TOG, RGB_MOD,  RGB_RMOD, _______, COLDH,      KC_F1,  KC_F2,   KC_F3,   KC_F4,   KC_F5,  KC_BSPC,
-  OSM(MOD_LCTL), RGB_SPI, RGB_HUI,  RGB_SAI, RGB_VAI,  QWERTY,     KC_F6,  KC_F7,   KC_F8,   KC_F9,   KC_F10, _______,
-  OSM(MOD_LSFT), RGB_SPD, RGB_HUD,  RGB_SAD, RGB_VAD,  GAME,       KC_F11, KC_F12,  KC_F13,  KC_F14,  KC_F15, _______,
-                 QK_BOOT, FP_SNIPE_MOMENT, SPSFT, KC_BTN1,         KC_BTN2,  FP_SCROLL_MOMENT, MT(MOD_LALT,KC_TAB),   EE_CLR
+[_NAV] = LAYOUT_ffkb(
+  KC_ESC,   KC_PSLS,     KC_7,   KC_8,     KC_9,   KC_PMNS,     KC_HOME,     A(KC_UP),     KC_UP,       A(KC_DOWN),    KC_END,         KC_SLEP,
+  KC_BSPC,  KC_PAST,     KC_4,   KC_5,     KC_6,   KC_PPLS,     KC_PGUP,     KC_LEFT,      KC_DOWN,     KC_RGHT,       OSM(MOD_LCTL),  OSM(MOD_LALT),
+  _______,  KC_EQL,      KC_1,   KC_2,     KC_3,   KC_0,        KC_PGDN,     C(KC_LEFT),   C(KC_BSPC),  C(KC_RIGHT),   C(KC_DEL),      OSM(MOD_LSFT),
+                  QK_BOOT,     KC_DOT, KC_SPC,   KC_TAB,        _______,     _______,      _______,  _______
+),
+
+// ============================================================
+// Layer  5 - RGB
+// ============================================================
+[_RGB] =  LAYOUT_ffkb(
+  KC_ESC,  RGB_TOG, RGB_MOD,  RGB_RMOD, _______,  COLDH,        S(KC_HOME),  C(A(KC_UP)),    S(KC_UP),    C(A(KC_DOWN)),   S(KC_END),     KC_SLEP,
+  _______, RGB_SPI, RGB_HUI,  RGB_SAI,  RGB_VAI,  QWERTY,       KC_PGUP,     S(KC_LEFT),     S(KC_DOWN),  S(KC_RGHT),      OSM(MOD_LCTL), OSM(MOD_LALT),
+  _______, RGB_SPD, RGB_HUD,  RGB_SAD,  RGB_VAD,  EXITPARSEC,   KC_PGDN,     C(S(KC_LEFT)),  C(KC_BSPC),  C(S(KC_RIGHT)),  C(KC_DEL),     OSM(MOD_LSFT),
+                QK_BOOT, _______,   KC_ENT,  KC_BSPC,                _______,  _______,  _______,  _______
 ),
 
 // ============================================================
@@ -125,15 +149,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______,         _______,  _______,  _______,  _______, _______, _______,
   _______, _______, _______, _______, _______, _______,         _______,  _______,  _______,  _______, _______, _______,
                     _______, _______, _______, _______,         _______,  _______,  _______,  _______
-),
-
-[_LAYER8] = LAYOUT_ffkb(
-  _______, _______, _______, _______, _______, _______,         _______,  _______,  _______,  _______, _______, _______,
-  _______, _______, _______, _______, _______, _______,         _______,  _______,  _______,  _______, _______, _______,
-  _______, _______, _______, _______, _______, _______,         _______,  _______,  _______,  _______, _______, _______,
-                    _______, _______, _______, _______,         _______,  _______,  _______,  _______
 )
 };
+
+// ============================================================
+// Mod-tap settings
+// ============================================================
+// bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
+//     switch (keycode) {
+//         case LT(1, KC_BSPC):
+//             return true;
+//         default:
+//             return false;
+//     }
+// }
 
 // ============================================================
 // Encoder button settings

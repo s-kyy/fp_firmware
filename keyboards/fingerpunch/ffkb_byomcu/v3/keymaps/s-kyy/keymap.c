@@ -98,10 +98,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer 2 - SYM
 // ============================================================
 [_SYM] = LAYOUT_ffkb(
-  KC_ESC,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR, KC_PERC,                   KC_CIRC,  KC_AMPR,               KC_ASTR,  KC_UNDS, KC_EQL, KC_SLEP,
-  _______, KC_PMNS, KC_LCBR, KC_LBRC, KC_LPRN, KC_LABK,                  KC_RABK,  KC_RPRN,               KC_RBRC,  KC_RCBR, KC_PPLS, KC_CAPS,
-  _______, _______, _______, KC_PIPE, FP_SUPER_CTRL_TAB, LDESK,          RDESK,    S(FP_SUPER_CTRL_TAB),  KC_BSLS,  _______, _______, FP_SNIPE_TOG,
-                    _______, _______, _______, _______,                  KC_BSPC,  KC_SPC,  KC_TILD,  EE_CLR
+  KC_ESC,  KC_EXLM, KC_AT,   KC_HASH,         KC_DLR, KC_PERC,                         KC_CIRC,  KC_AMPR,               KC_ASTR,  KC_UNDS, KC_EQL, KC_SLEP,
+  _______, KC_PIPE, KC_LCBR, KC_LBRC,         KC_LPRN, KC_PMNS,                        KC_TILD,  KC_RPRN,               KC_RBRC,  KC_RCBR, KC_PPLS, KC_CAPS,
+  _______, _______, LGUI_T(KC_UP), LGUI_T(KC_LEFT), FP_SUPER_CTRL_TAB, LDESK,          RDESK,    S(FP_SUPER_CTRL_TAB),  LGUI_T(KC_RIGHT),  LGUI_T(KC_DOWN), _______, FP_SNIPE_TOG,
+                    _______, _______, _______, _______,                                KC_BSPC,  KC_SPC,  KC_BSLS,  EE_CLR
 ),
 
 // ============================================================
@@ -118,20 +118,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer 4 - NAV
 // ============================================================
 [_NAV] = LAYOUT_ffkb(
-  KC_ESC,   KC_PSLS,     KC_7,   KC_8,     KC_9,   KC_PMNS,     KC_HOME,     A(KC_UP),     KC_UP,       A(KC_DOWN),    KC_END,         KC_SLEP,
-  KC_BSPC,  KC_PAST,     KC_4,   KC_5,     KC_6,   KC_PPLS,     KC_PGUP,     KC_LEFT,      KC_DOWN,     KC_RGHT,       OSM(MOD_LCTL),  OSM(MOD_LALT),
-  _______,  KC_EQL,      KC_1,   KC_2,     KC_3,   KC_0,        KC_PGDN,     C(KC_LEFT),   C(KC_BSPC),  C(KC_RIGHT),   C(KC_DEL),      OSM(MOD_LSFT),
-                  QK_BOOT,     KC_DOT, KC_SPC,   KC_TAB,        _______,     _______,      _______,  _______
+  KC_ESC,   KC_PSLS,     KC_7,   KC_8,     KC_9,   KC_PMNS,     _______,     KC_HOME,      KC_UP,       KC_END,        _______,         KC_SLEP,
+  KC_BSPC,  KC_PAST,     KC_4,   KC_5,     KC_6,   KC_PPLS,     KC_PGUP,     KC_LEFT,      KC_DOWN,     KC_RGHT,       OSM(MOD_LALT),   C(A(KC_UP)),
+  _______,  KC_EQL,      KC_1,   KC_2,     KC_3,   KC_DOT,      KC_PGDN,     C(KC_LEFT),   C(KC_BSPC),  C(KC_RIGHT),   C(KC_DEL),       C(A(KC_DOWN)),
+                  QK_BOOT,     KC_SPC, KC_0,   KC_TAB,        _______,     _______,      _______,  _______
 ),
 
 // ============================================================
 // Layer  5 - RGB
 // ============================================================
 [_RGB] =  LAYOUT_ffkb(
-  KC_ESC,  RGB_TOG, RGB_MOD,  RGB_RMOD, _______,  COLDH,        S(KC_HOME),  C(A(KC_UP)),    S(KC_UP),    C(A(KC_DOWN)),   S(KC_END),     KC_SLEP,
-  _______, RGB_SPI, RGB_HUI,  RGB_SAI,  RGB_VAI,  QWERTY,       KC_PGUP,     S(KC_LEFT),     S(KC_DOWN),  S(KC_RGHT),      OSM(MOD_LCTL), OSM(MOD_LALT),
-  _______, RGB_SPD, RGB_HUD,  RGB_SAD,  RGB_VAD,  EXITPARSEC,   KC_PGDN,     C(S(KC_LEFT)),  C(KC_BSPC),  C(S(KC_RIGHT)),  C(KC_DEL),     OSM(MOD_LSFT),
-                QK_BOOT, _______,   KC_ENT,  KC_BSPC,                _______,  _______,  _______,  _______
+  KC_ESC,  RGB_TOG, RGB_MOD,  RGB_RMOD, _______,  COLDH,        _______,     S(KC_HOME),     S(KC_UP),    S(KC_END),       _______,       KC_SLEP,
+  _______, RGB_SPI, RGB_HUI,  RGB_SAI,  RGB_VAI,  QWERTY,       KC_PGUP,     S(KC_LEFT),     S(KC_DOWN),  S(KC_RGHT),      OSM(MOD_LALT), C(A(KC_UP)),
+  _______, RGB_SPD, RGB_HUD,  RGB_SAD,  RGB_VAD,  EXITPARSEC,   KC_PGDN,     C(S(KC_LEFT)),  C(KC_BSPC),  C(S(KC_RIGHT)),  C(KC_DEL),     C(A(KC_DOWN)),
+                QK_BOOT, _______,   KC_ENT,  KC_BSPC,           _______,  _______,  _______,  _______
 ),
 
 // ============================================================

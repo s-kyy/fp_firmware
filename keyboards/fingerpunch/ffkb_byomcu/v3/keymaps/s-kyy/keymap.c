@@ -17,7 +17,7 @@ enum layer_names {
     _FN,      //3
     _NAV,     //4
     _RGB,     //5
-    _LAYER6,  //6
+    _MOUSE,  //6
     _LAYER7  //7
     // _LAYER8   
     // _GAME, //2
@@ -71,6 +71,30 @@ enum layer_names {
 #define HOME_OG RGUI_T(KC_O)
 #define HOME_SCLN LSFT_T(KC_SCLN)
 
+enum custom_keycodes {
+  GITCOMM = SAFE_RANGE,
+  GITPUSH,
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+    case GITCOMM:
+        if (record->event.pressed) {
+          // when keycode is pressed
+            SEND_STRING("git commit -m '' ");
+        } else {
+          // when keycode is released
+        }
+        break;
+
+    case GITPUSH:
+        if (record->event.pressed) {
+            SEND_STRING("git push -u origin ");
+        } 
+        break;
+    }
+    return true;
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -78,10 +102,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer 0 - Colemak-DH
 // ============================================================
 [_COLEMAK] = LAYOUT_ffkb(
-  FP_SCROLL_TOG,  KC_Q,     HOME_W,   HOME_F,   KC_P,    KC_B,                  KC_J,   KC_L,    HOME_U,   HOME_Y,   KC_SCLN,    KC_ESC,
-  KC_MS_BTN1,     HOME_A,   KC_R,     KC_S,     HOME_T,  KC_G,                  KC_M,   HOME_N,  KC_E,     KC_I,     HOME_O,     KC_QUOT,
-  KC_MS_BTN2,     KC_Z,     KC_X,     KC_C,     KC_D,    KC_V,                  KC_K,   KC_H,    KC_COMM,  KC_DOT,   KC_SLSH,    KC_APP,
-                  KC_MUTE,  KC_DEL,  LT(_SYM, KC_ENT),   LT(_FN,KC_TAB),        LT(_RGB,KC_BSPC), LT(_NAV,KC_SPC),  KC_GRV,     KC_RALT
+  FP_SCROLL_TOG,  KC_Q,     HOME_W,      HOME_F,   KC_P,    KC_B,                  KC_J,   KC_L,    HOME_U,   HOME_Y,   KC_SCLN,    KC_ESC,
+  KC_MS_BTN1,     HOME_A,   KC_R,        KC_S,     HOME_T,  KC_G,                  KC_M,   HOME_N,  KC_E,     KC_I,     HOME_O,     KC_QUOT,
+  KC_MS_BTN2,     KC_Z,     KC_X,        KC_C,     KC_D,    KC_V,                  KC_K,   KC_H,    KC_COMM,  KC_DOT,   KC_SLSH,    KC_APP,
+                  KC_MUTE,  TT(_MOUSE),  LT(_SYM, KC_ENT),   LT(_FN,KC_BSPC),      LT(_RGB,KC_TAB), LT(_NAV,KC_SPC),  KC_GRV,     KC_RALT
 ),
 
 // ============================================================
@@ -98,20 +122,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer 2 - SYM
 // ============================================================
 [_SYM] = LAYOUT_ffkb(
-  KC_ESC,  KC_EXLM, KC_AT,   KC_HASH,         KC_DLR, KC_PERC,                         KC_CIRC,  KC_AMPR,               KC_ASTR,  KC_UNDS, KC_EQL, KC_SLEP,
-  _______, KC_PIPE, KC_LCBR, KC_LBRC,         KC_LPRN, KC_PMNS,                        KC_TILD,  KC_RPRN,               KC_RBRC,  KC_RCBR, KC_PPLS, KC_CAPS,
-  _______, _______, LGUI_T(KC_UP), LGUI_T(KC_LEFT), FP_SUPER_CTRL_TAB, LDESK,          RDESK,    S(FP_SUPER_CTRL_TAB),  LGUI_T(KC_RIGHT),  LGUI_T(KC_DOWN), _______, FP_SNIPE_TOG,
-                    _______, _______, _______, _______,                                KC_BSPC,  KC_SPC,  KC_BSLS,  EE_CLR
+  KC_ESC,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR, KC_PERC,                   KC_CIRC,  KC_AMPR,               KC_ASTR,  KC_UNDS, KC_EQL,  KC_SLEP,
+  _______, KC_PIPE, KC_LCBR, KC_LBRC, KC_PMNS, KC_LPRN,                  KC_RPRN,  KC_TILD,               KC_RBRC,  KC_RCBR, KC_PPLS, KC_CAPS,
+  _______, KC_INS, KC_DEL,  KC_PIPE, FP_SUPER_CTRL_TAB, LDESK,           RDESK,    S(FP_SUPER_CTRL_TAB),  KC_BSLS,  KC_DEL,  KC_INS,  FP_SNIPE_TOG,
+                    _______, _______, _______, _______,                  KC_TAB,  KC_SPC,  _______,  EE_CLR
 ),
 
 // ============================================================
 // Layer 3 - FN
 // ============================================================
 [_FN] = LAYOUT_ffkb(
-  KC_ESC, TASKMAN,  KC_MYCM,  UNDO,    WPAST,   C(KC_PLUS),     KC_F1,  KC_F2,   KC_F3,   KC_F4,   KC_F5,  KC_SLEP,
-  MBEER, KC_CALC,   CUT,      COPY,    PASTE,   C(KC_MINS),     KC_F6,  KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_CAPS,
-  MBEEL, MBEE,      KC_BRID,  REDO,    KC_BRIU, KC_INS,         KC_F11, KC_F12,  KC_F13,  KC_F14,  KC_F15, FP_SNIPE_TOG,
-                    _______,  _______, _______, _______,        KC_BSPC, KC_SPC,  _______,  EE_CLR
+  KC_ESC,  TASKMAN,         KC_MYCM,  UNDO,    WPAST,   C(KC_PLUS),     KC_F1,  KC_F2,   KC_F3,   KC_F4,   KC_F5,  KC_SLEP,
+  MBEE,    KC_CALC,         CUT,      COPY,    PASTE,   C(KC_MINS),     KC_F6,  KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_CAPS,
+  _______, C(S(KC_V)),      MBEEL,    REDO,    MBEER,   C(KC_A),        KC_F11, KC_F12,  KC_F13,  KC_F14,  KC_F15, FP_SNIPE_TOG,
+                    _______,  _______, _______, _______,                KC_TAB, KC_SPC,  _______,  EE_CLR
 ),
 
 // ============================================================
@@ -119,9 +143,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ============================================================
 [_NAV] = LAYOUT_ffkb(
   KC_ESC,   KC_PSLS,     KC_7,   KC_8,     KC_9,   KC_PMNS,     _______,     KC_HOME,      KC_UP,       KC_END,        _______,         KC_SLEP,
-  KC_BSPC,  KC_PAST,     KC_4,   KC_5,     KC_6,   KC_PPLS,     KC_PGUP,     KC_LEFT,      KC_DOWN,     KC_RGHT,       OSM(MOD_LALT),   C(A(KC_UP)),
+  KC_BSPC,  KC_PAST,     KC_4,   KC_5,     KC_6,   KC_PPLS,     KC_PGUP,     KC_LEFT,      KC_DOWN,     KC_RGHT,       KC_LALT,         C(A(KC_UP)),
   _______,  KC_EQL,      KC_1,   KC_2,     KC_3,   KC_DOT,      KC_PGDN,     C(KC_LEFT),   C(KC_BSPC),  C(KC_RIGHT),   C(KC_DEL),       C(A(KC_DOWN)),
-                  QK_BOOT,     KC_SPC, KC_0,   KC_TAB,        _______,     _______,      _______,  _______
+                  QK_BOOT,     KC_SPC, KC_0,   KC_BSPC,        _______,     _______,      _______,  _______
 ),
 
 // ============================================================
@@ -129,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ============================================================
 [_RGB] =  LAYOUT_ffkb(
   KC_ESC,  RGB_TOG, RGB_MOD,  RGB_RMOD, _______,  COLDH,        _______,     S(KC_HOME),     S(KC_UP),    S(KC_END),       _______,       KC_SLEP,
-  _______, RGB_SPI, RGB_HUI,  RGB_SAI,  RGB_VAI,  QWERTY,       KC_PGUP,     S(KC_LEFT),     S(KC_DOWN),  S(KC_RGHT),      OSM(MOD_LALT), C(A(KC_UP)),
+  _______, RGB_SPI, RGB_HUI,  RGB_SAI,  RGB_VAI,  QWERTY,       KC_PGUP,     S(KC_LEFT),     S(KC_DOWN),  S(KC_RGHT),      KC_LALT,       C(A(KC_UP)),
   _______, RGB_SPD, RGB_HUD,  RGB_SAD,  RGB_VAD,  EXITPARSEC,   KC_PGDN,     C(S(KC_LEFT)),  C(KC_BSPC),  C(S(KC_RIGHT)),  C(KC_DEL),     C(A(KC_DOWN)),
                 QK_BOOT, _______,   KC_ENT,  KC_BSPC,           _______,  _______,  _______,  _______
 ),
@@ -137,11 +161,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ============================================================
 // Empty Layers
 // ============================================================
-[_LAYER6] = LAYOUT_ffkb(
-  _______, _______, _______, _______, _______, _______,         _______,  _______,  _______,  _______, _______, _______,
-  _______, _______, _______, _______, _______, _______,         _______,  _______,  _______,  _______, _______, _______,
-  _______, _______, _______, _______, _______, _______,         _______,  _______,  _______,  _______, _______, _______,
-                    _______, _______, _______, _______,         _______,  _______,  _______,  _______
+[_MOUSE] = LAYOUT_ffkb(
+  _______, _______, _______,    _______,    _______, _______,         KC_NUM,  KC_BRID,   KC_BRIU,  _______, _______, _______,
+  _______, _______, KC_MS_BTN2, KC_MS_BTN3, KC_MS_BTN1, _______,      KC_CALC, GITCOMM,   GITPUSH,  _______, _______, _______,
+  _______, _______, _______,    _______,    _______, _______,         _______,  _______,  _______,  _______, _______, _______,
+                    _______,    _______,    _______, _______,         _______,  _______,  _______,  _______
 ),
 
 [_LAYER7] = LAYOUT_ffkb(

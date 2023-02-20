@@ -69,10 +69,10 @@ enum layer_names {
 #define HOME_J RSFT_T(KC_J)
 #define HOME_I LALT_T(KC_I)
 #define HOME_OG RGUI_T(KC_O)
-#define HOME_SCLN LSFT_T(KC_SCLN)
+#define HOME_SCLN RCTL_T(KC_SCLN)
 
 enum custom_keycodes {
-  GITCOMM = SAFE_RANGE,
+  GITCOMM, 
   GITPUSH,
 };
 
@@ -163,8 +163,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ============================================================
 [_MOUSE] = LAYOUT_ffkb(
   _______, _______, _______,    _______,    _______, _______,         KC_NUM,  KC_BRID,   KC_BRIU,  _______, _______, _______,
-  _______, _______, KC_MS_BTN2, KC_MS_BTN3, KC_MS_BTN1, _______,      KC_CALC, GITCOMM,   GITPUSH,  _______, _______, _______,
-  _______, _______, _______,    _______,    _______, _______,         _______,  _______,  _______,  _______, _______, _______,
+  _______, KC_ESC, KC_MS_BTN2, FP_SCROLL_TOG, KC_MS_BTN1, _______,      KC_CALC, GITCOMM,   GITPUSH,  _______, _______, _______,
+  _______, _______, _______,    FP_SNIPE_TOG,    _______, _______,         _______,  _______,  _______,  _______, _______, _______,
                     _______,    _______,    _______, _______,         _______,  _______,  _______,  _______
 ),
 
@@ -179,14 +179,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ============================================================
 // Mod-tap settings
 // ============================================================
-// bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
-//     switch (keycode) {
-//         case LT(1, KC_BSPC):
-//             return true;
-//         default:
-//             return false;
-//     }
-// }
+bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case HOME_A: // left home-row mod control (colemak)
+          // Immediately select the hold action when another key is tapped.
+          return true;
+        case HOME_O: { // right home-row mod control (colemak)
+          return true;
+        }
+        case HOME_SCLN: { //right home-row model control (qwerty)
+          return true;
+        }
+        default:
+            // Do not select the hold action when another key is tapped.
+            return false;
+    }
+}
 
 // ============================================================
 // Encoder button settings

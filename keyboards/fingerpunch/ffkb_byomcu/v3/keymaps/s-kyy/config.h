@@ -5,13 +5,13 @@
 // #define ENCODER_RESOLUTION 4 //input commands more than once.
 // #define ONESHOT_TAP_TOGGLE 3
 // #define ONESHOT_TIMEOUT 5000
-#define TAPPING_TOGGLE 3
+#define TAPPING_TOGGLE 3 // into mouse layer
 
 // Home Row Mods
-#define TAPPING_TERM 200
+#define TAPPING_TERM 230
 #define IGNORE_MOD_TAP_INTERRUPT
 #define TAPPING_FORCE_HOLD
-// #define PERMISSIVE_HOLDS
+#define PERMISSIVE_HOLD_PER_KEY
 
 
 // =============================================

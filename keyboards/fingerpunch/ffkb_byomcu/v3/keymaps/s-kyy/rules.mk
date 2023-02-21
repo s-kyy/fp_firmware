@@ -4,3 +4,4 @@ VIA_enable=yes
 # VIAL_INSECURE = yes
 # VIAL_ENCODERS_ENABLE = yes
 TAP_DANCE_ENABLE = no 
+COMBO_ENABLE = yes

@@ -1,6 +1,19 @@
-/* @author Samantha Yuen 
- * 
- */
+/* Copyright 2023 Samantha Yuen <samantha.y.twentyfourteen@gmail.com>
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published bynnnn
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 
 #include QMK_KEYBOARD_H
 
@@ -21,8 +34,6 @@ enum layer_names {
     _RGB,     //5
     _MOUSE,  //6
     _LAYER7  //7
-    // _LAYER8   
-    // _GAME, //2
 };
 
 // ============================================================
@@ -34,9 +45,6 @@ enum layer_names {
 #define WPAST G(KC_V)
 #define UNDO C(KC_Z)
 #define REDO C(KC_Y)
-// #define SFTT LSFT_T(KC_TAB) //Tab-tap Shift-hold
-// #define SPSFT LSFT_T(KC_SPC) //Space-tap Shift-hold
-// #define SFTE LSFT_T(KC_ENT) //Enter-tap Shift-hold
 #define LDESK G(C(KC_LEFT)) 
 #define RDESK G(C(KC_RIGHT))
 #define EXITPARSEC C(A(KC_TILD))
@@ -49,7 +57,8 @@ enum custom_keycodes {
   QMK_BEST = SAFE_RANGE,
   GITCOMM, 
   GITPUSH,
-  R_ASSIGN
+  R_ASSIGN,
+  NEW_SAFE_RANGE
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -68,6 +77,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             SEND_STRING("git push -u origin ");
         } 
         break;
+    
     case R_ASSIGN:
         if (record->event.pressed) {
             SEND_STRING("<- ");
@@ -99,12 +109,13 @@ enum combos {
 
 uint16_t COMBO_LEN = COMBO_LENGTH; 
 
+// LEFT
 const uint16_t PROGMEM zx_combo[] = {KC_Z, KC_X, COMBO_END};
 const uint16_t PROGMEM xc_combo[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM cd_combo[] = {KC_C, KC_D, COMBO_END};
 const uint16_t PROGMEM st_combo[] = {KC_S, KC_T, COMBO_END};
 const uint16_t PROGMEM zxcd_combo[] = {KC_Z, KC_X, KC_C, KC_D, COMBO_END};
-
+// RIGHT
 const uint16_t PROGMEM hd_combo[] = {KC_H, KC_COMM, COMBO_END};
 const uint16_t PROGMEM dc_combo[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM ds_combo[] = {KC_DOT, KC_SLSH, COMBO_END};

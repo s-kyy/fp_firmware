@@ -1,3 +1,19 @@
+/* Copyright 2023 Samantha Yuen <samantha.y.twentyfourteen@gmail.com>
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published bynnnn
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 // =============================================
 // Key config
 // =============================================
@@ -101,18 +117,3 @@
     #define FP_LAYER_LIGHTING_CAPS_LOCK_HUE FP_HSV_PEACH_ORANGE
     #define FP_LAYER_LIGHTING_CAPS_LOCK_MODE RGB_MATRIX_PIXEL_RAIN
 #endif
-
-// =============================================
-// Define macros & custom keycodes
-// =============================================
-// #    define PLACEHOLDER_SAFE_RANGE FP_SAFE_RANGE
-// #else
-// #    define PLACEHOLDER_SAFE_RANGE SAFE_RANGE
-// #endif
-
-// enum userspace_custom_keycodes {
-//     YOUR_KEYCODE_1 = PLACEHOLDER_SAFE_RANGE,
-//     YOUR_KEYCODE_2,
-// ...
-//     NEW_SAFE_RANGE,
-// }

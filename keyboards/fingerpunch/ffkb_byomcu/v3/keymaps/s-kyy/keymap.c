@@ -27,7 +27,7 @@ uint16_t alt_tab_timer = 0;
 // ============================================================
 enum layer_names {
     _COLEMAK, //0
-    // _QWERTY,  //1
+    _QWERTY,  //1
     _SYM,     //2
     _FN,      //3
     _NAV,     //4
@@ -91,31 +91,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // Combos
 // ============================================================
 enum combos {
-  // LEFT
+  // LEFT - COLDH
   ZX_WIN,
   XC_ALT,
   CD_CTRL,
   ST_SFT,
   ZXCD_CTRL_ALT_SHIFT,
 
-  // RIGHT
+  // RIGHT - COLDH
   HDOT_CTRL,
   CDOT_ALT,
   SDOT_WIN,
   NE_SFT,
   HCSDOT_CTRL_ALT_SHIFT,
+
   COMBO_LENGTH
 };
 
 uint16_t COMBO_LEN = COMBO_LENGTH; 
 
-// LEFT
+// LEFT - COLDH
 const uint16_t PROGMEM zx_combo[] = {KC_Z, KC_X, COMBO_END};
 const uint16_t PROGMEM xc_combo[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM cd_combo[] = {KC_C, KC_D, COMBO_END};
 const uint16_t PROGMEM st_combo[] = {KC_S, KC_T, COMBO_END};
 const uint16_t PROGMEM zxcd_combo[] = {KC_Z, KC_X, KC_C, KC_D, COMBO_END};
-// RIGHT
+// RIGHT - COLDH
 const uint16_t PROGMEM hd_combo[] = {KC_H, KC_COMM, COMBO_END};
 const uint16_t PROGMEM dc_combo[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM ds_combo[] = {KC_DOT, KC_SLSH, COMBO_END};
@@ -123,21 +124,19 @@ const uint16_t PROGMEM ne_combo[] = {KC_N, KC_E, COMBO_END};
 const uint16_t PROGMEM hdcs_combo[] = {KC_H, KC_COMM, KC_DOT, KC_SLSH, COMBO_END};
 
 combo_t key_combos[] = {
-  // LEFT
+  // LEFT - COLDH
   [ZX_WIN] = COMBO(zx_combo, OSM(MOD_LGUI)),
   [XC_ALT] = COMBO(xc_combo, OSM(MOD_LALT)),
   [CD_CTRL] = COMBO(cd_combo, OSM(MOD_LCTL)),
   [ST_SFT] = COMBO(st_combo, OSM(MOD_LSFT)),
   [ZXCD_CTRL_ALT_SHIFT] = COMBO(zxcd_combo, OSM(MOD_MEH)),
-  // RIGHT
+  // RIGHT - COLDH
   [HDOT_CTRL] = COMBO(hd_combo, OSM(MOD_RCTL)),
   [CDOT_ALT] = COMBO(dc_combo, OSM(MOD_LALT)),
   [SDOT_WIN] = COMBO(ds_combo, OSM(MOD_RGUI)),
   [NE_SFT] = COMBO(ne_combo, OSM(MOD_RSFT)),
   [HCSDOT_CTRL_ALT_SHIFT] = COMBO(hdcs_combo, OSM(MOD_MEH))
 };
-
-
 
 // ============================================================
 // Keymap
@@ -148,54 +147,64 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer 0 - Colemak-DH
 // ============================================================
 [_COLEMAK] = LAYOUT_ffkb(
-  FP_SCROLL_TOG,  KC_Q,     KC_W,        KC_F,     KC_P,    KC_B,                  KC_J,   KC_L,    KC_U,     KC_Y,     KC_SCLN,      KC_ESC,
+  FP_SCROLL_TOG,  KC_Q,     KC_W,        KC_F,     KC_P,    KC_B,                  KC_J,   KC_L,    KC_U,     KC_Y,     KC_SCLN,      KC_BSPC,
   KC_MS_BTN1,     KC_A,     KC_R,        KC_S,     KC_T,    KC_G,                  KC_M,   KC_N,    KC_E,     KC_I,     KC_O,         KC_QUOT,
   KC_MS_BTN2,     KC_Z,     KC_X,        KC_C,     KC_D,    KC_V,                  KC_K,   KC_H,    KC_COMM,  KC_DOT,   KC_SLSH,      KC_APP,
-                  KC_MUTE,  TT(_MOUSE),  LT(_SYM, KC_ENT),   LT(_FN,KC_BSPC),      LT(_RGB,KC_TAB), LT(_NAV,KC_SPC),    KC_GRV, KC_RALT
+                  KC_MUTE,  TT(_MOUSE),  LT(_SYM, KC_ENT),   LT(_FN,KC_ESC),      LT(_RGB,KC_TAB), LT(_NAV,KC_SPC),    KC_GRV, KC_RALT
 ),
 
 // ============================================================
-// Layer 1 - SYM
+// Layer 1 - QWERTY
+// ============================================================
+[_QWERTY] = LAYOUT_ffkb(
+  _______, KC_Q,   KC_W,   KC_E,     KC_R,     KC_T,        KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,       _______,
+  _______, KC_A,   KC_S,   KC_D,     KC_F,     KC_G,        KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,    _______,
+  _______, KC_Z,   KC_X,   KC_C,     KC_V,     KC_B,        KC_N,     KC_M,     _______,  _______,  _______,    _______,
+                _______,  _______,   _______,  _______,     _______,  _______,  _______,  _______
+),
+
+// ============================================================
+// Layer 2 - SYM
 // ============================================================
 [_SYM] = LAYOUT_ffkb(
-  KC_ESC,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR, KC_PERC,                   KC_CIRC,  KC_AMPR,               KC_ASTR,  KC_UNDS, KC_EQL,  KC_SLEP,
-  _______, KC_PIPE, KC_LCBR, KC_LBRC, KC_PMNS, KC_LPRN,                  KC_RPRN,  KC_TILD,               KC_RBRC,  KC_RCBR, KC_EQUAL, KC_CAPS,
-  _______, KC_INS, KC_DEL,  KC_PIPE, FP_SUPER_CTRL_TAB, LDESK,           RDESK,    S(FP_SUPER_CTRL_TAB),  KC_BSLS,  KC_DEL,  KC_INS,  FP_SNIPE_TOG,
-                    _______, _______, _______, _______,                  KC_TAB,  KC_SPC,  _______,  EE_CLR
+  KC_SLEP,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,              KC_CIRC,  KC_AMPR,               KC_ASTR,  KC_UNDS, KC_EQL,   KC_DEL,
+  _______,  KC_LCBR, KC_LBRC, KC_LPRN, KC_PMNS, KC_TILD,              KC_PLUS,  KC_EQL,                KC_RPRN,  KC_RBRC, KC_RCBR,  KC_CAPS,
+  _______, _______, KC_INS,  KC_PIPE, FP_SUPER_CTRL_TAB, LDESK,       RDESK,    S(FP_SUPER_CTRL_TAB),  KC_BSLS,  KC_INS,  _______,  FP_SNIPE_TOG,
+                    _______, _______, _______, _______,               KC_TAB,  KC_SPC,  _______,  EE_CLR
 ),
 
 // ============================================================
-// Layer 2 - FN
+// Layer 3 - FN
 // ============================================================
 [_FN] = LAYOUT_ffkb(
-  KC_ESC,     TASKMAN,         KC_MYCM,  UNDO,    WPAST,   C(KC_PLUS),     KC_F1,  KC_F2,   KC_F3,   KC_F4,   KC_F5,  KC_SLEP,
+  KC_SLEP,    TASKMAN,         KC_MYCM,  UNDO,    WPAST,   C(KC_PLUS),     KC_F1,  KC_F2,   KC_F3,   KC_F4,   KC_F5,  KC_DEL,
   _______,    MBEE,            CUT,      COPY,    PASTE,   C(KC_MINS),     KC_F6,  KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_CAPS,
   _______,    C(S(KC_V)),      MBEEL,    REDO,    MBEER,   C(KC_A),        KC_F11, KC_F12,  KC_F13,  KC_F14,  KC_F15, FP_SNIPE_TOG,
                     _______,  _______, _______, _______,                KC_TAB, KC_SPC,  _______,  EE_CLR
 ),
 
 // ============================================================
-// Layer 3 - NAV
+// Layer 4 - NAV
 // ============================================================
 [_NAV] = LAYOUT_ffkb(
-  KC_ESC,   KC_PSLS,     KC_7,   KC_8,     KC_9,   KC_PMNS,     _______,        KC_HOME,      KC_UP,       KC_END,        _______,        KC_SLEP,
+  KC_SLEP,  KC_PSLS,     KC_7,   KC_8,     KC_9,   KC_PMNS,     _______,        KC_HOME,      KC_UP,       KC_END,        KC_BSPC,        KC_DEL,
   KC_BSPC,  KC_PAST,     KC_4,   KC_5,     KC_6,   KC_PPLS,     C(A(KC_UP)),    KC_LEFT,      KC_DOWN,     KC_RGHT,       KC_LALT,        _______,
   _______,  KC_EQL,      KC_1,   KC_2,     KC_3,   KC_DOT,      C(A(KC_DOWN)),  C(KC_LEFT),   C(KC_BSPC),  C(KC_RIGHT),   C(KC_DEL),      _______,
-                  QK_BOOT,     KC_SPC, KC_0,   KC_BSPC,        _______,     _______,      _______,  _______
+                  QK_BOOT,     _______, KC_0,   KC_SPC,         _______,     _______,      _______,  _______
 ),
 
 // ============================================================
-// Layer  4 - RGB
+// Layer  5 - RGB
 // ============================================================
 [_RGB] =  LAYOUT_ffkb(
-  KC_ESC,  RGB_TOG, RGB_MOD,  RGB_RMOD, _______,  _______,       _______,     S(KC_HOME),     S(KC_UP),    S(KC_END),       _______,       KC_SLEP,
-  _______, RGB_SPI, RGB_HUI,  RGB_SAI,  RGB_VAI,  _______,       KC_PGUP,     S(KC_LEFT),     S(KC_DOWN),  S(KC_RGHT),      KC_LALT,       _______,
+  KC_SLEP, RGB_TOG, RGB_MOD,  RGB_RMOD, _______,  TO(_COLEMAK),  _______,     S(KC_HOME),     S(KC_UP),    S(KC_END),       KC_BSPC,       KC_DEL,
+  _______, RGB_SPI, RGB_HUI,  RGB_SAI,  RGB_VAI,  TO(_QWERTY),   KC_PGUP,     S(KC_LEFT),     S(KC_DOWN),  S(KC_RGHT),      KC_LALT,       _______,
   _______, RGB_SPD, RGB_HUD,  RGB_SAD,  RGB_VAD,  EXITPARSEC,    KC_PGDN,     C(S(KC_LEFT)),  C(KC_BSPC),  C(S(KC_RIGHT)),  C(KC_DEL),     _______,
-                QK_BOOT, _______,   KC_ENT,  KC_BSPC,           _______,  _______,  _______,  _______
+                QK_BOOT, _______,   KC_ENT,  _______,           _______,  _______,  _______,  _______
 ),
 
 // ============================================================
-// Empty Layers
+// Layer 6 - Mouse
 // ============================================================
 [_MOUSE] = LAYOUT_ffkb(
   _______, _______, _______,    FP_SNIPE_TOG,   _______,    _______,    KC_NUM,   KC_BRID,  KC_BRIU,  _______, _______, _______,
@@ -203,6 +212,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______,    KC_WH_U,        KC_WH_D,    _______,    _______,  _______,  _______,  _______, _______, _______,
                     _______,    _______,    _______, _______,           _______,  _______,  _______,  _______
 ),
+// ============================================================
+// Empty Layers
+// ============================================================
 
 [_LAYER7] = LAYOUT_ffkb(
   _______, _______, _______, _______, _______, _______,         _______,  _______,  _______,  _______, _______, _______,

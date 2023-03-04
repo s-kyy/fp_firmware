@@ -147,10 +147,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer 0 - Colemak-DH
 // ============================================================
 [_COLEMAK] = LAYOUT_ffkb(
-  FP_SCROLL_TOG,  KC_Q,     KC_W,        KC_F,     KC_P,    KC_B,                  KC_J,   KC_L,    KC_U,     KC_Y,     KC_SCLN,      KC_BSPC,
+  KC_ESC,         KC_Q,     KC_W,        KC_F,     KC_P,    KC_B,                  KC_J,   KC_L,    KC_U,     KC_Y,     KC_SCLN,      KC_BSPC,
   KC_MS_BTN1,     KC_A,     KC_R,        KC_S,     KC_T,    KC_G,                  KC_M,   KC_N,    KC_E,     KC_I,     KC_O,         KC_QUOT,
   KC_MS_BTN2,     KC_Z,     KC_X,        KC_C,     KC_D,    KC_V,                  KC_K,   KC_H,    KC_COMM,  KC_DOT,   KC_SLSH,      KC_APP,
-                  KC_MUTE,  TT(_MOUSE),  LT(_SYM, KC_ENT),   LT(_FN,KC_ESC),      LT(_RGB,KC_TAB), LT(_NAV,KC_SPC),    KC_GRV, KC_RALT
+                  KC_MUTE,  TT(_MOUSE),  LT(_SYM, KC_ENT),   LT(_FN,KC_SLSH),      LT(_RGB,KC_TAB), LT(_NAV,KC_SPC),    KC_GRV, KC_RALT
 ),
 
 // ============================================================
@@ -199,8 +199,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RGB] =  LAYOUT_ffkb(
   KC_SLEP, RGB_TOG, RGB_MOD,  RGB_RMOD, _______,  TO(_COLEMAK),  _______,     S(KC_HOME),     S(KC_UP),    S(KC_END),       KC_BSPC,       KC_DEL,
   _______, RGB_SPI, RGB_HUI,  RGB_SAI,  RGB_VAI,  TO(_QWERTY),   KC_PGUP,     S(KC_LEFT),     S(KC_DOWN),  S(KC_RGHT),      KC_LALT,       _______,
-  _______, RGB_SPD, RGB_HUD,  RGB_SAD,  RGB_VAD,  EXITPARSEC,    KC_PGDN,     C(S(KC_LEFT)),  C(KC_BSPC),  C(S(KC_RIGHT)),  C(KC_DEL),     _______,
-                QK_BOOT, _______,   KC_ENT,  _______,           _______,  _______,  _______,  _______
+  _______, RGB_SPD, RGB_HUD,  RGB_SAD,  RGB_VAD,  EXITPARSEC,    KC_PGDN,     C(S(KC_LEFT)),  A(KC_BSPC),  C(S(KC_RIGHT)),  A(KC_DEL),     _______,
+                QK_BOOT, _______,   KC_ENT,  _______,            _______,  _______,  _______,  _______
 ),
 
 // ============================================================
@@ -255,14 +255,14 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         // tap_code16(FP_SUPER_TAB);
         // tap_code16(KC_TAB);
         // tap_code16(KC_PGUP);
-        tap_code16(KC_WH_U);
+        tap_code16(KC_WH_D);
         // press_super_tab(false);
       }
       else{
         // tap_code16(LSFT_T(FP_SUPER_TAB));
         // tap_code16(LSFT_T(KC_TAB));
         // tap_code16(KC_PGDN);
-        tap_code16(KC_WH_D);
+        tap_code16(KC_WH_U);
         // press_super_tab(true);
       }
     }

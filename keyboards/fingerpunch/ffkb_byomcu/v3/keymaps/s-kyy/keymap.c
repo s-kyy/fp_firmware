@@ -150,7 +150,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,         KC_Q,     KC_W,        KC_F,     KC_P,    KC_B,                  KC_J,   KC_L,    KC_U,     KC_Y,     KC_SCLN,      KC_BSPC,
   KC_MS_BTN1,     KC_A,     KC_R,        KC_S,     KC_T,    KC_G,                  KC_M,   KC_N,    KC_E,     KC_I,     KC_O,         KC_QUOT,
   KC_MS_BTN2,     KC_Z,     KC_X,        KC_C,     KC_D,    KC_V,                  KC_K,   KC_H,    KC_COMM,  KC_DOT,   KC_SLSH,      KC_APP,
-                  KC_MUTE,  TT(_MOUSE),  LT(_SYM, KC_ENT),   LT(_FN,KC_SLSH),      LT(_RGB,KC_TAB), LT(_NAV,KC_SPC),    KC_GRV, KC_RALT
+                  KC_MUTE,  TT(_MOUSE),  LT(_SYM, KC_ENT),   LT(_FN,KC_BSLS),      LT(_RGB,KC_TAB), LT(_NAV,KC_SPC),    KC_GRV, KC_RALT
 ),
 
 // ============================================================
@@ -167,9 +167,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer 2 - SYM
 // ============================================================
 [_SYM] = LAYOUT_ffkb(
-  KC_SLEP,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,              KC_CIRC,  KC_AMPR,               KC_ASTR,  KC_UNDS, KC_EQL,   KC_DEL,
-  _______,  KC_LCBR, KC_LBRC, KC_LPRN, KC_PMNS, KC_TILD,              KC_PLUS,  KC_EQL,                KC_RPRN,  KC_RBRC, KC_RCBR,  KC_CAPS,
-  _______, _______, KC_INS,  KC_PIPE, FP_SUPER_CTRL_TAB, LDESK,       RDESK,    S(FP_SUPER_CTRL_TAB),  KC_BSLS,  KC_INS,  _______,  FP_SNIPE_TOG,
+  KC_SLEP,  KC_EXLM, KC_AT,   KC_HASH,      KC_DLR,  KC_PERC,               KC_CIRC,  KC_AMPR,               KC_ASTR,  KC_UNDS, KC_EQL,   KC_DEL,
+  _______,  KC_LCBR, KC_LBRC, KC_LPRN,      KC_PMNS, KC_TILD,               KC_PLUS,  KC_EQL,                KC_RPRN,  KC_RBRC, KC_RCBR,  KC_CAPS,
+  _______, _______,  KC_INS,  FP_SUPER_TAB, FP_SUPER_CTRL_TAB, LDESK,       RDESK,    S(FP_SUPER_CTRL_TAB),  S(FP_SUPER_TAB),  KC_INS,  _______,  _______,
                     _______, _______, _______, _______,               KC_TAB,  KC_SPC,  _______,  EE_CLR
 ),
 
@@ -179,7 +179,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_FN] = LAYOUT_ffkb(
   KC_SLEP,    TASKMAN,         KC_MYCM,  UNDO,    WPAST,   C(KC_PLUS),     KC_F1,  KC_F2,   KC_F3,   KC_F4,   KC_F5,  KC_DEL,
   _______,    MBEE,            CUT,      COPY,    PASTE,   C(KC_MINS),     KC_F6,  KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_CAPS,
-  _______,    C(S(KC_V)),      MBEEL,    REDO,    MBEER,   C(KC_A),        KC_F11, KC_F12,  KC_F13,  KC_F14,  KC_F15, FP_SNIPE_TOG,
+  _______,    C(S(KC_V)),      MBEEL,    REDO,    MBEER,   C(KC_A),        KC_F11, KC_F12,  KC_F13,  KC_F14,  KC_F15, _______,
                     _______,  _______, _______, _______,                KC_TAB, KC_SPC,  _______,  EE_CLR
 ),
 

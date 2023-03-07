@@ -1,0 +1,89 @@
+layout:
+  qmk_keyboard: torn
+  # qmk_keyboard: fingerpunch/ffkb_byomcu/v3
+  # qmk_layout: LAYOUT_ffkb
+layers:
+  COLEMAK:
+    - [Esc, Q, W, F, P, B, J, L, U, Y, ;, Bspace]
+    - [Mouse1, A, R, S, T, G, M, N, E, I, O, "'"]
+    - [Mouse2, Z, X, C, D, V, K, H, ',', ., /, Menu]
+    - {t: Mute, type: ghost}
+    - {h: Mouse, t: "" }
+    - {h: SYM, t: Enter}
+    - {h: FUN, t: \}
+    - {h: RGB, t: Tab}
+    - {h: NAV, t: Space}
+    - "`"
+    - {t: RAlt, type: ghost}
+  QWERTY:
+    - [Esc, Q, W, E, R, T, Y, U, I, O, P, Bspace]
+    - [Mouse1, A, S, D, F, G, H, J, K, L, ;, "'"]
+    - [Mouse2, Z, X, C, V, B, N, M, ',', ., /, Menu]
+    - {t: Mute, type: ghost}
+    - {h: Mouse, t: " " }
+    - {h: SYM, t: Enter}
+    - {h: FUN, t: \}
+    - {h: RGB, t: Tab}
+    - {h: Nav, t: Space}
+    - "`"
+    - {t: RAlt, type: ghost}
+  SYMBOL:
+    - [Sleep, "!", "@", "#", "$", "%", "^", "&", "*", "_", "=", Del]
+    - [null, "{", "[", "(", "-", '~', '+', '=', ')', ']', '}', Caps]
+    - [null, null, Insert, Alt Tab, Ctrl Tab, LDesk, RDesk, Shift Ctrl Tab, Shift Alt Tab, Insert, null, null]
+    - {t: Mute, type: ghost}
+    - null
+    - {type: held, h: SYM}
+    - null
+    - Tab
+    - Space
+    - null
+    - {t: EE_CLR, type: ghost}
+  Function:
+    - [Sleep, TaskMan, MyComp, Undo, G-Paste, Zoom+, F1, F2, F3, F4, F5, Del]
+    - [null, Music, Cut, Copy, Paste, Zoom-, F6, F7, F8, F9, F10, Caps]
+    - [null, Ctrl Shift V, Prev, Redo, Next, Ctrl A, F11, F12, F13, F14, F15, null]
+    - {t: Mute, type: ghost}
+    - null
+    - null
+    - {type: held, h: FUN}
+    - Tab
+    - Space
+    - null
+    - {t: EE_CLR, type: ghost}
+  Navigation:
+    - [Sleep, Div,    7, 8, 9, Minus, null, Home, Up, End, Bspace, Del]
+    - [Bspace, Mult,  4, 5, 6, Plus, Ctrl Alt Up, Left, Down, Right, LAlt, null]
+    - [null, Equals,  1, 2, 3, Dot, Ctrl Alt Down, Ctrl Left, Ctrl BSpace, Ctrl Right, Ctrl Del, null]
+    - {t: Boot, type: ghost}
+    - {h: Mouse, t: " " }
+    - 0
+    - Space
+    - null
+    - {type: held, h: NAV}
+    - null
+    - {t: RAlt, type: ghost}
+  RGB:
+    - [Sleep, RGB TOG, RGB RMOD, RGB MOD, null, TO( COLEMAK), null, Shift Home, Shift Up, Shift End, Bspace, Del]
+    - [null,  RGB SPI, RGB HUI, RGB SAI, RGB VAI, TO( QWERTY), PgUp, Shift Left, Shift Down, Shift Right, LAlt, null]
+    - [null,  RGB SPD, RGB HUD, RGB SAD, RGB VAD, ExitP, PgDn, Ctrl Shift Left, Alt BSPC, Ctrl Shift Right, Alt Del, null]
+    - {t: Boot, type: ghost}
+    - {h: Mouse, t: " " }
+    - Enter
+    - null
+    - {type: held, h: RGB}
+    - null
+    - null
+    - {t: RAlt, type: ghost}
+  Mouse:
+    - [null, null, null, TO( Snipe), null, null, null, Num, Bright-, Bright+, null, null]
+    - [null, Esc,  Mouse2, TO( Scroll), Mouse1, null, Calc, Git Com, Git Push, R Assign, null, null]
+    - [null, null, null, WheelUp, WheelDn, null, null, null, null, null, null, null]
+    - {type: ghost}
+    - {h: Mouse, type: hold }
+    - null
+    - null
+    - null
+    - null
+    - null
+    - {type: ghost}

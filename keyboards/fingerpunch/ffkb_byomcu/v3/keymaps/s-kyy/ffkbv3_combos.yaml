@@ -1,5 +1,6 @@
 layout:
   qmk_keyboard: torn
+  qmk_layout: LAYOUT_split_3x6_4
   # qmk_keyboard: fingerpunch/ffkb_byomcu/v3
   # qmk_layout: LAYOUT_ffkb
 layers:
@@ -80,10 +81,19 @@ layers:
     - [null, Esc,  Mouse2, TO( Scroll), Mouse1, null, Calc, Git Com, Git Push, R Assign, null, null]
     - [null, null, null, WheelUp, WheelDn, null, null, null, null, null, null, null]
     - {type: ghost}
-    - {h: Mouse, type: hold }
+    - {h: Mouse, type: held }
     - null
     - null
     - null
     - null
     - null
     - {type: ghost}
+combos: 
+  - {p: [15,16], k: 'Shift', l: [COLEMAK]}
+  - {p: [25,26], k: 'Gui', l: [COLEMAK]}
+  - {p: [26,27], k: 'Alt', l: [COLEMAK]}
+  - {p: [27,28], k: 'Ctrl', l: [COLEMAK]}
+  - {p: [19,20], k: 'Shift', l: [COLEMAK]}
+  - {p: [31,32], k: 'Ctrl', l: [COLEMAK]}
+  - {p: [32,33], k: 'Alt', l: [COLEMAK]}
+  - {p: [33,34], k: 'Gui', l: [COLEMAK]}

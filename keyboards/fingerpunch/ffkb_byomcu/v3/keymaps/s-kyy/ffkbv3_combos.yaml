@@ -31,7 +31,7 @@ layers:
   SYMBOL:
     - [Sleep, "!", "@", "#", "$", "%", "^", "&", "*", "_", "=", Del]
     - [null, "{", "[", "(", "-", '~', '+', '=', ')', ']', '}', Caps]
-    - [null, null, Insert, Alt Tab, Ctrl Tab, LDesk, RDesk, Shift Ctrl Tab, Shift Alt Tab, Insert, null, null]
+    - [null, null, Insert, Ctrl Tab, Alt Tab, LDesk, RDesk, Shift Insert, Ctrl Insert, null, null, null]
     - {t: Mute, type: ghost}
     - null
     - {type: held, h: SYM}
@@ -41,9 +41,9 @@ layers:
     - null
     - {t: EE_CLR, type: ghost}
   Function:
-    - [Sleep, TaskMan, MyComp, Undo, G-Paste, Zoom+, F1, F2, F3, F4, F5, Del]
-    - [null, Music, Cut, Copy, Paste, Zoom-, F6, F7, F8, F9, F10, Caps]
-    - [null, Ctrl Shift V, Prev, Redo, Next, Ctrl A, F11, F12, F13, F14, F15, null]
+    - [Sleep, TaskMan, Ctrl Shift V, Undo, G-Paste, Zoom+, F1, F2, F3, F4, F5, Del]
+    - [Screen Shot, Music, Cut, Copy, Paste, Zoom-, F6, F7, F8, F9, F10, Caps]
+    - [null, MyComp, Prev, Redo, Next, Ctrl A, F11, F12, F13, F14, F15, null]
     - {t: Mute, type: ghost}
     - null
     - null
@@ -77,8 +77,8 @@ layers:
     - null
     - {t: RAlt, type: ghost}
   Mouse:
-    - [null, null, null, TO( Snipe), null, null, null, Num, Bright-, Bright+, null, null]
-    - [null, Esc,  Mouse2, TO( Scroll), Mouse1, null, Calc, Git Com, Git Push, R Assign, null, null]
+    - [TO( Snipe), null, null, BSPC, null, null, Num, Bright-, Bright+, null, null, null]
+    - [null, Enter,  Mouse2, TO( Scroll), Mouse1, null, Calc, Git Com, Git Push, R Assign, null, null]
     - [null, null, null, WheelUp, WheelDn, null, null, null, null, null, null, null]
     - {type: ghost}
     - {h: Mouse, type: held }

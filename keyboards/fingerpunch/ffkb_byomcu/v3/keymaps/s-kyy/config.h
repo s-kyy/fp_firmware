@@ -30,9 +30,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define PERMISSIVE_HOLD_PER_KEY
 #define USB_SUSPEND_WAKEUP_DELAY 3000
 // #define COMBO_COUNT 1 // DONE automatically
-#define COMBO_TERM 50 //40 default
+#define COMBO_TERM 40 //40 default
 #define COMBO_MUST_HOLD_MODS
-#define COMBO_HOLD_TERM 175
+#define COMBO_HOLD_TERM 140 //150 default
 #define COMBO_ONLY_FROM_LAYER 0
 
 // =============================================
@@ -67,7 +67,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define FP_LAYER_LIGHTING_AUTO_MOUSE_HUE HSV_BLACK
     #define FP_LAYER_LIGHTING_AUTO_MOUSE_MODE RGB_MATRIX_PIXEL_RAIN
 
-    #define DISABLE_RGB_MATRIX_BREATHING
+    // #define DISABLE_RGB_MATRIX_BREATHING
     #define DISABLE_RGB_MATRIX_BAND_SA
     #define DISABLE_RGB_MATRIX_BAND_VAL
     // #define DISABLE_RGB_MATRIX_BAND_PINWHEEL_SAT
@@ -97,7 +97,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     // #define DISABLE_RGB_MATRIX_SOLID_SPLASH
     // #define DISABLE_RGB_MATRIX_SOLID_MULTISPLASH
 
-    #define FP_LAYER_LIGHTING_HUE_0 HSV_GOLD
+    #define FP_LAYER_LIGHTING_HUE_0 HSV_ORANGE
     // #define FP_LAYER_LIGHTING_HUE_1 HSV_WHITE    
     #define FP_LAYER_LIGHTING_HUE_2 FP_HSV_MELON 
     #define FP_LAYER_LIGHTING_HUE_3 HSV_GOLDENROD
@@ -107,7 +107,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     // #define FP_LAYER_LIGHTING_HUE_7 FP_HSV_LAVENDER
     // #define FP_LAYER_LIGHTING_MODE_0 RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE  
     // #define FP_LAYER_LIGHTING_MODE_0 RGB_MATRIX_SOLID_COLOR
-    #define FP_LAYER_LIGHTING_MODE_0 RGB_MATRIX_SOLID_REACTIVE_WIDE
+    #define FP_LAYER_LIGHTING_MODE_0 RGB_MATRIX_BREATHING
     #define FP_LAYER_LIGHTING_MODE_1 RGB_MATRIX_JELLYBEAN_RAINDROPS
     // #define FP_LAYER_LIGHTING_MODE_2 RGB_MATRIX_JELLYBEAN_RAINDROPS
     #define FP_LAYER_LIGHTING_MODE_2 RGB_MATRIX_BAND_PINWHEEL_VAL

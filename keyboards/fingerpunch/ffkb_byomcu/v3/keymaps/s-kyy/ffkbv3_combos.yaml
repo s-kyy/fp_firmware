@@ -30,8 +30,8 @@ layers:
     - {t: RAlt, type: ghost}
   SYMBOL:
     - [Sleep, "!", "@", "#", "$", "%", "^", "&", "*", "_", "=", Del]
-    - [null, "{", "[", "(", "-", '~', '+', '=', ')', ']', '}', Caps]
-    - [null, null, Insert, Ctrl Tab, Alt Tab, LDesk, RDesk, Shift Insert, Ctrl Insert, null, null, null]
+    - [Shift Insert, LDesk, "{", "[", "(", \, '|', '-', '=', Alt Tab, RDesk, Caps]
+    - [Ctrl Insert,  Insert, '}',']', ')', /, null, '_', '+', Ctrl Tab, null, null]
     - {t: Mute, type: ghost}
     - null
     - {type: held, h: SYM}
@@ -41,9 +41,9 @@ layers:
     - null
     - {t: EE_CLR, type: ghost}
   Function:
-    - [Sleep, TaskMan, Ctrl Shift V, Undo, G-Paste, Zoom+, F1, F2, F3, F4, F5, Del]
-    - [Screen Shot, Music, Cut, Copy, Paste, Zoom-, F6, F7, F8, F9, F10, Caps]
-    - [null, MyComp, Prev, Redo, Next, Ctrl A, F11, F12, F13, F14, F15, null]
+    - [Sleep, TaskMan, Ctrl Shift V, Undo, G-Paste, Zoom+, null, F1, F2, F3, F10, Del]
+    - [Screen Shot, Music, Cut, Copy, Paste, Zoom-, null, F4, F5, F6, F11, Caps]
+    - [null, MyComp, Prev, Redo, Next, Ctrl A, null, F7, F8, F9, F12, F13]
     - {t: Mute, type: ghost}
     - null
     - null
@@ -53,11 +53,11 @@ layers:
     - null
     - {t: EE_CLR, type: ghost}
   Navigation:
-    - [Sleep, Div,    7, 8, 9, Minus, null, Home, Up, End, Bspace, Del]
-    - [Bspace, Mult,  4, 5, 6, Plus, Ctrl Alt Up, Left, Down, Right, LAlt, null]
-    - [null, Equals,  1, 2, 3, Dot, Ctrl Alt Down, Ctrl Left, Ctrl BSpace, Ctrl Right, Ctrl Del, null]
+    - [Sleep, null,  7, 8, 9, null, null, Home, Up, End, Bspace, Del]
+    - [Bspace, Div,  4, 5, 6, Minus, Ctrl Alt Up, Left, Down, Right, LAlt, null]
+    - [Enter, Mult,  1, 2, 3, Plus, Ctrl Alt Down, Ctrl Left, Ctrl BSpace, Ctrl Right, Ctrl Del, null]
     - {t: Boot, type: ghost}
-    - {h: Mouse, t: " " }
+    - {h: Mouse, t: "." }
     - 0
     - Space
     - null

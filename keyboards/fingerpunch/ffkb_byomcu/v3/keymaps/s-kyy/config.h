@@ -17,7 +17,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // =============================================
 // Key config
 // =============================================
-#define FP_SUPER_TAB_TIMEOUT 1000
+#define FP_SUPER_TAB_TIMEOUT 500 // 500 default 
+#define FP_SUPER_CTRL_TAB_TIMEOUT 500 // 750 default
 // #define ENCODER_RESOLUTION 4 //input commands more than once.
 #define ONESHOT_TAP_TOGGLE 3
 #define ONESHOT_TIMEOUT 3000

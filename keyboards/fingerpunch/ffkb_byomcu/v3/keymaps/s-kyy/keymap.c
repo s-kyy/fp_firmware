@@ -164,33 +164,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 // ============================================================
-// Layer 2 - SYM
+// Layer 2 - SYM \/
 // ============================================================
 [_SYM] = LAYOUT_ffkb(
-  KC_SLEP,  KC_EXLM, KC_AT,   KC_HASH,      KC_DLR,  KC_PERC,               KC_CIRC,  KC_AMPR,  KC_ASTR,  KC_UNDS, KC_EQL,   KC_DEL,
-  _______,  KC_LCBR, KC_LBRC, KC_LPRN,      KC_PMNS, KC_TILD,               KC_PLUS,  KC_EQL,   KC_RPRN,  KC_RBRC, KC_RCBR,  KC_CAPS,
-  _______, _______,  KC_INS,  FP_SUPER_CTRL_TAB, FP_SUPER_TAB, LDESK,       RDESK,    S(KC_INS), C(KC_INS),  _______,  _______,  _______,
-                    _______, _______, _______, _______,               KC_TAB,  KC_SPC,  _______,  EE_CLR
+  KC_SLEP,    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,      _______, KC_CIRC,  KC_AMPR,  KC_ASTR,            _______, KC_DEL,
+  S(KC_INS),  LDESK,   KC_LCBR, KC_LBRC, KC_LPRN, KC_BSLS,      KC_PIPE, KC_MINS,  KC_EQL,   FP_SUPER_TAB,       RDESK,   KC_CAPS,
+  C(KC_INS),  KC_INS,  KC_RCBR, KC_RBRC, KC_RPRN, KC_SLSH,      _______, KC_UNDS,  KC_PLUS,  FP_SUPER_CTRL_TAB,  _______, _______,
+                    _______, _______, _______, _______,         KC_TAB,  KC_SPC,  _______,  EE_CLR
 ),
 
 // ============================================================
 // Layer 3 - FN
 // ============================================================
 [_FN] = LAYOUT_ffkb(
-  KC_SLEP,    TASKMAN,   C(S(KC_V)),  UNDO,    WPAST,   C(KC_PLUS),     KC_F1,  KC_F2,   KC_F3,   KC_F4,   KC_F5,  KC_DEL,
-  G(S(KC_S)), MBEE,      CUT,         COPY,    PASTE,   C(KC_MINS),     KC_F6,  KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_CAPS,
-  _______,    KC_MYCM,   MBEEL,       REDO,    MBEER,   C(KC_A),        KC_F11, KC_F12,  KC_F13,  KC_F14,  KC_F15, _______,
-                    _______,  _______, _______, _______,                KC_TAB, KC_SPC,  _______,  EE_CLR
+  KC_SLEP,    TASKMAN,   C(S(KC_V)),  UNDO,    WPAST,   C(KC_PLUS),     _______, KC_F1,  KC_F2, KC_F3, KC_F10,  KC_DEL,
+  G(S(KC_S)), MBEE,      CUT,         COPY,    PASTE,   C(KC_MINS),     _______, KC_F4,  KC_F5, KC_F6, KC_F11, KC_CAPS,
+  _______,    KC_MYCM,   MBEEL,       REDO,    MBEER,   C(KC_A),        _______, KC_F7,  KC_F8, KC_F9, KC_F12, KC_F13, 
+                    _______,  _______, _______, _______,                KC_TAB,  KC_SPC,  _______,  EE_CLR
 ),
 
 // ============================================================
 // Layer 4 - NAV
 // ============================================================
 [_NAV] = LAYOUT_ffkb(
-  KC_SLEP,  KC_PSLS,     KC_7,   KC_8,     KC_9,   KC_PMNS,     _______,        KC_HOME,      KC_UP,       KC_END,        KC_BSPC,        KC_DEL,
-  KC_BSPC,  KC_PAST,     KC_4,   KC_5,     KC_6,   KC_PPLS,     C(A(KC_UP)),    KC_LEFT,      KC_DOWN,     KC_RGHT,       KC_LALT,        _______,
-  _______,  KC_EQL,      KC_1,   KC_2,     KC_3,   KC_DOT,      C(A(KC_DOWN)),  C(KC_LEFT),   C(KC_BSPC),  C(KC_RIGHT),   C(KC_DEL),      _______,
-                  QK_BOOT,     _______, KC_0,   KC_SPC,         _______,     _______,      _______,  _______
+  KC_SLEP,  _______,     KC_7,   KC_8,     KC_9,   _______,     _______,        KC_HOME,      KC_UP,       KC_END,        KC_BSPC,        KC_DEL,
+  KC_BSPC,  KC_PSLS,     KC_4,   KC_5,     KC_6,   KC_PMNS,     C(A(KC_UP)),    KC_LEFT,      KC_DOWN,     KC_RGHT,       KC_LALT,        _______,
+  KC_ENT,   KC_PAST,     KC_1,   KC_2,     KC_3,   KC_PPLS,     C(A(KC_DOWN)),  C(KC_LEFT),   C(KC_BSPC),  C(KC_RIGHT),   C(KC_DEL),      _______,
+                  QK_BOOT,     KC_DOT, KC_0,   KC_SPC,         _______,     _______,      _______,  _______
 ),
 
 // ============================================================

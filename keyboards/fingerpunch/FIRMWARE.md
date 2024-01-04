@@ -62,15 +62,15 @@ To build your own firmware, the recommendation is to use the fingerpunch firmwar
 The interactive mode will help you configure based on your keyboard setup. For example:
 
 ```
-$ bin/fp_build.sh -k ffkb_byomcu/v3 -m default -i -c stemcell -r
-Running for keyboards/fingerpunch/ffkb_byomcu/v3
-make fingerpunch/ffkb_byomcu/v3:default
+$ bin/fp_build.sh -k ffkb/byomcu/v3 -m default -i -c stemcell -r
+Running for keyboards/fingerpunch/ffkb/byomcu/v3
+make fingerpunch/ffkb/byomcu/v3:default
 Do you have a cirque? (yes/no): n
 Do you have a trackball? (yes/no): y
 No RGB, RGB light, RGB matrix? (0-2): 2
 No rotary encoders, EC11, or EVQ? (0-2): 1
 
-make fingerpunch/ffkb_byomcu/v3:default CIRQUE_ENABLE=no FP_TRACKBALL_ENABLE=yes RGB_MATRIX_ENABLE=yes FP_EC11=yes CONVERT_TO=stemcell
+make fingerpunch/ffkb/byomcu/v3:default CIRQUE_ENABLE=no FP_TRACKBALL_ENABLE=yes RGB_MATRIX_ENABLE=yes FP_EC11=yes CONVERT_TO=stemcell
 fp_build.sh: Running QMK Build....
 ```
 
@@ -79,14 +79,14 @@ fp_build.sh: Running QMK Build....
 In the same way that you build any other keyboard, you can do the same for fingerpunch boards. The thing to consider is that there are options for each keyboard that you should be aware of.
 
 For your keyboard, review the fp_build.json to see the possible options. For example:  
- [/keyboards/fingerpunch/ffkb_byomcu/v3](/keyboards/fingerpunch/ffkb_byomcu/v3)
+ [/keyboards/fingerpunch/ffkb/byomcu/v3](/keyboards/fingerpunch/ffkb/byomcu/v3)
 
 Example command:  
-`make fingerpunch/ffkb_byomcu/v3:default CIRQUE_ENABLE=no FP_TRACKBALL_ENABLE=yes RGB_MATRIX_ENABLE=yes FP_EC11=yes CONVERT_TO=stemcell`
+`make fingerpunch/ffkb/byomcu/v3:default CIRQUE_ENABLE=no FP_TRACKBALL_ENABLE=yes RGB_MATRIX_ENABLE=yes FP_EC11=yes CONVERT_TO=stemcell`
 
 Anything that is in all caps can be set as a build option followed by `=yes`
 
-For example, this is from `keyboards/fingerpunch/ffkb_byomcu/v3/fp_build.json`
+For example, this is from `keyboards/fingerpunch/ffkb/byomcu/v3/fp_build.json`
 ![fp-build-json](images/fp-build-json.png)
 
 ### STeMCell or other controllers
@@ -137,7 +137,7 @@ git fetch fingerpunch
 
 # Checkout the master branch as a branch that tracks your keyboard. Let's use ffkb in this example
 git checkout -b ffkb fingerpunch/master
-git submodule update
+git submodule update --init --recursive
 
 # add your keymap, code, etc into keyboards/fingerpunch/ffkb_byomcu/v3/keymaps/{your_keymap_dir}
 

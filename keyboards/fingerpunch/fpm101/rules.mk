@@ -1,6 +1,8 @@
 # MCU name
 MCU = atmega32u4
 
+PIN_COMPATIBLE=elite_c
+
 # Bootloader selection
 #   Teensy       halfkay
 #   Pro Micro    caterina
@@ -38,12 +40,26 @@ ENCODER_ENABLE = no
 # EXTRAFLAGS     += -flto     # macros disabled, if you need the extra space
 MOUSEKEY_ENABLE = no
 
-SRC += keyboards/fingerpunch/fp_matrix_74hc595_spi.c
+SRC += keyboards/fingerpunch/src/fp_matrix_74hc595_spi.c
 QUANTUM_LIB_SRC += spi_master.c
 CUSTOM_MATRIX = lite
 
 AUDIO_ENABLE ?= no
+ifeq ($(strip $(CONVERT_TO)), stemcell)
 AUDIO_DRIVER = pwm_software
+endif
+ifeq ($(strip $(CONVERT_TO)), elite_pi)
+AUDIO_DRIVER = pwm_hardware
+endif
+ifeq ($(strip $(CONVERT_TO)), rp2040_ce)
+AUDIO_DRIVER = pwm_hardware
+endif
+ifeq ($(strip $(CONVERT_TO)), helios)
+AUDIO_DRIVER = pwm_hardware
+endif
+ifeq ($(strip $(CONVERT_TO)), liatris)
+AUDIO_DRIVER = pwm_hardware
+endif
 
 HAPTIC_ENABLE ?= no
 HAPTIC_DRIVER = DRV2605L
@@ -68,12 +84,4 @@ ifeq ($(strip $(FP_TRACKBALL_ENABLE)), yes)
    OPT_DEFS += -DFP_TRACKBALL_ENABLE
 endif
 
-DEFERRED_EXEC_ENABLE = yes
-SRC +=  keyboards/fingerpunch/fp.c \
-        keyboards/fingerpunch/fp_haptic.c \
-        keyboards/fingerpunch/fp_audio.c \
-        keyboards/fingerpunch/fp_keyhandler.c \
-        keyboards/fingerpunch/fp_pointing.c \
-        keyboards/fingerpunch/fp_rgb_common.c \
-        keyboards/fingerpunch/fp_rgblight.c \
-        keyboards/fingerpunch/fp_rgb_matrix.c
+include keyboards/fingerpunch/src/rules.mk

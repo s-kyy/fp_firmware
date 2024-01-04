@@ -33,7 +33,7 @@ WS2812_DRIVER = vendor
 
 # SRC += display.c
 
-SRC += keyboards/fingerpunch/fp_matrix_74hc595_spi.c
+SRC += keyboards/fingerpunch/src/fp_matrix_74hc595_spi.c
 QUANTUM_LIB_SRC += spi_master.c
 CUSTOM_MATRIX = lite
 
@@ -48,12 +48,4 @@ ifeq ($(strip $(FP_TRACKBALL_ENABLE)), yes)
    OPT_DEFS += -DFP_TRACKBALL_ENABLE
 endif
 
-DEFERRED_EXEC_ENABLE = yes
-SRC +=  keyboards/fingerpunch/fp.c \
-        keyboards/fingerpunch/fp_haptic.c \
-        keyboards/fingerpunch/fp_audio.c \
-        keyboards/fingerpunch/fp_keyhandler.c \
-        keyboards/fingerpunch/fp_pointing.c \
-        keyboards/fingerpunch/fp_rgb_common.c \
-        keyboards/fingerpunch/fp_rgblight.c \
-        keyboards/fingerpunch/fp_rgb_matrix.c
+include keyboards/fingerpunch/src/rules.mk

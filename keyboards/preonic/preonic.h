@@ -39,3 +39,5 @@
 **      Name of Alias     Matrix Name:           **
 ******* ----------------- ------------------- ****/
 #define LAYOUT_preonic_grid LAYOUT_ortho_5x12
+
+#include "keyboards/fingerpunch/src/fp.h"

@@ -1,6 +1,8 @@
 # MCU name
 MCU = atmega32u4
 
+PIN_COMPATIBLE=elite_c
+
 # Bootloader selection
 #   Teensy       halfkay
 #   Pro Micro    caterina
@@ -61,12 +63,4 @@ ifeq ($(strip $(FP_EVQ_UNDER_PALMS)), yes)
    OPT_DEFS += -DFP_EVQ_UNDER_PALMS
 endif
 
-DEFERRED_EXEC_ENABLE = yes
-SRC +=  keyboards/fingerpunch/fp.c \
-        keyboards/fingerpunch/fp_haptic.c \
-        keyboards/fingerpunch/fp_audio.c \
-        keyboards/fingerpunch/fp_keyhandler.c \
-        keyboards/fingerpunch/fp_pointing.c \
-        keyboards/fingerpunch/fp_rgb_common.c \
-        keyboards/fingerpunch/fp_rgblight.c \
-        keyboards/fingerpunch/fp_rgb_matrix.c
+include keyboards/fingerpunch/src/rules.mk

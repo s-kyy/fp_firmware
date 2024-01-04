@@ -16,7 +16,7 @@ BOOTMAGIC_ENABLE		= yes
 MOUSEKEY_ENABLE			= yes
 EXTRAKEY_ENABLE			= yes
 
-SRC += keyboards/fingerpunch/fp_matrix_74hc595_spi.c
+SRC += keyboards/fingerpunch/src/fp_matrix_74hc595_spi.c
 QUANTUM_LIB_SRC += spi_master.c
 CUSTOM_MATRIX = lite
 
@@ -27,12 +27,4 @@ ifeq ($(strip $(CIRQUE_ENABLE)), yes)
    OPT_DEFS += -DCIRQUE_ENABLE
 endif
 
-DEFERRED_EXEC_ENABLE = yes
-SRC +=  keyboards/fingerpunch/fp.c \
-        keyboards/fingerpunch/fp_haptic.c \
-        keyboards/fingerpunch/fp_audio.c \
-        keyboards/fingerpunch/fp_keyhandler.c \
-        keyboards/fingerpunch/fp_pointing.c \
-        keyboards/fingerpunch/fp_rgb_common.c \
-        keyboards/fingerpunch/fp_rgblight.c \
-        keyboards/fingerpunch/fp_rgb_matrix.c
+include keyboards/fingerpunch/src/rules.mk

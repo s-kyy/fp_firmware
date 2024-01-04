@@ -121,6 +121,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_arachnophobe
 #endif
 
+// Since arachnophobe uses the name LAYOUT_arachnophobe instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_stenographobe))
+#    define LAYOUT LAYOUT_stenographobe
+#endif
+
 // Since ximi uses the name LAYOUT_ximi instead of LAYOUT
 #if (!defined(LAYOUT) && defined(LAYOUT_ximi))
 #    define LAYOUT LAYOUT_ximi
@@ -149,6 +154,36 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 // Since zazu uses the name LAYOUT_zazu instead of LAYOUT
 #if (!defined(LAYOUT) && defined(LAYOUT_zazu))
 #    define LAYOUT LAYOUT_zazu
+#endif
+
+// Since barghoot uses the name LAYOUT_barghoot instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_barghoot))
+#    define LAYOUT LAYOUT_barghoot
+#endif
+
+// Since kong uses the name LAYOUT_kong instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_kong))
+#    define LAYOUT LAYOUT_kong
+#endif
+
+// Since LAYOUT_vulpes_minora uses the name LAYOUT_vulpes_minora instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_vulpes_minora))
+#    define LAYOUT LAYOUT_vulpes_minora
+#endif
+
+// Since LAYOUT_vulpes_majora uses the name LAYOUT_vulpes_majora instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_vulpes_majora))
+#    define LAYOUT LAYOUT_vulpes_majora
+#endif
+
+// Since LAYOUT_svlinky uses the name LAYOUT_svlinky instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_svlinky))
+#    define LAYOUT LAYOUT_svlinky
+#endif
+
+// Since LAYOUT_baboon38 uses the name LAYOUT_baboon38 instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_baboon38))
+#    define LAYOUT LAYOUT_baboon38
 #endif
 
 // clang-format off
@@ -375,11 +410,11 @@ NOTE: These are all the same length.  If you do a search/replace
 #define __SHIFTNAV_2_K4__ LSFT(KC_RGHT)
 #define __SHIFTNAV_2_K5__ LSFT(KC_END)
 
-#define __SHIFTNAV_3_K1__ _______
+#define __SHIFTNAV_3_K1__ QK_REBOOT
 #define __SHIFTNAV_3_K2__ LSFT(KC_PGUP)
 #define __SHIFTNAV_3_K3__ LSFT(KC_PGDN)
 #define __SHIFTNAV_3_K4__ _______
-#define __SHIFTNAV_3_K5__ _______
+#define __SHIFTNAV_3_K5__ U_KVM_SWITCH
 
 #define ________________SHIFTNAV_1_________________			__SHIFTNAV_1_K1__, __SHIFTNAV_1_K2__, __SHIFTNAV_1_K3__, __SHIFTNAV_1_K4__, __SHIFTNAV_1_K5__
 #define ________________SHIFTNAV_2_________________			__SHIFTNAV_2_K1__, __SHIFTNAV_2_K2__, __SHIFTNAV_2_K3__, __SHIFTNAV_2_K4__, __SHIFTNAV_2_K5__
@@ -432,21 +467,21 @@ NOTE: These are all the same length.  If you do a search/replace
 #define ___________________RGB_3___________________			__RGB_3_K1__, __RGB_3_K2__, __RGB_3_K3__, __RGB_3_K4__, __RGB_3_K5__
 
 #define __MACROS_1_K1__ RGB_SPI
-#define __MACROS_1_K2__ L_FIND
-#define __MACROS_1_K3__ L_GITCOMMIT
-#define __MACROS_1_K4__ _______
+#define __MACROS_1_K2__ FP_POINT_DPI_RESET
+#define __MACROS_1_K3__ FP_SCROLL_DPI_RESET
+#define __MACROS_1_K4__ FP_SNIPE_DPI_RESET
 #define __MACROS_1_K5__ E_ROBOT
 
 #define __MACROS_2_K1__ P_ANGBRKT
-#define __MACROS_2_K2__ P_PAREN
-#define __MACROS_2_K3__ P_CURLY
-#define __MACROS_2_K4__ P_BRKT
+#define __MACROS_2_K2__ FP_POINT_DPI_UP
+#define __MACROS_2_K3__ FP_SCROLL_DPI_UP
+#define __MACROS_2_K4__ FP_SNIPE_DPI_UP
 #define __MACROS_2_K5__ P_ARROW
 
 #define __MACROS_3_K1__ RGB_SPD
-#define __MACROS_3_K2__ L_GREP
-#define __MACROS_3_K3__ _______
-#define __MACROS_3_K4__ _______
+#define __MACROS_3_K2__ FP_POINT_DPI_DN
+#define __MACROS_3_K3__ FP_SCROLL_DPI_DN
+#define __MACROS_3_K4__ FP_SNIPE_DPI_DN
 #define __MACROS_3_K5__ E_CAT
 
 // // UNCOMMENT TO DISABLE MACROS

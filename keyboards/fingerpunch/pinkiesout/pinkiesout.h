@@ -21,6 +21,10 @@
 #    include "v1.h"
 #elif defined(KEYBOARD_fingerpunch_pinkiesout_v2)
 #    include "v2.h"
+#elif defined(KEYBOARD_fingerpunch_pinkiesout_v2_ext)
+#    include "v2_ext.h"
+#elif defined(KEYBOARD_fingerpunch_pinkiesout_v3)
+#    include "v3.h"
 #endif
 
-#include "keyboards/fingerpunch/fp.h"
+#include "keyboards/fingerpunch/src/fp.h"

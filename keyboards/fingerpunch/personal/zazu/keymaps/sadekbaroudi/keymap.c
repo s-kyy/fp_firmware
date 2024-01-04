@@ -41,11 +41,14 @@
                  K21,            K22,            K23,           K24,                    K25,                                          K26,                   K27,                K28,              K29,            K2A, \
                                                  K33,           LT(_NAVIGATION,K34),    LT(_FUNCTION,K35),                  LT(_MEDIA,K36),                  LT(_SYMBOLS,K37),   K38, \
                                                                                             KC_MS_BTN3,     KC_MS_BTN1,     KC_MS_BTN2, \
-                                                                                            _______, _______, _______, _______, _______ \
+                                                                                    KC_MUTE, KC_WWW_FORWARD, KC_VOLD, KC_WWW_BACK, KC_VOLU \
     )
 
 /* Re-pass though to allow templates to be used */
 #define LAYOUT_zazu_base_wrapper(...)       LAYOUT_zazu_base(__VA_ARGS__)
+
+// For keymap, last 5 keys in the bottom row is:
+// click, right, down, left, up
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 

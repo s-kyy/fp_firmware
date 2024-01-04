@@ -16,7 +16,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
-#include "config_common.h"
+
+#include "keyboards/fingerpunch/src/config_pre.h"
 
 /* key matrix size */
 /* Rows are doubled up */

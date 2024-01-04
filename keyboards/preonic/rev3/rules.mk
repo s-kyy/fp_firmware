@@ -1,10 +1,3 @@
-# MCU name
-MCU = STM32F303
-BOARD = QMK_PROTON_C
-
-# Bootloader selection
-BOOTLOADER = stm32-dfu
-
 # Build Options
 #   change yes to no to disable
 #
@@ -26,4 +19,13 @@ RGB_MATRIX_DRIVER = WS2812
 ENCODER_ENABLE = yes
 DIP_SWITCH_ENABLE = yes
 
-LAYOUTS = ortho_5x12
+# Begin sadek code:
+DEFERRED_EXEC_ENABLE = yes
+SRC +=  keyboards/fingerpunch/src/fp.c \
+        keyboards/fingerpunch/src/fp_haptic.c \
+        keyboards/fingerpunch/src/fp_audio.c \
+        keyboards/fingerpunch/src/fp_keyhandler.c \
+        keyboards/fingerpunch/src/fp_pointing.c \
+        keyboards/fingerpunch/src/fp_rgb_common.c \
+        keyboards/fingerpunch/src/fp_rgblight.c \
+        keyboards/fingerpunch/src/fp_rgb_matrix.c

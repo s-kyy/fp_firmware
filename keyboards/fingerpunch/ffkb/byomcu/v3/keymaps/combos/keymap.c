@@ -97,15 +97,18 @@ enum combos {
   CD_CTRL,
   ST_SFT,
   ZXCD_CTRL_ALT_SHIFT,
-
+  TG_TICK,
   // RIGHT - COLDH
   HDOT_CTRL,
   CDOT_ALT,
   SDOT_WIN,
   NE_SFT,
   HCSDOT_CTRL_ALT_SHIFT,
+  MN_TILDE,
+  // MOUSE SCROLL
+  M_SCROLL,
 
-  COMBO_LENGTH
+  COMBO_LENGTH, 
 };
 
 uint16_t COMBO_LEN = COMBO_LENGTH; 
@@ -116,12 +119,16 @@ const uint16_t PROGMEM xc_combo[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM cd_combo[] = {KC_C, KC_D, COMBO_END};
 const uint16_t PROGMEM st_combo[] = {KC_S, KC_T, COMBO_END};
 const uint16_t PROGMEM zxcd_combo[] = {KC_Z, KC_X, KC_C, KC_D, COMBO_END};
+const uint16_t PROGMEM tg_combo[] = {KC_T, KC_G, COMBO_END};
 // RIGHT - COLDH
 const uint16_t PROGMEM hd_combo[] = {KC_H, KC_COMM, COMBO_END};
 const uint16_t PROGMEM dc_combo[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM ds_combo[] = {KC_DOT, KC_SLSH, COMBO_END};
 const uint16_t PROGMEM ne_combo[] = {KC_N, KC_E, COMBO_END};
 const uint16_t PROGMEM hdcs_combo[] = {KC_H, KC_COMM, KC_DOT, KC_SLSH, COMBO_END};
+const uint16_t PROGMEM mn_combo[] = {KC_M, KC_N, COMBO_END};
+// MOUSE SCROLL
+const uint16_t PROGMEM mm_combo[] = {KC_MS_BTN1, KC_MS_BTN2, COMBO_END};
 
 combo_t key_combos[] = {
   // LEFT - COLDH
@@ -130,12 +137,16 @@ combo_t key_combos[] = {
   [CD_CTRL] = COMBO(cd_combo, OSM(MOD_LCTL)),
   [ST_SFT] = COMBO(st_combo, OSM(MOD_LSFT)),
   [ZXCD_CTRL_ALT_SHIFT] = COMBO(zxcd_combo, OSM(MOD_MEH)),
+  [TG_TICK] = COMBO(tg_combo, KC_GRV),
   // RIGHT - COLDH
   [HDOT_CTRL] = COMBO(hd_combo, OSM(MOD_RCTL)),
   [CDOT_ALT] = COMBO(dc_combo, OSM(MOD_LALT)),
   [SDOT_WIN] = COMBO(ds_combo, OSM(MOD_RGUI)),
   [NE_SFT] = COMBO(ne_combo, OSM(MOD_RSFT)),
   [HCSDOT_CTRL_ALT_SHIFT] = COMBO(hdcs_combo, OSM(MOD_MEH))
+  [MN_TILDE] = COMBO(mn_combo, KC_TILD),
+  // MOUSE SCROLL 
+  [M_SCROLL] = COMBO(mm_combo, FP_SCROLL_TOG),
 };
 
 // ============================================================

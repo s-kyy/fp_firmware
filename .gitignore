@@ -65,6 +65,7 @@ CMakeLists.txt
 .vscode/launch.json
 .vscode/tasks.json
 .vscode/temp.sql
+*.vscode/
 tags
 *massdrop_ctrl_JG.c
 

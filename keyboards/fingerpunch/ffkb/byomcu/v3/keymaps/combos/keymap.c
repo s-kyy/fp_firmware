@@ -33,7 +33,7 @@ enum layer_names {
     _NAV,     //4
     _RGB,     //5
     _MOUSE,  //6
-    NEW_SAFE_LAYER  //7
+    _NEW_SAFE_LAYER  //7
 };
 
 // ============================================================
@@ -143,7 +143,7 @@ combo_t key_combos[] = {
   [CDOT_ALT] = COMBO(dc_combo, OSM(MOD_LALT)),
   [SDOT_WIN] = COMBO(ds_combo, OSM(MOD_RGUI)),
   [NE_SFT] = COMBO(ne_combo, OSM(MOD_RSFT)),
-  [HCSDOT_CTRL_ALT_SHIFT] = COMBO(hdcs_combo, OSM(MOD_MEH))
+  [HCSDOT_CTRL_ALT_SHIFT] = COMBO(hdcs_combo, OSM(MOD_MEH)),
   [MN_TILDE] = COMBO(mn_combo, KC_TILD),
   // MOUSE SCROLL 
   [M_SCROLL] = COMBO(mm_combo, FP_SCROLL_TOG),
@@ -181,15 +181,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_SLEP,    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,      _______, KC_CIRC,  KC_AMPR,  KC_ASTR,   KC_EQL,       KC_DEL,
   LDESK,      KC_1,    KC_2,    KC_3,    KC_4,    KC_5,         KC_6,    KC_7,     KC_8,     KC_9,      KC_0,         RDESK,
   KC_CAPS,    KC_PIPE,  KC_LCBR, KC_LBRC, KC_LPRN, KC_BSLS,     KC_SLSH, KC_RPRN,  KC_RBRC,  KC_RCBR,   FP_SUPER_TAB, FP_SUPER_CTRL_TAB,
-                    _______, _______, _______, _______,         _______,  _______,  _______,  EE_CLR
-),
-// ============================================================
-// Layer 2 - SYM \/
-// ============================================================
-[_SYM] = LAYOUT_ffkb(
-  KC_SLEP,    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,      _______, KC_CIRC,  KC_AMPR,  KC_ASTR,            _______, KC_DEL,
-  S(KC_INS),  LDESK,   KC_LCBR, KC_LBRC, KC_LPRN, KC_BSLS,      KC_PIPE, KC_MINS,  KC_EQL,   FP_SUPER_TAB,       RDESK,   KC_CAPS,
-  C(KC_INS),  KC_INS,  KC_RCBR, KC_RBRC, KC_RPRN, KC_SLSH,      _______, KC_UNDS,  KC_PLUS,  FP_SUPER_CTRL_TAB,  _______, _______,
                     _______, _______, _______, _______,         _______,  _______,  _______,  EE_CLR
 ),
 
@@ -231,12 +222,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,      KC_ENT,  KC_MS_BTN2,    KC_WH_D,  KC_MS_BTN1, _______,    _______,  _______,  _______,  _______, _______, _______,
   _______,      _______, _______,       _______,  _______,    _______,    _______,  _______,  _______,  _______, _______, _______,
                                    _______, _______, _______, _______,    _______,  _______,  _______,  _______
-)
+),
 // ============================================================
 // Empty Layer
 // ============================================================
 
-[NEW_SAFE_LAYER] = LAYOUT_ffkb(
+[_NEW_SAFE_LAYER] = LAYOUT_ffkb(
   _______, _______, _______, _______, _______, _______,         _______,  _______,  _______,  _______, _______, _______,
   _______, _______, _______, _______, _______, _______,         _______,  _______,  _______,  _______, _______, _______,
   _______, _______, _______, _______, _______, _______,         _______,  _______,  _______,  _______, _______, _______,

@@ -1,4 +1,4 @@
-/* Copyright 2023 Samantha Yuen <samantha.y.twentyfourteen@gmail.com>
+/* Copyright 2024 Samantha Yuen <samantha.y.twentyfourteen@gmail.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published bynnnn
@@ -12,6 +12,11 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+RESOURCES:
+Fingerpunch Layer CONFIG: https://github.com/sadekbaroudi/qmk_firmware/tree/master/keyboards/fingerpunch
+RGB MATRRIX Effect Summary: https://github.com/qmk/qmk_firmware/blob/master/docs/feature_rgb_matrix.md#rgb-matrix-effects-idrgb-matrix-effects
+RGB MATRIX Demo: https://youtu.be/7f3usatOIKM?si=9c02Iis5nooXlHvv
 */
 
 // =============================================
@@ -41,22 +46,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // =============================================
 #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
 #define AUTO_MOUSE_DEFAULT_LAYER 6
-#define FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY 3 //3 default
-//     //if mouse moves while typing: 
-//     // Higher = mouse needs to move more to trigger mouse layeros
-// #define MOUSE_EXTENDED_REPORT
-    //Mouse trackball acceleration
-    // #define FP_POINTING_EXTENDED_MOUSE_REPORT_DISABLE
-// #define FP_POINTING_DEFAULT_DPI 750 //1000 set to general v3 config file in increments of 100
-#define FP_POINTING_SCROLLING_DPI 1
-    // Dareu LM108 = 1000/1600
+#define FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY 3       // 3 default, Higher = mouse needs to move more to trigger mouse layers
+// #define MOUSE_EXTENDED_REPORT                    // Mouse trackball acceleration
+// #define FP_POINTING_EXTENDED_MOUSE_REPORT_DISABLE
+// #define FP_POINTING_DEFAULT_DPI 750  //1000 set to general v3 config file in increments of 100
+#define FP_POINTING_SCROLLING_DPI 1     // Dareu LM108 = 1000/1600
 // #define FP_POINTING_LAYER_ENABLE 
-// #define FP_POINTING_ZOOM_LAYER 2 // 
+// #define FP_POINTING_ZOOM_LAYER 2 
 // #define FP_POINTING_SCROLLING_LAYER_ENABLE
 // #define FP_POINTING_SCROLLING_LAYER 6 //INACCESSIBLE
 // #define FP_POINTING_SNIPING_LAYER_ENABLE
 // #define FP_POINTING_SNIPING_LAYER 8 //INACCESSIBLE
 // #define FP_POINTING_SNIPING_DPI 50 
+
 // =============================================
 // RGB config
 // =============================================
@@ -64,7 +66,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define FP_STARTUP_ANIMATION_DISABLE
     #define FP_LAYER_LIGHT_MODE RGB_MATRIX_ALPHAS_MODS
     #define RGB_DISABLE_WHEN_USB_SUSPENDED
-    #define RGB_MATRIX_DEFAULT_SPD 55
+    #define RGB_MATRIX_DEFAULT_SPD 70
+    #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 40 
+    #define RGB_MATRIX_DEFAULT_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS // Sets the default brightness value, if none has been set
     #define FP_LAYER_LIGHTING_AUTO_MOUSE_HUE HSV_BLACK
     #define FP_LAYER_LIGHTING_AUTO_MOUSE_MODE RGB_MATRIX_PIXEL_RAIN
 
@@ -73,15 +77,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define DISABLE_RGB_MATRIX_BAND_VAL
     // #define DISABLE_RGB_MATRIX_BAND_PINWHEEL_SAT
     // #define DISABLE_RGB_MATRIX_BAND_PINWHEEL_VAL
-    // #define DISABLE_RGB_MATRIX_BAND_SPIRAL_SAT
-    // #define DISABLE_RGB_MATRIX_BAND_SPIRAL_VAL
-    #define DISABLE_RGB_MATRIX_CYCLE_ALL
-    #define DISABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT
-    #define DISABLE_RGB_MATRIX_CYCLE_UP_DOWN
-    #define DISABLE_RGB_MATRIX_RAINBOW_MOVING_CHEVRON
+    #define DISABLE_RGB_MATRIX_BAND_SPIRAL_SAT
+    #define DISABLE_RGB_MATRIX_BAND_SPIRAL_VAL
+    // #define DISABLE_RGB_MATRIX_CYCLE_ALL
+    // #define DISABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT
+    // #define DISABLE_RGB_MATRIX_CYCLE_UP_DOWN
+    // #define DISABLE_RGB_MATRIX_RAINBOW_MOVING_CHEVRON
     #define DISABLE_RGB_MATRIX_DUAL_BEACON
-    #define DISABLE_RGB_MATRIX_CYCLE_PINWHEEL
-    #define DISABLE_RGB_MATRIX_CYCLE_SPIRAL
+    // #define DISABLE_RGB_MATRIX_CYCLE_PINWHEEL
+    // #define DISABLE_RGB_MATRIX_CYCLE_SPIRAL
     #define DISABLE_RGB_MATRIX_RAINBOW_BEACON
     #define DISABLE_RGB_MATRIX_RAINBOW_PINWHEELS
     // #define DISABLE_RGB_MATRIX_RAINDROPS
@@ -89,14 +93,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     // #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_SIMPLE
     // #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_WIDE
     // #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE
-    // #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_CROSS
-    // #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_MULTICROSS
-    // #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_NEXUS
-    // #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS
-    // #define DISABLE_RGB_MATRIX_SPLASH
-    // #define DISABLE_RGB_MATRIX_MULTISPLASH
-    // #define DISABLE_RGB_MATRIX_SOLID_SPLASH
-    // #define DISABLE_RGB_MATRIX_SOLID_MULTISPLASH
+    #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_CROSS
+    #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_MULTICROSS
+    #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_NEXUS
+    #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS
+    #define DISABLE_RGB_MATRIX_SPLASH
+    #define DISABLE_RGB_MATRIX_MULTISPLASH
+    #define DISABLE_RGB_MATRIX_SOLID_SPLASH
+    #define DISABLE_RGB_MATRIX_SOLID_MULTISPLASH
 
     #define FP_LAYER_LIGHTING_HUE_0 HSV_ORANGE
     // #define FP_LAYER_LIGHTING_HUE_1 HSV_WHITE    
@@ -105,17 +109,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define FP_LAYER_LIGHTING_HUE_4 FP_HSV_LAVENDER
     #define FP_LAYER_LIGHTING_HUE_5 HSV_CORAL
     // #define FP_LAYER_LIGHTING_HUE_6 HSV_LEMON
-    // #define FP_LAYER_LIGHTING_HUE_7 FP_HSV_LAVENDER
-    // #define FP_LAYER_LIGHTING_MODE_0 RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE  
-    // #define FP_LAYER_LIGHTING_MODE_0 RGB_MATRIX_SOLID_COLOR
-    #define FP_LAYER_LIGHTING_MODE_0 RGB_MATRIX_BREATHING
+    
+    #define FP_LAYER_LIGHTING_MODE_0 RGB_MATRIX_SOLID_REACTIVE_SIMPLE
     #define FP_LAYER_LIGHTING_MODE_1 RGB_MATRIX_JELLYBEAN_RAINDROPS
-    // #define FP_LAYER_LIGHTING_MODE_2 RGB_MATRIX_JELLYBEAN_RAINDROPS
-    #define FP_LAYER_LIGHTING_MODE_2 RGB_MATRIX_BAND_PINWHEEL_VAL
-    #define FP_LAYER_LIGHTING_MODE_3 RGB_MATRIX_BAND_PINWHEEL_SAT
-    #define FP_LAYER_LIGHTING_MODE_4 RGB_MATRIX_BAND_PINWHEEL_VAL
-    #define FP_LAYER_LIGHTING_MODE_5 RGB_MATRIX_BAND_PINWHEEL_SAT
-    #define FP_LAYER_LIGHTING_MODE_6 RGB_MATRIX_SOLID_REACTIVE_WIDE
+    #define FP_LAYER_LIGHTING_MODE_2 RGB_MATRIX_RIVERFLOW
+    #define FP_LAYER_LIGHTING_MODE_3 RGB_MATRIX_RIVERFLOW
+    #define FP_LAYER_LIGHTING_MODE_4 RGB_MATRIX_RIVERFLOW
+    #define FP_LAYER_LIGHTING_MODE_5 RGB_MATRIX_RIVERFLOW
+    #define FP_LAYER_LIGHTING_MODE_6 RGB_MATRIX_SOLID_REACTIVE_SIMPLE
     #define FP_LAYER_LIGHTING_CAPS_LOCK_HUE FP_HSV_PEACH_ORANGE
-    #define FP_LAYER_LIGHTING_CAPS_LOCK_MODE RGB_MATRIX_PIXEL_RAIN
+    // #define FP_LAYER_LIGHTING_CAPS_LOCK_MODE RGB_MATRIX_NONE
 #endif

@@ -1,4 +1,4 @@
-/* Copyright 2023 Samantha Yuen <samantha.y.twentyfourteen@gmail.com>
+/* Copyright 2024 Samantha Yuen <samantha.y.twentyfourteen@gmail.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published bynnnn
@@ -33,7 +33,7 @@ enum layer_names {
     _NAV,     //4
     _RGB,     //5
     _MOUSE,  //6
-    _LAYER7  //7
+    NEW_SAFE_LAYER  //7
 };
 
 // ============================================================
@@ -161,19 +161,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,         KC_Q,     KC_W,        KC_F,     KC_P,    KC_B,                  KC_J,   KC_L,    KC_U,     KC_Y,     KC_SCLN,      KC_BSPC,
   KC_MS_BTN1,     KC_A,     KC_R,        KC_S,     KC_T,    KC_G,                  KC_M,   KC_N,    KC_E,     KC_I,     KC_O,         KC_QUOT,
   KC_MS_BTN2,     KC_Z,     KC_X,        KC_C,     KC_D,    KC_V,                  KC_K,   KC_H,    KC_COMM,  KC_DOT,   KC_SLSH,      KC_APP,
-                  KC_MUTE,  TT(_MOUSE),  LT(_SYM, KC_ENT),   LT(_FN,KC_BSLS),      LT(_RGB,KC_TAB), LT(_NAV,KC_SPC),    KC_GRV, KC_RALT
+                  KC_MUTE,  TT(_MOUSE),  LT(_SYM, KC_ENT),   LT(_FN,KC_SPC),      LT(_RGB,KC_TAB), LT(_NAV,KC_SPC),    KC_DEL, KC_RALT
 ),
 
 // ============================================================
 // Layer 1 - QWERTY
 // ============================================================
 [_QWERTY] = LAYOUT_ffkb(
-  _______, KC_Q,   KC_W,   KC_E,     KC_R,     KC_T,        KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,       _______,
-  _______, KC_A,   KC_S,   KC_D,     KC_F,     KC_G,        KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,    _______,
-  _______, KC_Z,   KC_X,   KC_C,     KC_V,     KC_B,        KC_N,     KC_M,     _______,  _______,  _______,    _______,
-                _______,  _______,   _______,  _______,     _______,  _______,  _______,  _______
+  _______, KC_Q,   KC_W,   KC_E,     KC_R,     KC_T,    KC_Y,                KC_U,     KC_I,     KC_O,     KC_P,       _______,
+  _______, KC_A,   KC_S,   KC_D,     KC_F,     KC_G,    KC_H,                KC_J,     KC_K,     KC_L,     KC_SCLN,    _______,
+  _______, KC_Z,   KC_X,   KC_C,     KC_V,     KC_B,    KC_N,                KC_M,     _______,  _______,  _______,    _______,
+                _______,  _______,   LT(_SYM,KC_SPC),   LT(_FN, KC_ENT),     _______,  _______,  _______,  _______
 ),
 
+// ============================================================
+// Layer 2 - SYM_New
+// ============================================================
+[_SYM] = LAYOUT_ffkb(
+  KC_SLEP,    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,      _______, KC_CIRC,  KC_AMPR,  KC_ASTR,   KC_EQL,       KC_DEL,
+  LDESK,      KC_1,    KC_2,    KC_3,    KC_4,    KC_5,         KC_6,    KC_7,     KC_8,     KC_9,      KC_0,         RDESK,
+  KC_CAPS,    KC_PIPE,  KC_LCBR, KC_LBRC, KC_LPRN, KC_BSLS,     KC_SLSH, KC_RPRN,  KC_RBRC,  KC_RCBR,   FP_SUPER_TAB, FP_SUPER_CTRL_TAB,
+                    _______, _______, _______, _______,         _______,  _______,  _______,  EE_CLR
+),
 // ============================================================
 // Layer 2 - SYM \/
 // ============================================================
@@ -181,53 +190,53 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_SLEP,    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,      _______, KC_CIRC,  KC_AMPR,  KC_ASTR,            _______, KC_DEL,
   S(KC_INS),  LDESK,   KC_LCBR, KC_LBRC, KC_LPRN, KC_BSLS,      KC_PIPE, KC_MINS,  KC_EQL,   FP_SUPER_TAB,       RDESK,   KC_CAPS,
   C(KC_INS),  KC_INS,  KC_RCBR, KC_RBRC, KC_RPRN, KC_SLSH,      _______, KC_UNDS,  KC_PLUS,  FP_SUPER_CTRL_TAB,  _______, _______,
-                    _______, _______, _______, _______,         KC_TAB,  KC_SPC,  _______,  EE_CLR
+                    _______, _______, _______, _______,         _______,  _______,  _______,  EE_CLR
 ),
 
 // ============================================================
-// Layer 3 - FN
+// Layer 3 - FN_New
 // ============================================================
 [_FN] = LAYOUT_ffkb(
-  KC_SLEP,    TASKMAN,   C(S(KC_V)),  UNDO,    WPAST,   C(KC_PLUS),     _______, KC_F1,  KC_F2, KC_F3, KC_F10,  KC_DEL,
-  G(S(KC_S)), MBEE,      CUT,         COPY,    PASTE,   C(KC_MINS),     _______, KC_F4,  KC_F5, KC_F6, KC_F11, KC_CAPS,
-  _______,    KC_MYCM,   MBEEL,       REDO,    MBEER,   C(KC_A),        _______, KC_F7,  KC_F8, KC_F9, KC_F12, KC_F13, 
-                    _______,  _______, _______, _______,                KC_TAB,  KC_SPC,  _______,  EE_CLR
+  KC_SLEP,    TASKMAN,   C(S(KC_V)),  UNDO,    WPAST,        _______,     KC_NUM,   KC_BRID,  KC_BRIU,  MBEEL,   MEH(KC_P), MBEER,
+  G(S(KC_S)), KC_MYCM,   CUT,         COPY,    PASTE,        C(KC_A),     KC_CALC,  KC_PLUS,  KC_MINS,  KC_UNDS, _______, _______,
+  _______,    _______,   C(KC_EQL),   REDO,    C(KC_MINS),   _______,     MBEE,     KC_EQL,   GITCOMM,  GITPUSH, R_ASSIGN, _______,
+                                 _______,  _______, _______, _______,     _______,  _______,  _______,  EE_CLR
 ),
 
 // ============================================================
-// Layer 4 - NAV
+// Layer 4 - NAV_NEW
 // ============================================================
 [_NAV] = LAYOUT_ffkb(
-  KC_SLEP,  _______,     KC_7,   KC_8,     KC_9,   _______,     _______,        KC_HOME,      KC_UP,       KC_END,        KC_BSPC,        KC_DEL,
-  KC_BSPC,  KC_PSLS,     KC_4,   KC_5,     KC_6,   KC_PMNS,     C(A(KC_UP)),    KC_LEFT,      KC_DOWN,     KC_RGHT,       KC_LALT,        _______,
-  KC_ENT,   KC_PAST,     KC_1,   KC_2,     KC_3,   KC_PPLS,     C(A(KC_DOWN)),  C(KC_LEFT),   C(KC_BSPC),  C(KC_RIGHT),   C(KC_DEL),      _______,
-                  QK_BOOT,     KC_DOT, KC_0,   KC_SPC,         _______,     _______,      _______,  _______
+  KC_SLEP,  _______, KC_PAUS, KC_PSCR, KC_SCRL, _______,     _______,   KC_HOME,      KC_UP,       KC_END,        KC_BSPC,  KC_DEL,
+  _______,  KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,     KC_PGUP,   KC_LEFT,      KC_DOWN,     KC_RGHT,       KC_INS,   _______,
+  _______,  _______, _______, _______, _______, _______,     KC_PGDN,   C(KC_LEFT),   C(KC_BSPC),  C(KC_RIGHT),   _______,  _______,
+                     QK_BOOT, _______, _______, _______,    _______,     _______,      _______,  _______
 ),
 
 // ============================================================
-// Layer  5 - RGB
+// Layer  5 - RGB_NEW
 // ============================================================
 [_RGB] =  LAYOUT_ffkb(
-  KC_SLEP, RGB_TOG, RGB_MOD,  RGB_RMOD, _______,  TO(_COLEMAK),  _______,     S(KC_HOME),     S(KC_UP),    S(KC_END),       KC_BSPC,       KC_DEL,
-  _______, RGB_SPI, RGB_HUI,  RGB_SAI,  RGB_VAI,  TO(_QWERTY),   KC_PGUP,     S(KC_LEFT),     S(KC_DOWN),  S(KC_RGHT),      KC_LALT,       _______,
-  _______, RGB_SPD, RGB_HUD,  RGB_SAD,  RGB_VAD,  EXITPARSEC,    KC_PGDN,     C(S(KC_LEFT)),  A(KC_BSPC),  C(S(KC_RIGHT)),  A(KC_DEL),     _______,
-                QK_BOOT, _______,   KC_ENT,  _______,            _______,  _______,  _______,  _______
+  KC_SLEP, RGB_TOG, RGB_MOD,  RGB_RMOD, _______,  TO(_COLEMAK),  _______, KC_F7,  KC_F8, KC_F9, KC_F10, KC_F13,
+  _______, RGB_SPI, RGB_HUI,  RGB_SAI,  RGB_VAI,  TO(_QWERTY),   _______, KC_F4,  KC_F5, KC_F6, KC_F11, _______,
+  _______, RGB_SPD, RGB_HUD,  RGB_SAD,  RGB_VAD,  EXITPARSEC,    _______, KC_F1,  KC_F2, KC_F3, KC_F12, _______,
+                QK_BOOT, _______,   _______,  _______,            _______,  _______,  _______,  _______
 ),
 
 // ============================================================
 // Layer 6 - Mouse
 // ============================================================
 [_MOUSE] = LAYOUT_ffkb(
-  FP_SNIPE_TOG, _______, _______,    KC_BSPC,   _______,    _______,    KC_NUM,   KC_BRID,  KC_BRIU,  _______, _______, _______,
-  _______, KC_ENT, KC_MS_BTN2,  FP_SCROLL_TOG,  KC_MS_BTN1, _______,    KC_CALC,  GITCOMM,  GITPUSH,  R_ASSIGN, _______, _______,
-  _______, _______, _______,    KC_WH_U,        KC_WH_D,    _______,    _______,  _______,  _______,  _______, _______, _______,
-                    _______,    _______,    _______, _______,           _______,  _______,  _______,  _______
-),
+  FP_SNIPE_MOMENT, _______, FP_SCROLL_TOG, KC_WH_U,  _______, _______,    _______,  _______,  _______,  _______, _______, _______,
+  _______,      KC_ENT,  KC_MS_BTN2,    KC_WH_D,  KC_MS_BTN1, _______,    _______,  _______,  _______,  _______, _______, _______,
+  _______,      _______, _______,       _______,  _______,    _______,    _______,  _______,  _______,  _______, _______, _______,
+                                   _______, _______, _______, _______,    _______,  _______,  _______,  _______
+)
 // ============================================================
-// Empty Layers
+// Empty Layer
 // ============================================================
 
-[_LAYER7] = LAYOUT_ffkb(
+[NEW_SAFE_LAYER] = LAYOUT_ffkb(
   _______, _______, _______, _______, _______, _______,         _______,  _______,  _______,  _______, _______, _______,
   _______, _______, _______, _______, _______, _______,         _______,  _______,  _______,  _______, _______, _______,
   _______, _______, _______, _______, _______, _______,         _______,  _______,  _______,  _______, _______, _______,
@@ -266,14 +275,14 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         // tap_code16(FP_SUPER_TAB);
         // tap_code16(KC_TAB);
         // tap_code16(KC_PGUP);
-        tap_code16(KC_WH_D);
+        tap_code16(MBEEL);
         // press_super_tab(false);
       }
       else{
         // tap_code16(LSFT_T(FP_SUPER_TAB));
         // tap_code16(LSFT_T(KC_TAB));
         // tap_code16(KC_PGDN);
-        tap_code16(KC_WH_U);
+        tap_code16(MBEER);
         // press_super_tab(true);
       }
     }
@@ -291,9 +300,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 // ============================================================
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     if (host_keyboard_led_state().caps_lock) {
-        RGB_MATRIX_INDICATOR_SET_COLOR(40, 242, 242, 0); // CAPSLOCK ON | yellow / MCORRICK PAINTS CORAL #f2bfb4 https://encycolorpedia.com/f2bfb4
+        RGB_MATRIX_INDICATOR_SET_COLOR(6, 242, 242, 0); // CAPSLOCK ON | yellow / MCORRICK PAINTS CORAL #f2bfb4 https://encycolorpedia.com/f2bfb4
     } else {
-        RGB_MATRIX_INDICATOR_SET_COLOR(40, 0, 0, 0); // CAPSLOCK OFF | BLANK
+        RGB_MATRIX_INDICATOR_SET_COLOR(6, 0, 0, 0); // CAPSLOCK OFF | BLANK
     }
     if (host_keyboard_led_state().num_lock) {
         // RGB_MATRIX_INDICATOR_SET_COLOR(26, 242, 191, 180); // NUMLOCK ON | Reaper Master New Gold (9051) #e7bd42 https://encycolorpedia.com/e7bd42

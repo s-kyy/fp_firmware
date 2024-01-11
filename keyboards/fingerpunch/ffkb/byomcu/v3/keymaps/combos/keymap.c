@@ -106,7 +106,7 @@ enum combos {
   HCSDOT_CTRL_ALT_SHIFT,
   MN_TILDE,
   // MOUSE SCROLL
-  M_SCROLL,
+  // M_SCROLL,
 
   COMBO_LENGTH, 
 };
@@ -128,7 +128,7 @@ const uint16_t PROGMEM ne_combo[] = {KC_N, KC_E, COMBO_END};
 const uint16_t PROGMEM hdcs_combo[] = {KC_H, KC_COMM, KC_DOT, KC_SLSH, COMBO_END};
 const uint16_t PROGMEM mn_combo[] = {KC_M, KC_N, COMBO_END};
 // MOUSE SCROLL
-const uint16_t PROGMEM mm_combo[] = {KC_MS_BTN1, KC_MS_BTN2, COMBO_END};
+// const uint16_t PROGMEM mm_combo[] = {KC_MS_BTN1, KC_MS_BTN2, COMBO_END};
 
 combo_t key_combos[] = {
   // LEFT - COLDH
@@ -144,9 +144,9 @@ combo_t key_combos[] = {
   [SDOT_WIN] = COMBO(ds_combo, OSM(MOD_RGUI)),
   [NE_SFT] = COMBO(ne_combo, OSM(MOD_RSFT)),
   [HCSDOT_CTRL_ALT_SHIFT] = COMBO(hdcs_combo, OSM(MOD_MEH)),
-  [MN_TILDE] = COMBO(mn_combo, KC_TILD),
+  [MN_TILDE] = COMBO(mn_combo, KC_TILD)
   // MOUSE SCROLL 
-  [M_SCROLL] = COMBO(mm_combo, FP_SCROLL_MOMENT),
+  // [M_SCROLL] = COMBO(mm_combo, FP_SCROLL_MOMENT)
 };
 
 // ============================================================
@@ -218,9 +218,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer 6 - Mouse
 // ============================================================
 [_MOUSE] = LAYOUT_ffkb(
-  FP_SNIPE_MOMENT, _______, _______, KC_WH_U,  _______, _______,    _______,  _______,  _______,  _______, _______, _______,
-  FP_SCROLL_TOG,   KC_ENT,  KC_MS_BTN2, KC_WH_D,  KC_MS_BTN1, _______,    _______,  _______,  _______,  _______, _______, _______,
-  _______, _______, _______, _______, _______, _______,         _______,  _______,  _______,  _______, _______, _______,
+  FP_SNIPE_MOMENT, _______, _______, KC_WH_U,  _______, _______,    _______,  FP_SCROLL_DPI_UP,  _______,  _______, _______, _______,
+  _______, FP_SCROLL_TOG,  KC_MS_BTN2, KC_WH_D,  KC_MS_BTN1, _______,    _______,  FP_SCROLL_DPI_DN,  _______,  _______, _______, _______,
+  _______, _______, _______, _______, _______, _______,         _______,  _______,  FP_SCROLL_DPI_RESET,  _______, _______, _______,
                                    _______, _______, _______, _______,    _______,  _______,  _______,  _______
 ),
 // ============================================================

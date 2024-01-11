@@ -26,75 +26,63 @@ layers:
     - {t: Mute, type: ghost}
     - {h: Mouse, t: "" }
     - {h: SYM, t: Enter}
-    - {h: FUN, t: \}
-    - {h: RGB, t: Tab}
+    - {h: FUN, t: Space}
+    - {h: RGB-F, t: Tab}
     - {h: NAV, t: Space}
-    - "`"
-    - {t: RAlt, type: ghost}
-  QWERTY:
-    - [Esc, Q, W, E, R, T, Y, U, I, O, P, Bspace]
-    - [Mouse1, A, S, D, F, G, H, J, K, L, ;, "'"]
-    - [Mouse2, Z, X, C, V, B, N, M, ',', ., /, Menu]
-    - {t: Mute, type: ghost}
-    - {h: Mouse, t: " " }
-    - {h: SYM, t: Enter}
-    - {h: FUN, t: \}
-    - {h: RGB, t: Tab}
-    - {h: Nav, t: Space}
-    - "`"
+    - "Del"
     - {t: RAlt, type: ghost}
   SYMBOL:
-    - [Sleep, "!", "@", "#", "$", "%", "^", "&", "*", "_", "=", Del]
-    - [Shift Insert, LDesk, "{", "[", "(", \, '|', '-', '=', Alt Tab, RDesk, Caps]
-    - [Ctrl Insert,  Insert, '}',']', ')', /, null, '_', '+', Ctrl Tab, null, null]
+    - [Sleep, "!", "@", "#", "$", "%", Alt Tab, "^", "&", "*", Ctrl Tab, Del]
+    - [LDesk, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, RDesk]
+    - [CAPS, "|",  "{", '[','(', \, /, ")", '-', '_', '+', null]
     - {t: Mute, type: ghost}
     - null
     - {type: held, h: SYM}
     - null
-    - Tab
-    - Space
+    - null
+    - null
     - null
     - {t: EE_CLR, type: ghost}
   Function:
-    - [Sleep, TaskMan, Ctrl Shift V, Undo, G-Paste, Zoom+, null, F1, F2, F3, F10, Del]
-    - [Screen Shot, Music, Cut, Copy, Paste, Zoom-, null, F4, F5, F6, F11, Caps]
-    - [null, MyComp, Prev, Redo, Next, Ctrl A, null, F7, F8, F9, F12, F13]
+    - [Sleep, TaskMan, Ctrl Shift V, Undo, G-Paste, null, Num, +Bright, -Bright, MusicB Prev, MusicB Play/ Pause, MusicB Next]
+    - [Screen Shot, MyComp, Cut, Copy, Paste, Ctrl A,     Calc, '+/=', ']', '}', null, null]
+    - [null, null, Zoom+, Redo, Zoom-, null,            Music Bee, ')', Git Commit, Git Push, R Assign, Null]
     - {t: Mute, type: ghost}
     - null
     - null
     - {type: held, h: FUN}
-    - Tab
-    - Space
+    - null
+    - null
     - null
     - {t: EE_CLR, type: ghost}
   Navigation:
-    - [Sleep, null,  7, 8, 9, null, null, Home, Up, End, Bspace, Del]
-    - [Bspace, Div,  4, 5, 6, Minus, Ctrl Alt Up, Left, Down, Right, LAlt, null]
-    - [Enter, Mult,  1, 2, 3, Plus, Ctrl Alt Down, Ctrl Left, Ctrl BSpace, Ctrl Right, Ctrl Del, null]
+    - [Sleep, null,  Pause, Print Screen, Scroll Lock, null,  null, Home, Up, End, Bspace, Del]
+    - [null, Gui,  Shift, Ctrl, null, null,                   PgUp, Left, Down, Right, LAlt, Insert]
+    - [null, null,  null, null, null, null,                   PgDn, Ctrl Left, Ctrl BSpace, Ctrl Right, null, null]
     - {t: Boot, type: ghost}
-    - {h: Mouse, t: "." }
-    - 0
-    - Space
+    - null
+    - null
+    - null
     - null
     - {type: held, h: NAV}
     - null
     - {t: RAlt, type: ghost}
   RGB:
-    - [Sleep, RGB TOG, RGB RMOD, RGB MOD, null, TO( COLEMAK), null, Shift Home, Shift Up, Shift End, Bspace, Del]
-    - [null,  RGB SPI, RGB HUI, RGB SAI, RGB VAI, TO( QWERTY), PgUp, Shift Left, Shift Down, Shift Right, LAlt, null]
-    - [null,  RGB SPD, RGB HUD, RGB SAD, RGB VAD, ExitP, PgDn, Ctrl Shift Left, Alt BSPC, Ctrl Shift Right, Alt Del, null]
+    - [Sleep, RGB TOG, RGB -MOD,RGB +MOD, null, TO( COLEMAK),      null, F7, F8, F9, F10, F13]
+    - [null,  RGB SPI, RGB HUI, RGB SAI, RGB VAI, TO( QWERTY),     null, F4, F5, F6, F11, null]
+    - [null,  RGB SPD, RGB HUD, RGB SAD, RGB VAD, ExitP,           null, F1, F2, F3, F12, null]
     - {t: Boot, type: ghost}
-    - {h: Mouse, t: " " }
-    - Enter
     - null
-    - {type: held, h: RGB}
+    - null
+    - null
+    - {type: held, h: RGB & FROW}
     - null
     - null
     - {t: RAlt, type: ghost}
   Mouse:
-    - [TO( Snipe), null, null, BSPC, null, null, Num, Bright-, Bright+, null, null, null]
-    - [null, Enter,  Mouse2, TO( Scroll), Mouse1, null, Calc, Git Com, Git Push, R Assign, null, null]
-    - [null, null, null, WheelUp, WheelDn, null, null, null, null, null, null, null]
+    - [MO( Snipe), null, null, Wheel Up, null, null, null,null, null, null, null, null]
+    - [Scroll TOG, Enter,  Mouse2, Wheel Dn, Mouse1, null, null, null, null, null, null, null]
+    - [null, null, null, null, null, null, null, null, null, null, null, null]
     - {type: ghost}
     - {h: Mouse, type: held }
     - null
@@ -103,6 +91,18 @@ layers:
     - null
     - null
     - {type: ghost}
+  QWERTY:
+    - [Esc, Q, W, E, R, T, Y, U, I, O, P, Bspace]
+    - [Mouse1, A, S, D, F, G, H, J, K, L, ;, "'"]
+    - [Mouse2, Z, X, C, V, B, N, M, ',', ., /, Menu]
+    - {t: Mute, type: ghost}
+    - {h: Mouse, t: " " }
+    - {h: SYM, t: Space}
+    - {h: FUN, t: Enter}
+    - {h: RGB, t: Tab}
+    - {h: Nav, t: Space}
+    - "Del"
+    - {t: RAlt, type: ghost}
 combos: 
   - {p: [15,16], k: 'Shift', l: [COLEMAK]}
   - {p: [25,26], k: 'Gui', l: [COLEMAK]}
@@ -112,3 +112,6 @@ combos:
   - {p: [31,32], k: 'Ctrl', l: [COLEMAK]}
   - {p: [32,33], k: 'Alt', l: [COLEMAK]}
   - {p: [33,34], k: 'Gui', l: [COLEMAK]}
+  - {p: [16,17], k: '`', l: [COLEMAK]}
+  - {p: [18,19], k: '~', l: [COLEMAK]}
+  - {p: [12,24], k: 'Scroll', l: [COLEMAK]}

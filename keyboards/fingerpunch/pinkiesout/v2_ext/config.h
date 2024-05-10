@@ -51,7 +51,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ENCODERS_PAD_B {D2, B7}
 #define ENCODER_RESOLUTION 2
 
-#define RGB_DI_PIN D3
+#define WS2812_DI_PIN D3
 #ifdef RGBLIGHT_ENABLE
   #define RGBLED_NUM 70
   #define RGBLIGHT_HUE_STEP 16

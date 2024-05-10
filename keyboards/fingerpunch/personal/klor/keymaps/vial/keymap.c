@@ -19,7 +19,7 @@
 #include <stdio.h>
 #include <string.h>
 #if HAPTIC_ENABLE
-  #include "drivers/haptic/DRV2605L.h"
+  #include "drivers/haptic/drv2605l.h"
 #endif //HAPTIC ENABLE
 
 // ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
@@ -507,7 +507,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                   #endif // AUDIO_ENABLE
                 }
               #ifdef HAPTIC_ENABLE
-                DRV_pulse(pulsing_strong);
+                drv2605l_pulse(DRV2605L_EFFECT_PULSING_STRONG_1_100);
               #endif // HAPTIC_ENABLE
             eeconfig_update_keymap(keymap_config.raw);
             clear_keyboard();  // ──── clear to prevent stuck keys
@@ -517,7 +517,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_QWERTY);
                 #ifdef HAPTIC_ENABLE
-                  DRV_pulse(pulsing_strong);
+                  drv2605l_pulse(DRV2605L_EFFECT_PULSING_STRONG_1_100);
                 #endif // HAPTIC_ENABLE
             }
             return false;
@@ -525,7 +525,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_COLEMAK);
                 #ifdef HAPTIC_ENABLE
-                  DRV_pulse(pulsing_strong);
+                  drv2605l_pulse(DRV2605L_EFFECT_PULSING_STRONG_1_100);
                 #endif // HAPTIC_ENABLE
             }
             return false;

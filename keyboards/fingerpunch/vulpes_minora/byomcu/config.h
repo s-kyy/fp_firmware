@@ -22,19 +22,36 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_ROWS 8
 #define MATRIX_COLS 10
 
-// For SPI
-#define SPI_SCK_PIN GP22
-#define SPI_MOSI_PIN GP23
-#define SPI_MISO_PIN GP20
-
 // wiring of each half
 #define MATRIX_ROW_PINS { GP4, GP29, GP28, GP27 }
 #define MATRIX_COL_PINS { GP5, GP6, GP7, GP8, GP9 }
 
+// VIK pin config
+#define VIK_SPI_DRIVER    SPID0
+#define VIK_SPI_SCK_PIN   GP22
+#define VIK_SPI_MOSI_PIN  GP23
+#define VIK_SPI_MISO_PIN  GP20
+#define VIK_SPI_CS        GP21
+#define VIK_I2C_DRIVER    I2CD1
+#define VIK_I2C_SDA_PIN   GP2
+#define VIK_I2C_SCL_PIN   GP3
+#define VIK_GPIO_1        GP15
+#define VIK_GPIO_2        GP26
+#define VIK_WS2812_DI_PIN GP0
+
+// Got help from https://www.eisbahn.jp/yoichiro/2022/08/luankey_pico_qmk_firmware.html
+#define SERIAL_PIO_USE_PIO1
+#define SERIAL_USART_TX_PIN GP1     // USART TX pin
+
+#define WS2812_DI_PIN GP0
+
+#define VIK_ST7735_UNUSED_PIN GP11
+
 // https://github.com/sadekbaroudi/vik/tree/master/pcb/pers60-cirque-leds or https://github.com/sadekbaroudi/vik/tree/master/pcb/pers60-pmw3360-leds
 #ifdef FP_VIK_PERS60_MODULE
-#define ENCODERS_PAD_A { GP14, GP3 }
-#define ENCODERS_PAD_B { GP13, GP2 }
+// This config assumes the VIK module is connected to the left half
+#define ENCODERS_PAD_A { GP14, GP15 }
+#define ENCODERS_PAD_B { GP13, GP26 }
 #define ENCODER_RESOLUTIONS { 2, 1 }
 #define ENCODERS_PAD_A_RIGHT { GP14 }
 #define ENCODERS_PAD_B_RIGHT { GP13 }
@@ -48,12 +65,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ENCODERS_PAD_A_RIGHT { GP14 }
 #define ENCODERS_PAD_B_RIGHT { GP13 }
 #endif
-
-// Got help from https://www.eisbahn.jp/yoichiro/2022/08/luankey_pico_qmk_firmware.html
-#define SERIAL_PIO_USE_PIO1
-#define SERIAL_USART_TX_PIN GP1     // USART TX pin
-
-#define RGB_DI_PIN GP0
 
 #ifdef AUDIO_ENABLE
     #define AUDIO_VOICES
@@ -72,28 +83,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 #ifdef CIRQUE_ENABLE
-    // cirque trackpad config
-    #define CIRQUE_PINNACLE_SPI_CS_PIN GP21
-    // Uncomment 2 lines below to switch to relative mode and enable right click
-    // Note that tap to click doesn't work on the slave side unless you enable relative mode
-    // #define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_RELATIVE_MODE
-    // #define CIRQUE_PINNACLE_SECONDARY_TAP_ENABLE
-    #define CIRQUE_PINNACLE_TAP_ENABLE
     #define POINTING_DEVICE_ROTATION_90
-    #define POINTING_DEVICE_TASK_THROTTLE_MS 5
     #define POINTING_DEVICE_LEFT
 #endif
 
-#ifdef FP_TRACKBALL_ENABLE
-    // Trackball config
-    #define PMW33XX_CS_PIN GP21
-    #define PMW33XX_CPI 1000
-    #define PMW33XX_CS_DIVISOR 8
-
-    /* SPI config for pmw3360 sensor. */
-    #define SPI_DRIVER SPID0
-    // #define SPI_SCK_PAL_MODE 5 // already defined in chibios
-    // #define SPI_MOSI_PAL_MODE 5 // already defined in chibios
-    // #define SPI_MISO_PAL_MODE 5 // already defined in chibios
+#ifdef VIK_TRACKBALL_ENABLE
     #define POINTING_DEVICE_LEFT
 #endif
+
+#include "keyboards/fingerpunch/src/config_post.h"

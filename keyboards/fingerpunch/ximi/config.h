@@ -53,7 +53,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SERIAL_USART_TX_PIN GP0     // USART TX pin
 #define SERIAL_USART_RX_PIN GP1     // USART RX pin
 
-#define RGB_DI_PIN GP25
+#define WS2812_DI_PIN GP25
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_SPLIT
     #define RGBLED_SPLIT { 21, 21 }
@@ -161,7 +161,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef CIRQUE_ENABLE
     // cirque trackpad config
+    // This is for I2C only, which is not the default
     #define CIRQUE_PINNACLE_ADDR 0x2A
+    // This is for SPI only, which is the default
+    #define CIRQUE_PINNACLE_SPI_CS_PIN GP9
+    
     // Uncomment 2 lines below to switch to relative mode and enable right click
     // Note that tap to click doesn't work on the slave side unless you enable relative mode
     // #define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_RELATIVE_MODE

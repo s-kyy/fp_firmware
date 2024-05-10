@@ -18,7 +18,7 @@
 
 #ifdef HAPTIC_ENABLE
 
-#include "drivers/haptic/DRV2605L.h"
+#include "drivers/haptic/drv2605l.h"
 
 layer_state_t fp_layer_state_set_haptic(layer_state_t state) {
     switch (get_highest_layer(state)) {
@@ -37,17 +37,17 @@ bool fp_process_record_haptic(uint16_t keycode, keyrecord_t *record) {
 #       ifdef FP_HAPTIC_MOUSE_BUTTONS
         case KC_BTN1:
             if (record->event.pressed) {
-                DRV_pulse(medium_click1);
+                drv2605l_pulse(DRV2605L_EFFECT_MEDIUM_CLICK_1_100);
             }
             break;
         case KC_BTN2:
             if (record->event.pressed) {
-                DRV_pulse(sh_dblclick_str);
+                drv2605l_pulse(DRV2605L_EFFECT_SHORT_DOUBLE_CLICK_STRONG_1_100);
             }
             break;
         case KC_BTN3:
             if (record->event.pressed) {
-                DRV_pulse(medium_click1);
+                drv2605l_pulse(DRV2605L_EFFECT_MEDIUM_CLICK_1_100);
             }
             break;
 #       endif
@@ -59,7 +59,7 @@ bool fp_process_record_haptic(uint16_t keycode, keyrecord_t *record) {
 #               else
                 if ((get_mods() & MOD_MASK_CTRL) || (get_oneshot_mods() & MOD_MASK_CTRL)) {
 #               endif
-                    DRV_pulse(lg_dblclick_str);
+                    drv2605l_pulse(DRV2605L_EFFECT_LONG_DOUBLE_SHARP_CLICK_STRONG_1_100);
                 }
             }
             break;
@@ -70,7 +70,7 @@ bool fp_process_record_haptic(uint16_t keycode, keyrecord_t *record) {
 #               else
                 if ((get_mods() & MOD_MASK_CTRL) || (get_oneshot_mods() & MOD_MASK_CTRL)) {
 #               endif
-                    DRV_pulse(lg_dblclick_str);
+                    drv2605l_pulse(DRV2605L_EFFECT_LONG_DOUBLE_SHARP_CLICK_STRONG_1_100);
                 }
             }
             break;
@@ -81,7 +81,7 @@ bool fp_process_record_haptic(uint16_t keycode, keyrecord_t *record) {
 #               else
                 if ((get_mods() & MOD_MASK_CTRL) || (get_oneshot_mods() & MOD_MASK_CTRL)) {
 #               endif
-                    DRV_pulse(soft_bump);
+                    drv2605l_pulse(DRV2605L_EFFECT_SOFT_BUMP_100);
                 }
             }
             break;
@@ -95,7 +95,7 @@ bool fp_process_record_haptic(uint16_t keycode, keyrecord_t *record) {
 #               else
                 if ((get_mods() & MOD_MASK_CTRL) || (get_oneshot_mods() & MOD_MASK_CTRL)) {
 #               endif
-                    DRV_pulse(soft_bump);
+                    drv2605l_pulse(DRV2605L_EFFECT_SOFT_BUMP_100);
                 }
             }
             break;

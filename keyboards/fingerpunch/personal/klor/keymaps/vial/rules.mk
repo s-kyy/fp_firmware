@@ -1,11 +1,11 @@
 OLED_ENABLE = no
-OLED_DRIVER = SSD1306
+OLED_DRIVER = ssd1306
 ENCODER_ENABLE = yes
 EXTRAKEY_ENABLE = yes
 AUDIO_ENABLE = no
 MUSIC_ENABLE = no
 HAPTIC_ENABLE = no				# uncomment only on the master side if you are using a Pimoroni haptic buzz
-HAPTIC_DRIVER = DRV2605L		# uncomment only on the master side if you are using a Pimoroni haptic buzz
+HAPTIC_DRIVER = drv2605l		# uncomment only on the master side if you are using a Pimoroni haptic buzz
 DYNAMIC_MACRO_ENABLE = no
 
 LTO_ENABLE = yes

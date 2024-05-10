@@ -45,7 +45,7 @@
 }
 */
 
-#define RGB_DI_PIN D3
+#define WS2812_DI_PIN D3
 #ifdef RGBLIGHT_ENABLE
   #define RGBLED_NUM 36
   #define RGBLED_SPLIT {18, 18}

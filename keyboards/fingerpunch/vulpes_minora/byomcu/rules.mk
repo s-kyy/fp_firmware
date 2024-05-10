@@ -30,28 +30,5 @@ MOUSEKEY_ENABLE = yes
 SPLIT_KEYBOARD = yes
 SERIAL_DRIVER = vendor
 
-#HAPTIC FEEDBACK
-HAPTIC_ENABLE ?= no
-HAPTIC_DRIVER = DRV2605L
-
 AUDIO_ENABLE ?= no
 AUDIO_DRIVER = pwm_hardware
-
-ifeq ($(strip $(FP_VIK_PERS60_MODULE)), yes)
-   OPT_DEFS += -DFP_VIK_PERS60_MODULE
-endif
-
-ifeq ($(strip $(CIRQUE_ENABLE)), yes)
-   MOUSEKEY_ENABLE := yes  # not required, but enabling for mouse button keys
-   POINTING_DEVICE_ENABLE := yes
-   POINTING_DEVICE_DRIVER := cirque_pinnacle_spi
-   OPT_DEFS += -DCIRQUE_ENABLE
-endif
-
-ifeq ($(strip $(FP_TRACKBALL_ENABLE)), yes)
-   MOUSEKEY_ENABLE := yes  # not required, but enabling for mouse button keys
-   POINTING_DEVICE_ENABLE := yes
-   POINTING_DEVICE_DRIVER := pmw3360
-   QUANTUM_LIB_SRC += spi_master.c
-   OPT_DEFS += -DFP_TRACKBALL_ENABLE
-endif

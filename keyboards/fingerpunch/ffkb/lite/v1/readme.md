@@ -14,6 +14,7 @@ Make example for this keyboard (after setting up your build environment):
 Don't forget to add ```CONVERT_TO=stemcell``` if using a stemcell controller.
 
 You can also use ```FP_CONVERT_TO=svlinky``` if you are using a svlinky. This is not part of the general QMK converters framework. I added the logic in the firmware for this pcb directly.
+If using a svlinky, also see the comments at the top of `keyboards/fingerpunch/ffkb/lite/rules.mk` and uncomment / comment the appropriate lines.
 
 Options are:
 ```

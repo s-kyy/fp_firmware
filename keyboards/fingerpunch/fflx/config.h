@@ -36,7 +36,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
 
-#define RGB_DI_PIN D3 // 41
+#define WS2812_DI_PIN D3 // 41
 #ifdef RGBLIGHT_ENABLE
   // Use twinkle as the default rgb mode for the layers
   #define DEFAULT_RGB_LAYER_MODE RGBLIGHT_MODE_TWINKLE+2

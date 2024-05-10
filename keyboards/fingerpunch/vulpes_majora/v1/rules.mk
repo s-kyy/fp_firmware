@@ -2,7 +2,7 @@ AUDIO_ENABLE ?= no
 AUDIO_DRIVER = pwm_hardware
 
 HAPTIC_ENABLE ?= no
-HAPTIC_DRIVER = DRV2605L
+HAPTIC_DRIVER = drv2605l
 
 ifeq ($(strip $(CIRQUE_ENABLE)), yes)
    MOUSEKEY_ENABLE := yes  # not required, but enabling for mouse button keys

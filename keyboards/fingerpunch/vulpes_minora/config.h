@@ -1,5 +1,5 @@
 /*
-Copyright 2012 Jun Wako <wakojun@gmail.com>
+Copyright 2023 Sadek Baroudi <sadekbaroudi@gmail.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -20,11 +20,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "keyboards/fingerpunch/src/config_pre.h"
 
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 1000U
 
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW
 
-// Got help from https://www.eisbahn.jp/yoichiro/2022/08/luankey_pico_qmk_firmware.html
 #define MASTER_LEFT
 
 #define SPLIT_TRANSPORT_MIRROR
@@ -37,7 +37,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_SPLIT
-    #ifdef FP_VIK_PERS60_MODULE
+    #if defined(VIK_PER56_CIRQUE_LEDS) || defined(VIK_PER56_PMW3360_LEDS) || defined(VIK_EC11_EVQWGD001)
     #define RGBLED_SPLIT { 10, 6 }
     #define RGBLED_NUM 16
     #define RGBLIGHT_LED_MAP { 5, 4, 3, 2, 1, 0, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 }
@@ -105,20 +105,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define ENABLE_RGB_MATRIX_MULTISPLASH
     #define ENABLE_RGB_MATRIX_SOLID_SPLASH
     #define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
-#endif
-
-#ifdef HAPTIC_ENABLE
-    #define FB_ERM_LRA 1
-    #define FB_BRAKEFACTOR 3 // For 1x:0, 2x:1, 3x:2, 4x:3, 6x:4, 8x:5, 16x:6, Disable Braking:7
-    #define FB_LOOPGAIN 1 // For  Low:0, Medium:1, High:2, Very High:3
-    #define RATED_VOLTAGE 2
-    #define V_PEAK 2.8
-    #define V_RMS 2.0
-    #define F_LRA 150 // resonance freq
-    #define DRV_GREETING  alert_750ms
-    #define FP_HAPTIC_MOUSE_BUTTONS
-    #define FP_HAPTIC_CUT_COPY_PASTE
-    #define FP_HAPTIC_SAVE
 #endif
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */

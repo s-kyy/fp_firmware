@@ -48,7 +48,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define USE_SERIAL
 #define SELECT_SOFT_SERIAL_SPEED 0
 
-#define RGB_DI_PIN GP26
+#define WS2812_DI_PIN GP26
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_SPLIT
     #define RGBLED_SPLIT { 21, 21 }

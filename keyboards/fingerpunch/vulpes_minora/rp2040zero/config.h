@@ -1,5 +1,5 @@
 /*
-Copyright 2012 Jun Wako <wakojun@gmail.com>
+Copyright 2023 Sadek Baroudi <sadekbaroudi@gmail.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,30 +22,37 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_ROWS 8
 #define MATRIX_COLS 10
 
-// For SPI
-#define SPI_SCK_PIN GP6
-#define SPI_MOSI_PIN GP7
-#define SPI_MISO_PIN GP4
-
 // wiring of each half
 #define MATRIX_ROW_PINS { GP11, GP10, GP9, GP8 }
 #define MATRIX_COL_PINS { GP28, GP27, GP26, GP15, GP14 }
 
-// https://github.com/sadekbaroudi/vik/tree/master/pcb/pers60-cirque-leds or https://github.com/sadekbaroudi/vik/tree/master/pcb/pers60-pmw3360-leds
-#ifdef FP_VIK_PERS60_MODULE
-#define ENCODERS_PAD_A { GP14 }
-#define ENCODERS_PAD_B { GP29 }
-#define ENCODER_RESOLUTIONS { 1 }
-// Switch the default for the PERS60 rotary encoder to scrolling
-#define FP_ENC_1_LAYER_SCROLL_WHEEL 0
-#define FP_ENC_1_LAYER_SUPER_TAB 5
-#endif
+// VIK pin config
+#define VIK_SPI_DRIVER    SPID0
+#define VIK_SPI_SCK_PIN   GP6
+#define VIK_SPI_MOSI_PIN  GP7
+#define VIK_SPI_MISO_PIN  GP4
+#define VIK_SPI_CS        GP5
+#define VIK_I2C_DRIVER    I2CD1
+#define VIK_I2C_SDA_PIN   GP2
+#define VIK_I2C_SCL_PIN   GP3
+#define VIK_GPIO_1        GP13
+#define VIK_GPIO_2        GP29
+#define VIK_WS2812_DI_PIN GP0
 
-// Got help from https://www.eisbahn.jp/yoichiro/2022/08/luankey_pico_qmk_firmware.html
+// Note that this is the top pad on the back of the RP2040-Zero, change this if you end up using that pad
+#define VIK_ST7735_UNUSED_PIN GP25
+
+// Split config
 #define SERIAL_PIO_USE_PIO1
 #define SERIAL_USART_TX_PIN GP1     // USART TX pin
 
-#define RGB_DI_PIN GP0
+#define WS2812_DI_PIN GP0
+
+// In case there is a VIK module that has an encoder
+#ifdef ENCODER_ENABLE
+    #define ENCODERS_PAD_A { GP13 }
+    #define ENCODERS_PAD_B { GP29 }
+#endif
 
 #ifdef AUDIO_ENABLE
     #define AUDIO_VOICES
@@ -64,28 +71,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 #ifdef CIRQUE_ENABLE
-    // cirque trackpad config
-    #define CIRQUE_PINNACLE_SPI_CS_PIN GP5
-    // Uncomment 2 lines below to switch to relative mode and enable right click
-    // Note that tap to click doesn't work on the slave side unless you enable relative mode
-    // #define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_RELATIVE_MODE
-    // #define CIRQUE_PINNACLE_SECONDARY_TAP_ENABLE
-    #define CIRQUE_PINNACLE_TAP_ENABLE
     #define POINTING_DEVICE_ROTATION_90
-    #define POINTING_DEVICE_TASK_THROTTLE_MS 5
     #define POINTING_DEVICE_LEFT
 #endif
 
-#ifdef FP_TRACKBALL_ENABLE
-    // Trackball config
-    #define PMW33XX_CS_PIN GP5
-    #define PMW33XX_CPI 1000
-    #define PMW33XX_CS_DIVISOR 8
-
-    /* SPI config for pmw3360 sensor. */
-    #define SPI_DRIVER SPID0
-    // #define SPI_SCK_PAL_MODE 5 // already defined in chibios
-    // #define SPI_MOSI_PAL_MODE 5 // already defined in chibios
-    // #define SPI_MISO_PAL_MODE 5 // already defined in chibios
+#ifdef VIK_TRACKBALL_ENABLE
     #define POINTING_DEVICE_LEFT
 #endif
+
+#include "keyboards/fingerpunch/src/config_post.h"

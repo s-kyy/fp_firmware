@@ -28,7 +28,7 @@ MOUSEKEY_ENABLE = yes
 # Either do RGBLIGHT_ENABLE or RGB_MATRIX_ENABLE and RGB_MATRIX_DRIVER
 RGBLIGHT_ENABLE = no
 RGB_MATRIX_ENABLE = no
-RGB_MATRIX_DRIVER = WS2812
+RGB_MATRIX_DRIVER = ws2812
 
 MIDI_ENABLE = no            # MIDI support
 UNICODE_ENABLE = no         # Unicode
@@ -43,10 +43,24 @@ QUANTUM_LIB_SRC += spi_master.c
 CUSTOM_MATRIX = lite
 
 AUDIO_ENABLE ?= no
+ifeq ($(strip $(CONVERT_TO)), stemcell)
 AUDIO_DRIVER = pwm_software
+endif
+ifeq ($(strip $(CONVERT_TO)), elite_pi)
+AUDIO_DRIVER = pwm_hardware
+endif
+ifeq ($(strip $(CONVERT_TO)), rp2040_ce)
+AUDIO_DRIVER = pwm_hardware
+endif
+ifeq ($(strip $(CONVERT_TO)), helios)
+AUDIO_DRIVER = pwm_hardware
+endif
+ifeq ($(strip $(CONVERT_TO)), liatris)
+AUDIO_DRIVER = pwm_hardware
+endif
 
 HAPTIC_ENABLE ?= no
-HAPTIC_DRIVER = DRV2605L
+HAPTIC_DRIVER = drv2605l
 
 ifeq ($(strip $(CIRQUE_ENABLE)), yes)
    MOUSEKEY_ENABLE := yes  # not required, but enabling for mouse button keys

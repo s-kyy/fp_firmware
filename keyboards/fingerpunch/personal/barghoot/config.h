@@ -85,7 +85,7 @@
 #else
   #define WS2812_DI_PIN GP27
 #endif
-#define RGB_DI_PIN GP25
+#define WS2812_DI_PIN GP25
 
 #define DRIVER_LED_TOTAL 63
 #define RGB_MATRIX_LED_COUNT 63

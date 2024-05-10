@@ -39,7 +39,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DIODE_DIRECTION COL2ROW
 #define MATRIX_ROW_PINS_SR { GP27, GP28, GP29 }
 
-#define RGB_DI_PIN GP26
+#define WS2812_DI_PIN GP26
 #ifdef RGBLIGHT_ENABLE
     #define RGBLED_NUM 21
     #define RGBLIGHT_HUE_STEP 16

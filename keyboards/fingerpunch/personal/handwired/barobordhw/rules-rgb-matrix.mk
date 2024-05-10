@@ -27,7 +27,7 @@ BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 # Either do RGBLIGHT_ENABLE or RGB_MATRIX_ENABLE and RGB_MATRIX_DRIVER
 #RGBLIGHT_ENABLE = yes       # Enable keyboard RGB underglow
 RGB_MATRIX_ENABLE = yes
-RGB_MATRIX_DRIVER = WS2812
+RGB_MATRIX_DRIVER = ws2812
 MIDI_ENABLE = no            # MIDI support
 UNICODE_ENABLE = no         # Unicode
 BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID

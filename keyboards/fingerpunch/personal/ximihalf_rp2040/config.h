@@ -40,7 +40,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ENCODERS_PAD_A { GP7 }
 #define ENCODERS_PAD_B { GP8 }
 
-#define RGB_DI_PIN GP25
+#define WS2812_DI_PIN GP25
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_SPLIT
     #define RGBLED_SPLIT { 21, 21 }

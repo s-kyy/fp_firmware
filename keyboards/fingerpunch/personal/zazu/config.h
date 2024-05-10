@@ -63,7 +63,7 @@
 #define DRV_GREETING  alert_750ms
 
 
-#define RGB_DI_PIN GP27
+#define WS2812_DI_PIN GP27
 #ifdef RGB_MATRIX_ENABLE
   #define DRIVER_LED_TOTAL 43
   #define RGB_MATRIX_LED_COUNT 43

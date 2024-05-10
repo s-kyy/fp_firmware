@@ -2,12 +2,16 @@
 
 /**
  * Modules:
+ * VIK_HAPTIC
  * VIK_PER56_CIRQUE_LEDS
  * VIK_PER56_PMW3360_LEDS
  * VIK_PMW3360
  * VIK_WEACT_ST7735
- * VIK_GC9A01
- * VIK_HAPTIC
+ * VIK_VIK_GC9A01
+ * VIK_WAVESHARE_22224
+ * VIK_AZOTEQ
+ * VIK_EC11_EVQWGD001
+ * VIK_TRACKPOINT
  * 
  * Pin config:
  * VIK_SPI_DRIVER
@@ -24,6 +28,7 @@
  * 
  * Options:
  * VIK_RGB_ONLY
+ * VIK_RETAIN_KB_WS2812_DI_PIN
  */
 
 // For VIK SPI
@@ -57,8 +62,8 @@
 #endif
 
 // This can be removed after upgrading QMK to the latest version
-#ifndef RGB_DI_PIN
-    #define RGB_DI_PIN VIK_WS2812_DI_PIN
+#ifndef WS2812_DI_PIN
+    #define WS2812_DI_PIN VIK_WS2812_DI_PIN
 #endif
 
 #ifndef WS2812_DI_PIN
@@ -80,12 +85,16 @@
 #endif
 
 #ifdef VIK_PER56_CIRQUE_LEDS
-    #ifdef VIK_RGB_ONLY
-        #ifdef RGBLED_NUM
-            #undef RGBLED_NUM
-        #endif
-        #define RGBLED_NUM 4
+    #ifdef RGBLED_NUM
+        #undef RGBLED_NUM
     #endif
+    #if !defined(VIK_RETAIN_KB_WS2812_DI_PIN)
+        #ifdef WS2812_DI_PIN
+            #undef WS2812_DI_PIN
+        #endif
+        #define WS2812_DI_PIN VIK_WS2812_DI_PIN
+    #endif
+    #define RGBLED_NUM 4
 #endif
 
 #ifdef VIK_PER56_PMW3360_LEDS
@@ -94,12 +103,16 @@
     #define PMW33XX_CPI 1000
     #define PMW33XX_CS_DIVISOR 8
 
-    #ifdef VIK_RGB_ONLY
-        #ifdef RGBLED_NUM
-            #undef RGBLED_NUM
-        #endif
-        #define RGBLED_NUM 4
+    #ifdef RGBLED_NUM
+        #undef RGBLED_NUM
     #endif
+    #if !defined(VIK_RETAIN_KB_WS2812_DI_PIN)
+        #ifdef WS2812_DI_PIN
+            #undef WS2812_DI_PIN
+        #endif
+        #define WS2812_DI_PIN VIK_WS2812_DI_PIN
+    #endif
+    #define RGBLED_NUM 4
 #endif
 
 #ifdef VIK_PMW3360
@@ -140,4 +153,45 @@
 
     // Must be defined by the keyboard itself, needs a free unused pin for reset
     #define DISPLAY_RST_PIN VIK_ST7735_UNUSED_PIN
+#endif
+
+#ifdef VIK_AZOTEQ
+    // default to AZOTEQ_IQS5XX_TPS43... shouldn't really do this
+    #if !defined(AZOTEQ_IQS5XX_TPS43) && !defined(AZOTEQ_IQS5XX_TPS65)
+        // #warning "fingerpunch:vik:azoteq: no azoteq profile defined, defaulted to AZOTEQ_IQS5XX_TPS43"
+        #define AZOTEQ_IQS5XX_TPS43
+        #define AZOTEQ_IQS5XX_PRESS_AND_HOLD_ENABLE true
+        #define AZOTEQ_IQS5XX_SWIPE_X_ENABLE true
+        #define AZOTEQ_IQS5XX_SWIPE_Y_ENABLE true
+        #define AZOTEQ_IQS5XX_ZOOM_ENABLE true
+        // Can only use motion pin on unibodies or splits that don't use split pointing
+        // This is currently a QMK constraint
+        #ifndef SPLIT_POINTING
+            #define POINTING_DEVICE_MOTION_PIN VIK_GPIO_2
+        #endif
+    #endif
+#endif
+
+#ifdef VIK_EC11_EVQWGD001
+    #ifdef VIK_RGB_ONLY
+        #ifdef RGBLED_NUM
+            #undef RGBLED_NUM
+        #endif
+        #if !defined(VIK_RETAIN_KB_WS2812_DI_PIN)
+            #ifdef WS2812_DI_PIN
+                #undef WS2812_DI_PIN
+            #endif
+            #define WS2812_DI_PIN VIK_WS2812_DI_PIN
+        #endif
+        #define RGBLED_NUM 4
+    #endif
+#endif
+
+#ifdef VIK_TRACKPOINT
+    #define PS2_CLOCK_PIN VIK_GPIO_2
+    #define PS2_DATA_PIN  VIK_GPIO_1
+#endif
+
+#ifdef CIRQUE_ENABLE
+    #define CIRQUE_PINNACLE_SPI_CS_PIN VIK_SPI_CS
 #endif

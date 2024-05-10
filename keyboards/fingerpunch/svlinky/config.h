@@ -61,6 +61,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW
 
+// For VIK modules with encoders
 #ifdef ENCODER_ENABLE
 #define ENCODERS_PAD_A { GP18 }
 #define ENCODERS_PAD_B { GP24 }
@@ -77,7 +78,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define POINTING_DEVICE_TASK_THROTTLE_MS 5
 #endif
 
-#define RGB_DI_PIN GP16
+// If directly testing with svlinky, use VIK RGB only
+#ifndef VIK_RGB_ONLY
+#define VIK_RGB_ONLY
+#endif
+
+#define WS2812_DI_PIN GP16
 #ifdef RGBLIGHT_ENABLE
     #define RGBLED_NUM 10 // Arbitrary number, gets overridden by the vik module stuff below
     #define RGBLIGHT_HUE_STEP 16

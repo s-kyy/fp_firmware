@@ -25,7 +25,6 @@
 #define TAP_CODE_DELAY 25
 
 #define QUICK_TAP_TERM 0
-#define IGNORE_MOD_TAP_INTERRUPT
 
 // -------------------- Leader key config ------------------------
 
@@ -118,11 +117,16 @@
 // -------------------- Lighting config ------------------------
 
 // We override vulpes majora with the rgb lighting on the center trackball in the center, else config below for all other boards
-#if defined(KEYBOARD_fingerpunch_vulpes_majora_v1) && defined(FP_VM_RGB_VIK_ONLY)
+#if defined(KEYBOARD_fingerpunch_vulpes_majora_v1) && defined(VIK_RGB_ONLY)
     #define FP_LAYER_LIGHTING_HUE_2 HSV_GREEN
     #define FP_LAYER_LIGHTING_HUE_3 HSV_PURPLE
     #define FP_LAYER_LIGHTING_HUE_4 HSV_YELLOW
     #define FP_LAYER_LIGHTING_HUE_5 HSV_PINK
+#elif defined(KEYBOARD_fingerpunch_ffkb_lite_v1) && defined(VIK_EC11_EVQWGD001)
+    #define FP_LAYER_LIGHTING_HUE_1 FP_HSV_MINT
+    #define FP_LAYER_LIGHTING_HUE_2 HSV_CYAN
+    #define FP_LAYER_LIGHTING_HUE_3 FP_HSV_LEMON
+    #define FP_LAYER_LIGHTING_HUE_4 HSV_PURPLE
 #else
     #define FP_LAYER_LIGHTING_HUE_2 FP_HSV_MINT
     #define FP_LAYER_LIGHTING_HUE_3 FP_HSV_LAVENDER

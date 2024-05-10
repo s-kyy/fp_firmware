@@ -30,7 +30,7 @@ MOUSEKEY_ENABLE = yes
 # Either do RGBLIGHT_ENABLE or RGB_MATRIX_ENABLE and RGB_MATRIX_DRIVER
 RGBLIGHT_ENABLE = no
 RGB_MATRIX_ENABLE = no
-RGB_MATRIX_DRIVER = WS2812
+RGB_MATRIX_DRIVER = ws2812
 
 MIDI_ENABLE = no            # MIDI support
 UNICODE_ENABLE = no         # Unicode
@@ -63,7 +63,7 @@ AUDIO_DRIVER = pwm_hardware
 endif
 
 HAPTIC_ENABLE ?= no
-HAPTIC_DRIVER = DRV2605L
+HAPTIC_DRIVER = drv2605l
 
 ifeq ($(strip $(CIRQUE_ENABLE)), yes)
    MOUSEKEY_ENABLE := yes  # not required, but enabling for mouse button keys

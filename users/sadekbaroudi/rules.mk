@@ -53,7 +53,9 @@ ifeq ($(strip $(CASEMODES_ENABLE)), yes)
 endif
 
 ifeq ($(strip $(COMBO_ENABLE)), yes)
-    SRC += combos.c
+    # https://github.com/qmk/qmk_firmware/issues/21137#issuecomment-1577898767 - workaround, but not to be promoted
+    # SRC += combos.c # as of QMK 2023-08-27 release, this is no longer the way
+    INTROSPECTION_KEYMAP_C = combos.c
 endif
 
 ifeq ($(strip $(AUDIO_ENABLE)), yes)

@@ -61,38 +61,40 @@ void fp_qp_display_text(char* text, int location) {
     lv_label_set_text(label, text);
 
     // Set the location of the label based on the location variable
+    // Note that if you have a round display, top left, top right, bottom left, and bottom right are not displayable
     switch (location) {
         case FP_QP_TOP_LEFT:
-            lv_obj_align(label, LV_ALIGN_OUT_TOP_LEFT, 0, 0);
+            lv_obj_align(label, LV_ALIGN_TOP_LEFT, 0, 0);
             break;
         case FP_QP_TOP_CENTER:
-            lv_obj_align(label, LV_ALIGN_OUT_TOP_MID, 0, 0);
+            lv_obj_align(label, LV_ALIGN_TOP_MID, 0, 0);
             break;
         case FP_QP_TOP_RIGHT:
-            lv_obj_align(label, LV_ALIGN_OUT_TOP_RIGHT, 0, 0);
+            lv_obj_align(label, LV_ALIGN_TOP_RIGHT, 0, 0);
             break;
         case FP_QP_MIDDLE_LEFT:
-            lv_obj_align(label, LV_ALIGN_OUT_LEFT_MID, 0, 0);
+            lv_obj_align(label, LV_ALIGN_LEFT_MID, 0, 0);
             break;
         case FP_QP_CENTER:
             lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
             break;
         case FP_QP_MIDDLE_RIGHT:
-            lv_obj_align(label, LV_ALIGN_OUT_RIGHT_MID, 0, 0);
+            lv_obj_align(label, LV_ALIGN_RIGHT_MID, 0, 0);
             break;
         case FP_QP_BOTTOM_LEFT:
-            lv_obj_align(label, LV_ALIGN_OUT_BOTTOM_LEFT, 0, 0);
+            lv_obj_align(label, LV_ALIGN_BOTTOM_LEFT, 0, 0);
             break;
         case FP_QP_BOTTOM_CENTER:
-            lv_obj_align(label, LV_ALIGN_OUT_BOTTOM_MID, 0, 0);
+            lv_obj_align(label, LV_ALIGN_BOTTOM_MID, 0, 0);
             break;
         case FP_QP_BOTTOM_RIGHT:
-            lv_obj_align(label, LV_ALIGN_OUT_BOTTOM_RIGHT, 0, 0);
+            lv_obj_align(label, LV_ALIGN_BOTTOM_RIGHT, 0, 0);
             break;
         default:
             break;
     }
 }
+
 // Used for test code, found in fp_qp_load_initial_screen
 // static void fp_qp_set_arc_angle(void* obj, int32_t v) {
 //     lv_arc_set_value(obj, v);
@@ -102,7 +104,15 @@ void fp_qp_display_text(char* text, int location) {
  * Create an arc which acts as a loader.
  */
 void fp_qp_load_initial_screen(void) {
+    // fp_qp_display_text(PRODUCT, FP_QP_TOP_LEFT);
+    // fp_qp_display_text(PRODUCT, FP_QP_TOP_CENTER);
+    // fp_qp_display_text(PRODUCT, FP_QP_TOP_RIGHT);
+    // fp_qp_display_text(PRODUCT, FP_QP_MIDDLE_LEFT);
     fp_qp_display_text(PRODUCT, FP_QP_CENTER);
+    // fp_qp_display_text(PRODUCT, FP_QP_MIDDLE_RIGHT);
+    // fp_qp_display_text(PRODUCT, FP_QP_BOTTOM_LEFT);
+    // fp_qp_display_text(PRODUCT, FP_QP_BOTTOM_CENTER);
+    // fp_qp_display_text(PRODUCT, FP_QP_BOTTOM_RIGHT);
 
     // Original test code with an arc circling indefinitely
     // /*Create an Arc*/

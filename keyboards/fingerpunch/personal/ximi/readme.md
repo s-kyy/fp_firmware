@@ -29,6 +29,8 @@ Options are:
     FP_CIRQUE_RIGHT_ONLY=yes
     FP_TRACKBALL_LEFT_CIRQUE_RIGHT=yes
     FP_CIRQUE_LEFT_TRACKBALL_RIGHT=yes
+    FP_SPLIT_LEFT=yes     # only applicable if doing a mixed pointing device build (e.g. trackpad left, trackball right)
+    FP_SPLIT_RIGHT=yes     # only applicable if doing a mixed pointing device build (e.g. trackpad left, trackball right)
 ```
 
 Notes:

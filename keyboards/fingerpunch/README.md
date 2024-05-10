@@ -67,17 +67,23 @@ Note: if you are using a userspace, and you have custom keycodes, you will need 
     || defined(KEYBOARD_fingerpunch_ffkb_byomcu_v1) \
     || defined(KEYBOARD_fingerpunch_ffkb_byomcu_v2) \
     || defined(KEYBOARD_fingerpunch_ffkb_byomcu_v3) \
-    || defined(KEYBOARD_fingerpunch_ffkb_rp_v3) \
+    || defined(KEYBOARD_fingerpunch_ffkb_lite_v1) \
+    || defined(KEYBOARD_fingerpunch_ffkb_rp_v0) \
+    || defined(KEYBOARD_fingerpunch_ffkb_rp_v1) \
     || defined(KEYBOARD_fingerpunch_fflx) \
     || defined(KEYBOARD_fingerpunch_fpm101) \
     || defined(KEYBOARD_fingerpunch_luakeeb) \
     || defined(KEYBOARD_fingerpunch_pinkiesout_v1) \
     || defined(KEYBOARD_fingerpunch_pinkiesout_v2) \
+    || defined(KEYBOARD_fingerpunch_pinkiesout_v2_ext) \
+    || defined(KEYBOARD_fingerpunch_pinkiesout_v3) \
     || defined(KEYBOARD_fingerpunch_rockon_v1) \
     || defined(KEYBOARD_fingerpunch_rockon_v2) \
     || defined(KEYBOARD_fingerpunch_rockon_v3) \
     || defined(KEYBOARD_fingerpunch_rockon_bp) \
     || defined(KEYBOARD_fingerpunch_sweeeeep) \
+    || defined(KEYBOARD_fingerpunch_vulpes_minora) \
+    || defined(KEYBOARD_fingerpunch_vulpes_majora_v1) \
     || defined(KEYBOARD_fingerpunch_ximi)
 #    define PLACEHOLDER_SAFE_RANGE FP_SAFE_RANGE
 #else
@@ -210,9 +216,13 @@ This is fully supported. Once I merge the next major release in Q4, I will remov
 
 In addition to the default configurations, there are additional features added to fingerpunch keyboards:
 
-| Setting                                          | Description                                                                     | Default                         |
-| ------------------------------------------------ | ------------------------------------------------------------------------------- | ------------------------------- |
-| `FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY`            | (Required) Trackball auto mouse sensitivity value                               | `3`                             |
+| Setting                                          | Description                                                                      | Default                               |
+| ------------------------------------------------ | -------------------------------------------------------------------------------- | ------------------------------------- |
+| `FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY`            | (Required) Trackball auto mouse sensitivity value                                | `3`                                   |
+| `FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY_X`          | (Required) Trackball auto mouse sensitivity value in the X direction (pointing)  | `FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY` |
+| `FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY_Y`          | (Required) Trackball auto mouse sensitivity value in the Y direction (pointing)  | `FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY` |
+| `FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY_H`          | (Required) Trackball auto mouse sensitivity value in the H direction (scrolling) | `FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY` |
+| `FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY_V`          | (Required) Trackball auto mouse sensitivity value in the X direction (scrolling) | `FP_AUTO_MOUSE_TRACKBALL_SENSITIVITY` |
 
 (Additional auto mouse configuration in the layer lighting section)
 

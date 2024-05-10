@@ -21,6 +21,8 @@
 #    include "byomcu.h"
 #elif defined(KEYBOARD_fingerpunch_vulpes_minora_rp2040zero)
 #    include "rp2040zero.h"
+#elif defined(KEYBOARD_fingerpunch_vulpes_minora_xivik)
+#    include "xivik.h"
 #endif
 
 #include "keyboards/fingerpunch/src/fp.h"

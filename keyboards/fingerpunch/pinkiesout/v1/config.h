@@ -28,7 +28,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_COL_PINS \
     { D2, D4, C6, D7, E6, F5, F6, F7, B1 }
 
-#define RGB_DI_PIN D3
+#define WS2812_DI_PIN D3
 #ifdef RGBLIGHT_ENABLE
   #define RGBLED_NUM 66
   #define RGBLIGHT_HUE_STEP 16

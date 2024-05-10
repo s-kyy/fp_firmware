@@ -38,7 +38,7 @@ get_valid_keyboards() {
 		fi
 
 		# check for all the supported versions of the keyboard in the keyboard root directory
-		for i in {1..9}
+		for i in {0..9}
 		do
 			if [[ -e "${line}/v${i}/fp_build.json" ]]; then
 			    echo -n "${line}/v${i} "

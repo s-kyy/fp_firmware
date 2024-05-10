@@ -28,7 +28,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SHIFTREG_DIVISOR 8 // needs to be the same as the PMW33XX_CS_DIVISOR below
 #define MATRIX_ROW_PINS_SR { D4, C6, D7, E6, B4, F4, F5, F6, F7 }
 
-#define RGB_DI_PIN D3
+#define WS2812_DI_PIN D3
 #ifdef RGBLIGHT_ENABLE
   #ifdef RGBLED_NUM
     #undef RGBLED_NUM
@@ -44,45 +44,61 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 // SPI config for shift register (and trackball if enabled)
-#define SPI_DRIVER SPID1
 #define SPI_SCK_PIN B1
-#define SPI_SCK_PAL_MODE 5
 #define SPI_MOSI_PIN B2
-#define SPI_MOSI_PAL_MODE 5
 #define SPI_MISO_PIN B3
+
+#if defined(CONVERT_TO_ELITE_PI) || defined(CONVERT_TO_RP2040_CE) || defined(CONVERT_TO_HELIOS) || defined(CONVERT_TO_LIATRIS) || defined(CONVERT_TO_KB2040)
+#define SPI_DRIVER SPID0
+#endif // CONVERT_TO_(any_rp2040)
+
+#ifdef CONVERT_TO_STEMCELL
+#define SPI_DRIVER SPID1
+#define SPI_SCK_PAL_MODE 5
+#define SPI_MOSI_PAL_MODE 5
 #define SPI_MISO_PAL_MODE 5
+#endif // CONVERT_TO_STEMCELL
 
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
 
+// Skip encoders and audio if using KB2040, as they can't be used without the bottom 5 pins
+#ifndef CONVERT_TO_KB2040
+  // If we have audio enabled, that means we're not using the center encoder, as they share a pin on the controller
+  // Note that you need to solder the jumper on the pcb and remove teh audio buzzer from the pcb if using the center encoder
+  #ifdef AUDIO_ENABLE
+      #define ENCODERS_PAD_A {C7, D5}
+      #define ENCODERS_PAD_B {D2, B7}
+  #else
+      #define ENCODERS_PAD_A {C7, D5, F1}
+      #define ENCODERS_PAD_B {D2, B7, F0}
+  #endif
 
-// If we have audio enabled, that means we're not using the center encoder, as they share a pin on the controller
-// Note that you need to solder the jumper on the pcb and remove teh audio buzzer from the pcb if using the center encoder
-#ifdef AUDIO_ENABLE
-    #define ENCODERS_PAD_A {C7, D5}
-    #define ENCODERS_PAD_B {D2, B7}
-#else
-    #define ENCODERS_PAD_A {C7, D5, F1}
-    #define ENCODERS_PAD_B {D2, B7, F0}
-#endif
-
-#ifdef AUDIO_ENABLE
-    #define AUDIO_VOICES
-    #define AUDIO_PIN F1
-    #define AUDIO_PWM_DRIVER PWMD2
-    #define AUDIO_PWM_CHANNEL 1
-    #define AUDIO_STATE_TIMER GPTD4
-    #define AUDIO_VOICES
-    // #define AUDIO_PWM_PAL_MODE 42 // only if using AUDIO_DRIVER = pwm_hardware
-    // #define NO_MUSIC_MODE
-    #define AUDIO_ENABLE_TONE_MULTIPLEXING
-    #define AUDIO_TONE_MULTIPLEXING_RATE_DEFAULT 10
-    #define FP_AUDIO_MOUSE_BUTTONS
-    #define FP_AUDIO_CUT_COPY_PASTE
-    #define FP_AUDIO_SAVE
-    #define STARTUP_SONG SONG(STARTUP_SOUND)
-    #define DEFAULT_LAYER_SONGS \
-        { SONG(QWERTY_SOUND), SONG(COLEMAK_SOUND) }
+  #ifdef AUDIO_ENABLE
+      #define AUDIO_VOICES
+      #define AUDIO_PIN F1
+      #ifdef CONVERT_TO_STEMCELL
+      #define AUDIO_PWM_DRIVER PWMD2
+      #define AUDIO_PWM_CHANNEL 1
+      #define AUDIO_STATE_TIMER GPTD4
+      #endif // CONVERT_TO_STEMCELL
+      #if defined(CONVERT_TO_ELITE_PI) || defined(CONVERT_TO_RP2040_CE) || defined(CONVERT_TO_HELIOS) || defined(CONVERT_TO_LIATRIS)
+      #define AUDIO_PWM_DRIVER PWMD7
+      #define AUDIO_PWM_CHANNEL RP2040_PWM_CHANNEL_A
+      #define AUDIO_STATE_TIMER GPTD1
+      #endif // CONVERT_TO_(any_rp2040)
+      #define AUDIO_VOICES
+      // #define AUDIO_PWM_PAL_MODE 42 // only if using AUDIO_DRIVER = pwm_hardware
+      // #define NO_MUSIC_MODE
+      #define AUDIO_ENABLE_TONE_MULTIPLEXING
+      #define AUDIO_TONE_MULTIPLEXING_RATE_DEFAULT 10
+      #define FP_AUDIO_MOUSE_BUTTONS
+      #define FP_AUDIO_CUT_COPY_PASTE
+      #define FP_AUDIO_SAVE
+      #define STARTUP_SONG SONG(STARTUP_SOUND)
+      #define DEFAULT_LAYER_SONGS \
+          { SONG(QWERTY_SOUND), SONG(COLEMAK_SOUND) }
+  #endif
 #endif
 
 #ifdef HAPTIC_ENABLE

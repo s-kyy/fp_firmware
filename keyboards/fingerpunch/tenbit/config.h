@@ -25,7 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
 
-#define RGB_DI_PIN A2 // 41
+#define WS2812_DI_PIN A2 // 41
 
 #ifdef RGB_MATRIX_ENABLE
   #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 130  /* The maximum brightness level for RGB_MATRIX */

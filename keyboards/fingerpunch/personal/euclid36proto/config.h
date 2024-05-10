@@ -41,8 +41,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #define SOFT_SERIAL_PIN D0  // or D1, D2, D3, E6
 
-#define RGB_DI_PIN D3
-#ifdef RGB_DI_PIN
+#define WS2812_DI_PIN D3
+#ifdef WS2812_DI_PIN
   #define RGBLED_NUM 13
   #define RGBLIGHT_HUE_STEP 16
   #define RGBLIGHT_SAT_STEP 16

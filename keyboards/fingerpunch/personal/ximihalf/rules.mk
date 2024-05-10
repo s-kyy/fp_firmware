@@ -18,7 +18,7 @@ BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 # Either do RGBLIGHT_ENABLE or RGB_MATRIX_ENABLE and RGB_MATRIX_DRIVER
 RGBLIGHT_ENABLE = no
 RGB_MATRIX_ENABLE = no      # not supported yet, but will add
-RGB_MATRIX_DRIVER = WS2812
+RGB_MATRIX_DRIVER = ws2812
 WS2812_DRIVER = vendor
 
 MIDI_ENABLE = no            # MIDI support
@@ -36,7 +36,7 @@ SERIAL_DRIVER = vendor
 
 #HAPTIC FEEDBACK
 HAPTIC_ENABLE ?= no
-HAPTIC_DRIVER = DRV2605L
+HAPTIC_DRIVER = drv2605l
 
 # Audio doesn't work with RP2040 yet :(
 # Pending https://github.com/qmk/qmk_firmware/pull/17723 and https://github.com/qmk/qmk_firmware/pull/17706

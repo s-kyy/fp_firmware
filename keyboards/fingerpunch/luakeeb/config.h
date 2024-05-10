@@ -35,7 +35,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define USE_SERIAL
 
-#define RGB_DI_PIN D3
+#define WS2812_DI_PIN D3
 #ifdef RGBLIGHT_ENABLE
   #define RGBLIGHT_SPLIT
   #define RGBLED_SPLIT { 21, 21 }

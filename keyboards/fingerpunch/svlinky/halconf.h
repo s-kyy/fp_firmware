@@ -20,4 +20,10 @@
 #define HAL_USE_SPI TRUE
 #define HAL_USE_I2C TRUE
 
+// Specifically for the VIK_TRACKPOINT option
+
+// ARM interrupt mode: https://github.com/qmk/qmk_firmware/blob/master/docs/feature_ps2_mouse.md#interrupt-version-arm-chibios-idinterrupt-version-chibios
+// #define PAL_USE_CALLBACKS TRUE
+// #define PAL_USE_WAIT TRUE
+
 #include_next "halconf.h"

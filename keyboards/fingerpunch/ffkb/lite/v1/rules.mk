@@ -14,14 +14,14 @@ BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 # Either do RGBLIGHT_ENABLE or RGB_MATRIX_ENABLE and RGB_MATRIX_DRIVER
 RGBLIGHT_ENABLE = no
 RGB_MATRIX_ENABLE = no
-RGB_MATRIX_DRIVER = WS2812
+RGB_MATRIX_DRIVER = ws2812
 
 MIDI_ENABLE = no            # MIDI support
 UNICODE_ENABLE = no         # Unicode
 BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 AUDIO_ENABLE = no           # Audio output on port C6
 FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
-ENCODER_ENABLE = no
+ENCODER_ENABLE ?= no
 OLED_ENABLE = no            # this can be yes or no depending on if you have an OLED
 EXTRAFLAGS     += -flto     # macros disabled, as a lot of barobord features require more space, can move this line into all the individual rules.mk, only where needed
                             # for instance, if you build "no_features", it's very unlikely you'll need to disable macros

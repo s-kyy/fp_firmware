@@ -95,18 +95,20 @@ enum combos {
   ZX_WIN,
   XC_ALT,
   CD_CTRL,
-  ST_SFT,
-  ZXCD_CTRL_ALT_SHIFT,
+  AA_SFT,
+  // ZXCD_CTRL_ALT_SHIFT,
   TG_TICK,
   // RIGHT - COLDH
   HDOT_CTRL,
   CDOT_ALT,
   SDOT_WIN,
-  NE_SFT,
-  HCSDOT_CTRL_ALT_SHIFT,
+  OO_SFT,
+  // HCSDOT_CTRL_ALT_SHIFT,
   MN_TILDE,
   // MOUSE SCROLL
   // M_SCROLL,
+  // TN_SFT,
+  SHSH_CAPS,
 
   COMBO_LENGTH, 
 };
@@ -117,33 +119,37 @@ uint16_t COMBO_LEN = COMBO_LENGTH;
 const uint16_t PROGMEM zx_combo[] = {KC_Z, KC_X, COMBO_END};
 const uint16_t PROGMEM xc_combo[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM cd_combo[] = {KC_C, KC_D, COMBO_END};
-const uint16_t PROGMEM st_combo[] = {KC_S, KC_T, COMBO_END};
-const uint16_t PROGMEM zxcd_combo[] = {KC_Z, KC_X, KC_C, KC_D, COMBO_END};
+const uint16_t PROGMEM aa_combo[] = {KC_MS_BTN1, KC_A, COMBO_END};
+// const uint16_t PROGMEM zxcd_combo[] = {KC_Z, KC_X, KC_C, KC_D, COMBO_END};
 const uint16_t PROGMEM tg_combo[] = {KC_T, KC_G, COMBO_END};
 // RIGHT - COLDH
 const uint16_t PROGMEM hd_combo[] = {KC_H, KC_COMM, COMBO_END};
 const uint16_t PROGMEM dc_combo[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM ds_combo[] = {KC_DOT, KC_SLSH, COMBO_END};
-const uint16_t PROGMEM ne_combo[] = {KC_N, KC_E, COMBO_END};
-const uint16_t PROGMEM hdcs_combo[] = {KC_H, KC_COMM, KC_DOT, KC_SLSH, COMBO_END};
+const uint16_t PROGMEM oo_combo[] = {KC_O, KC_QUOT, COMBO_END};
+// const uint16_t PROGMEM hdcs_combo[] = {KC_H, KC_COMM, KC_DOT, KC_SLSH, COMBO_END};
 const uint16_t PROGMEM mn_combo[] = {KC_M, KC_N, COMBO_END};
 // MOUSE SCROLL
 // const uint16_t PROGMEM mm_combo[] = {KC_MS_BTN1, KC_MS_BTN2, COMBO_END};
+// const uint16_t PROGMEM tn_combo[] = {KC_T, KC_N, COMBO_END};
+const uint16_t PROGMEM shsh_combo[] = {KC_MS_BTN1, KC_QUOT, COMBO_END};
 
 combo_t key_combos[] = {
   // LEFT - COLDH
   [ZX_WIN] = COMBO(zx_combo, OSM(MOD_LGUI)),
   [XC_ALT] = COMBO(xc_combo, OSM(MOD_LALT)),
   [CD_CTRL] = COMBO(cd_combo, OSM(MOD_LCTL)),
-  [ST_SFT] = COMBO(st_combo, OSM(MOD_LSFT)),
-  [ZXCD_CTRL_ALT_SHIFT] = COMBO(zxcd_combo, OSM(MOD_MEH)),
+  [AA_SFT] = COMBO(aa_combo, OSM(MOD_LSFT)),
+  // [TN_SFT] = COMBO(tn_combo, OSM(MOD_LSFT)),
+  // [ZXCD_CTRL_ALT_SHIFT] = COMBO(zxcd_combo, OSM(MOD_MEH)),
   [TG_TICK] = COMBO(tg_combo, KC_GRV),
   // RIGHT - COLDH
   [HDOT_CTRL] = COMBO(hd_combo, OSM(MOD_RCTL)),
   [CDOT_ALT] = COMBO(dc_combo, OSM(MOD_LALT)),
   [SDOT_WIN] = COMBO(ds_combo, OSM(MOD_RGUI)),
-  [NE_SFT] = COMBO(ne_combo, OSM(MOD_RSFT)),
-  [HCSDOT_CTRL_ALT_SHIFT] = COMBO(hdcs_combo, OSM(MOD_MEH)),
+  [OO_SFT] = COMBO(oo_combo, OSM(MOD_RSFT)),
+  [SHSH_CAPS] = COMBO(shsh_combo, KC_CAPS),
+  // [HCSDOT_CTRL_ALT_SHIFT] = COMBO(hdcs_combo, OSM(MOD_MEH)),
   [MN_TILDE] = COMBO(mn_combo, KC_TILD)
   // MOUSE SCROLL 
   // [M_SCROLL] = COMBO(mm_combo, FP_SCROLL_MOMENT)
@@ -158,7 +164,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer 0 - Colemak-DH
 // ============================================================
 [_COLEMAK] = LAYOUT_ffkb(
-  KC_ESC,         KC_Q,     KC_W,        KC_F,     KC_P,    KC_B,                  KC_J,   KC_L,    KC_U,     KC_Y,     KC_SCLN,      KC_BSPC,
+  KC_ESC,         KC_Q,     KC_W,        KC_F,     KC_P,    KC_B,                  KC_J,   KC_L,    KC_U,     KC_Y,     OSM(MOD_LSFT),KC_BSPC,
   KC_MS_BTN1,     KC_A,     KC_R,        KC_S,     KC_T,    KC_G,                  KC_M,   KC_N,    KC_E,     KC_I,     KC_O,         KC_QUOT,
   KC_MS_BTN2,     KC_Z,     KC_X,        KC_C,     KC_D,    KC_V,                  KC_K,   KC_H,    KC_COMM,  KC_DOT,   KC_SLSH,      KC_APP,
                   KC_MUTE,  TT(_MOUSE),  LT(_SYM, KC_ENT),   LT(_FN,KC_SPC),      LT(_RGB,KC_TAB), LT(_NAV,KC_SPC),    KC_DEL, KC_RALT
@@ -178,37 +184,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer 2 - SYM_New
 // ============================================================
 [_SYM] = LAYOUT_ffkb(
-  KC_SLEP,    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,      FP_SUPER_TAB, KC_CIRC,  KC_AMPR,  KC_ASTR,   FP_SUPER_CTRL_TAB, KC_DEL,
+  _______,    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,      FP_SUPER_TAB, KC_CIRC,  KC_AMPR,  KC_ASTR,   FP_SUPER_CTRL_TAB, KC_DEL,
   LDESK,      KC_1,    KC_2,    KC_3,    KC_4,    KC_5,         KC_6,         KC_7,     KC_8,     KC_9,      KC_0,              RDESK,
-  KC_CAPS,    KC_PIPE,  KC_LCBR, KC_LBRC, KC_LPRN, KC_BSLS,     KC_SLSH,      KC_RPRN,  KC_MINS,  KC_UNDS,   KC_PLUS,           _______,
-                    _______, _______, _______, _______,         _______,  _______,  _______,  EE_CLR
+  _______,    KC_PIPE,  KC_LCBR, KC_LBRC, KC_LPRN, KC_BSLS,     KC_SLSH,      KC_RPRN,  KC_RBRC,  KC_RCBR,   _______,           _______,
+                    _______, _______, _______, _______,         _______,  KC_MINS,  KC_UNDS,  EE_CLR
 ),
 
 // ============================================================
 // Layer 3 - FN_New
 // ============================================================
 [_FN] = LAYOUT_ffkb(
-  KC_SLEP,    TASKMAN,   C(S(KC_V)),  UNDO,    WPAST,        _______,     KC_NUM,   KC_BRID,  KC_BRIU,  MBEEL,   MEH(KC_P), MBEER,
-  G(S(KC_S)), KC_MYCM,   CUT,         COPY,    PASTE,        C(KC_A),     KC_CALC,  KC_EQL,  KC_RBRC,  KC_RCBR, _______, _______,
+  _______,    TASKMAN,   C(S(KC_V)),  UNDO,    WPAST,        _______,     KC_NUM,   KC_BRID,  KC_BRIU,  MBEEL,   MEH(KC_P), MBEER,
+  G(S(KC_S)), KC_MYCM,   CUT,         COPY,    PASTE,        C(KC_A),     KC_CALC,  KC_EQL,  KC_PLUS,  S(KC_SCLN), KC_SCLN, _______,
   _______,    _______,   C(KC_EQL),   REDO,    C(KC_MINS),   _______,     MBEE,     KC_RPRN,   GITCOMM, GITPUSH, R_ASSIGN, _______,
-                                 _______,  _______, _______, _______,     _______,  _______,  _______,  EE_CLR
+                                 _______,  _______, _______, _______,     _______,  LCTL(KC_MINS),  LCTL(KC_EQL),  EE_CLR
 ),
 
 // ============================================================
 // Layer 4 - NAV_NEW
 // ============================================================
 [_NAV] = LAYOUT_ffkb(
-  KC_SLEP,  _______, KC_PAUS, KC_PSCR, KC_SCRL, _______,     _______,   KC_HOME,      KC_UP,       KC_END,        KC_BSPC,  KC_DEL,
-  _______,  KC_LGUI, KC_LSFT, KC_LCTL, _______, _______,     KC_PGUP,   KC_LEFT,      KC_DOWN,     KC_RGHT,       KC_LALT,   KC_INS,
-  _______,  _______, _______, _______, _______, _______,     KC_PGDN,   C(KC_LEFT),   C(KC_BSPC),  C(KC_RIGHT),   _______,  _______,
-                     QK_BOOT, _______, _______, _______,    _______,     _______,      _______,  _______
+  _______,  _______, KC_PAUS, KC_PSCR, KC_SCRL, LCTL(KC_EQL),      _______,   KC_HOME,      KC_UP,       KC_END,        KC_BSPC,  KC_DEL,
+  _______,  KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, LCTL(KC_MINS),     KC_PGUP,   KC_LEFT,      KC_DOWN,     KC_RGHT,       KC_LALT,   KC_INS,
+  _______,  _______, _______, _______, _______, _______,           KC_PGDN,   C(KC_LEFT),   C(KC_BSPC),  C(KC_RIGHT),   _______,  _______,
+                     QK_BOOT, _______, _______, _______,           _______,     _______,      _______,  _______
 ),
 
 // ============================================================
 // Layer  5 - RGB_NEW
 // ============================================================
 [_RGB] =  LAYOUT_ffkb(
-  KC_SLEP, RGB_TOG, RGB_MOD,  RGB_RMOD, _______,  TO(_COLEMAK),  _______, KC_F7,  KC_F8, KC_F9, KC_F10, KC_F13,
+  _______, RGB_TOG, RGB_MOD,  RGB_RMOD, _______,  TO(_COLEMAK),  _______, KC_F7,  KC_F8, KC_F9, KC_F10, KC_F13,
   _______, RGB_SPI, RGB_HUI,  RGB_SAI,  RGB_VAI,  TO(_QWERTY),   _______, KC_F4,  KC_F5, KC_F6, KC_F11, _______,
   _______, RGB_SPD, RGB_HUD,  RGB_SAD,  RGB_VAD,  EXITPARSEC,    _______, KC_F1,  KC_F2, KC_F3, KC_F12, _______,
                 QK_BOOT, _______,   _______,  _______,            _______,  _______,  _______,  _______
@@ -218,9 +224,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer 6 - Mouse
 // ============================================================
 [_MOUSE] = LAYOUT_ffkb(
-  FP_SNIPE_MOMENT, _______, _______, KC_WH_U,  _______, _______,    _______,  FP_SCROLL_DPI_UP,  _______,  _______, _______, _______,
-  _______, FP_SCROLL_TOG,  KC_MS_BTN2, KC_WH_D,  KC_MS_BTN1, _______,    _______,  FP_SCROLL_DPI_DN,  _______,  _______, _______, _______,
-  _______, _______, _______, _______, _______, _______,         _______,  _______,  FP_SCROLL_DPI_RESET,  _______, _______, _______,
+  _______, _______, _______,    KC_WH_U,  _______,    _______,            _______,  _______,  KC_C,  _______, _______, _______,
+  _______, _______, KC_MS_BTN2, KC_WH_D,  KC_MS_BTN1, _______,            KC_N,  KC_A,  KC_E,  KC_I, KC_O, KC_U,
+  _______, _______, _______, _______, _______, _______,                   KC_PCMM,  KC_QUOT,  KC_GRV,   KC_CIRC, KC_DQUO, _______,
                                    _______, _______, _______, _______,    _______,  _______,  _______,  _______
 ),
 // ============================================================

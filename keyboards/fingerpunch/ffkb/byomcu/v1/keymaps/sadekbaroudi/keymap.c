@@ -23,7 +23,7 @@
 #include QMK_KEYBOARD_H
 
 /*
- * The `LAYOUT_ffkb_base` macro is a template to allow the use of identical
+ * The `LAYOUT_base` macro is a template to allow the use of identical
  * modifiers for the default layouts (eg ALPHA_ALT, Colemak, Dvorak, etc), so
  * that there is no need to set them up for each layout, and modify all of
  * them if I want to change them.  This helps to keep consistency and ease
@@ -31,7 +31,7 @@
  */
 
 // clang-format off
-#define LAYOUT_ffkb_base( \
+#define LAYOUT_base( \
     K01, K02, K03, K04, K05, K06, K07, K08, K09, K0A, \
     K11, K12, K13, K14, K15, K16, K17, K18, K19, K1A, \
     K21, K22, K23, K24, K25, K26, K27, K28, K29, K2A, \
@@ -46,18 +46,18 @@
     )
 
 /* Re-pass though to allow templates to be used */
-#define LAYOUT_ffkb_byomcu_base_wrapper(...)       LAYOUT_ffkb_base(__VA_ARGS__)
+#define LAYOUT_byomcu_base_wrapper(...)       LAYOUT_base(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    [_ALPHA_ALT] = LAYOUT_ffkb_byomcu_base_wrapper(
+    [_ALPHA_ALT] = LAYOUT_byomcu_base_wrapper(
         _________________ALPHA_ALT_L1_________________, _________________ALPHA_ALT_R1_________________,
         _________________ALPHA_ALT_L2_________________, _________________ALPHA_ALT_R2_________________,
         _________________ALPHA_ALT_L3_________________, _________________ALPHA_ALT_R3_________________,
                                              __ALPHA_ALT_THUMBS_6__
     ),
 
-    [_ALPHA] = LAYOUT_ffkb_byomcu_base_wrapper(
+    [_ALPHA] = LAYOUT_byomcu_base_wrapper(
         __________________ALPHA_L1____________________, __________________ALPHA_R1____________________,
         __________________ALPHA_L2____________________, __________________ALPHA_R2____________________,
         __________________ALPHA_L3____________________, __________________ALPHA_R3____________________,

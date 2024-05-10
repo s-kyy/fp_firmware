@@ -163,7 +163,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ============================================================
 // Layer 0 - Colemak-DH
 // ============================================================
-[_COLEMAK] = LAYOUT_ffkb(
+[_COLEMAK] = LAYOUT(
   KC_ESC,         KC_Q,     KC_W,        KC_F,     KC_P,    KC_B,                  KC_J,   KC_L,    KC_U,     KC_Y,     OSM(MOD_LSFT),KC_BSPC,
   KC_MS_BTN1,     KC_A,     KC_R,        KC_S,     KC_T,    KC_G,                  KC_M,   KC_N,    KC_E,     KC_I,     KC_O,         KC_QUOT,
   KC_MS_BTN2,     KC_Z,     KC_X,        KC_C,     KC_D,    KC_V,                  KC_K,   KC_H,    KC_COMM,  KC_DOT,   KC_SLSH,      KC_APP,
@@ -173,7 +173,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ============================================================
 // Layer 1 - QWERTY
 // ============================================================
-[_QWERTY] = LAYOUT_ffkb(
+[_QWERTY] = LAYOUT(
   _______, KC_Q,   KC_W,   KC_E,     KC_R,     KC_T,    KC_Y,                KC_U,     KC_I,     KC_O,     KC_P,       _______,
   _______, KC_A,   KC_S,   KC_D,     KC_F,     KC_G,    KC_H,                KC_J,     KC_K,     KC_L,     KC_SCLN,    _______,
   _______, KC_Z,   KC_X,   KC_C,     KC_V,     KC_B,    KC_N,                KC_M,     _______,  _______,  _______,    _______,
@@ -183,7 +183,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ============================================================
 // Layer 2 - SYM_New
 // ============================================================
-[_SYM] = LAYOUT_ffkb(
+[_SYM] = LAYOUT(
   _______,    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,      FP_SUPER_TAB, KC_CIRC,  KC_AMPR,  KC_ASTR,   FP_SUPER_CTRL_TAB, KC_DEL,
   LDESK,      KC_1,    KC_2,    KC_3,    KC_4,    KC_5,         KC_6,         KC_7,     KC_8,     KC_9,      KC_0,              RDESK,
   _______,    KC_PIPE,  KC_LCBR, KC_LBRC, KC_LPRN, KC_BSLS,     KC_SLSH,      KC_RPRN,  KC_RBRC,  KC_RCBR,   _______,           _______,
@@ -193,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ============================================================
 // Layer 3 - FN_New
 // ============================================================
-[_FN] = LAYOUT_ffkb(
+[_FN] = LAYOUT(
   _______,    TASKMAN,   C(S(KC_V)),  UNDO,    WPAST,        _______,     KC_NUM,   KC_BRID,  KC_BRIU,  MBEEL,   MEH(KC_P), MBEER,
   G(S(KC_S)), KC_MYCM,   CUT,         COPY,    PASTE,        C(KC_A),     KC_CALC,  KC_EQL,  KC_PLUS,  S(KC_SCLN), KC_SCLN, _______,
   _______,    _______,   C(KC_EQL),   REDO,    C(KC_MINS),   _______,     MBEE,     KC_RPRN,   GITCOMM, GITPUSH, R_ASSIGN, _______,
@@ -203,7 +203,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ============================================================
 // Layer 4 - NAV_NEW
 // ============================================================
-[_NAV] = LAYOUT_ffkb(
+[_NAV] = LAYOUT(
   _______,  _______, KC_PAUS, KC_PSCR, KC_SCRL, LCTL(KC_EQL),      _______,   KC_HOME,      KC_UP,       KC_END,        KC_BSPC,  KC_DEL,
   _______,  KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, LCTL(KC_MINS),     KC_PGUP,   KC_LEFT,      KC_DOWN,     KC_RGHT,       KC_LALT,   KC_INS,
   _______,  _______, _______, _______, _______, _______,           KC_PGDN,   C(KC_LEFT),   C(KC_BSPC),  C(KC_RIGHT),   _______,  _______,
@@ -213,7 +213,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ============================================================
 // Layer  5 - RGB_NEW
 // ============================================================
-[_RGB] =  LAYOUT_ffkb(
+[_RGB] =  LAYOUT(
   _______, RGB_TOG, RGB_MOD,  RGB_RMOD, _______,  TO(_COLEMAK),  _______, KC_F7,  KC_F8, KC_F9, KC_F10, KC_F13,
   _______, RGB_SPI, RGB_HUI,  RGB_SAI,  RGB_VAI,  TO(_QWERTY),   _______, KC_F4,  KC_F5, KC_F6, KC_F11, _______,
   _______, RGB_SPD, RGB_HUD,  RGB_SAD,  RGB_VAD,  EXITPARSEC,    _______, KC_F1,  KC_F2, KC_F3, KC_F12, _______,
@@ -223,7 +223,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ============================================================
 // Layer 6 - Mouse
 // ============================================================
-[_MOUSE] = LAYOUT_ffkb(
+[_MOUSE] = LAYOUT(
   _______, _______, _______,    KC_WH_U,  _______,    _______,            _______,  _______,  KC_C,  _______, _______, _______,
   _______, _______, KC_MS_BTN2, KC_WH_D,  KC_MS_BTN1, _______,            KC_N,  KC_A,  KC_E,  KC_I, KC_O, KC_U,
   _______, _______, _______, _______, _______, _______,                   KC_PCMM,  KC_QUOT,  KC_GRV,   KC_CIRC, KC_DQUO, _______,
@@ -233,7 +233,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Empty Layer
 // ============================================================
 
-[_NEW_SAFE_LAYER] = LAYOUT_ffkb(
+[_NEW_SAFE_LAYER] = LAYOUT(
   _______, _______, _______, _______, _______, _______,         _______,  _______,  _______,  _______, _______, _______,
   _______, _______, _______, _______, _______, _______,         _______,  _______,  _______,  _______, _______, _______,
   _______, _______, _______, _______, _______, _______,         _______,  _______,  _______,  _______, _______, _______,

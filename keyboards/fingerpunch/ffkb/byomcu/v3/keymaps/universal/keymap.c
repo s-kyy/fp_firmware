@@ -67,7 +67,7 @@ enum combos {
   // RIGHT - COLDH
   SDOT_WIN,
   MN_TILDE,
-  SHSH_CAPS,
+  GM_CAPS,
 
   COMBO_LENGTH, 
 };
@@ -83,7 +83,7 @@ const uint16_t PROGMEM tg_combo[] = {KC_T, KC_G, COMBO_END};
 const uint16_t PROGMEM ds_combo[] = {KC_DOT, KC_SLSH, COMBO_END};
 const uint16_t PROGMEM mn_combo[] = {KC_M, KC_N, COMBO_END};
 // MOUSE SCROLL
-const uint16_t PROGMEM shsh_combo[] = {KC_MS_BTN1, KC_QUOT, COMBO_END};
+const uint16_t PROGMEM gm_combo[] = {KC_G, KC_M, COMBO_END};
 
 combo_t key_combos[] = {
   // LEFT - COLDH
@@ -94,7 +94,7 @@ combo_t key_combos[] = {
   [SDOT_WIN] = COMBO(ds_combo, OSM(MOD_RGUI)),
   [MN_TILDE] = COMBO(mn_combo, KC_TILD),
   // BOTH - COLDH
-  [SHSH_CAPS] = COMBO(shsh_combo, KC_CAPS)
+  [GM_CAPS] = COMBO(gm_combo, KC_CAPS)
 };
 
 // ============================================================
@@ -116,18 +116,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer 1 - QWERTY
 // ============================================================
 [_QWERTY] = LAYOUT(
-  _______, KC_Q,   KC_W,   KC_E,     KC_R,     KC_T,    KC_Y,                KC_U,     KC_I,     KC_O,     KC_P,       _______,
+  KC_TAB,  KC_Q,   KC_W,   KC_E,     KC_R,     KC_T,    KC_Y,                KC_U,     KC_I,     KC_O,     KC_P,       _______,
   _______, KC_A,   KC_S,   KC_D,     KC_F,     KC_G,    KC_H,                KC_J,     KC_K,     KC_L,     KC_SCLN,    _______,
-  _______, KC_Z,   KC_X,   KC_C,     KC_V,     KC_B,    KC_N,                KC_M,     _______,  _______,  _______,    _______,
-                _______,  _______,   LT(_SYM,KC_SPC),   LT(_MCR, KC_ENT),    KC_SPC,  _______,  TO(_COLEMAK),  _______
+  _______, KC_Z,   KC_X,   KC_C,     KC_V,     KC_B,    KC_N,                KC_M,     _______,  _______,  _______,    KC_BTN2,
+                _______,  _______,   LT(_SYM,KC_SPC),   LT(_MCR, KC_ENT),    KC_SPC,  _______,  _______,  _______
 ),
 
 // ============================================================
 // Layer 2 - SYM_New
 // ============================================================
 [_SYM] = LAYOUT(
-  _______, KC_LBRC, KC_7,    KC_8,     KC_9, KC_RBRC,         KC_CALC,     FP_SUPER_TAB,  FP_SUPER_CTRL_TAB,   _______,        KC_BSPC,       KC_DEL,
-  LDESK,   KC_EQL,  KC_1,    KC_2,    KC_3, KC_0,            G(S(KC_S)),  OSM(MOD_LCTL), OSM(MOD_LSFT),       OSM(MOD_LALT),  OSM(MOD_LGUI), RDESK,
+  KC_ESC,  KC_LBRC, KC_7,    KC_8,     KC_9, KC_RBRC,        _______,     FP_SUPER_TAB,  FP_SUPER_CTRL_TAB,   _______,        KC_BSPC,       KC_DEL,
+  LDESK,   KC_EQL,  KC_1,    KC_2,    KC_3, KC_0,            KC_CALC,  OSM(MOD_LCTL), OSM(MOD_LSFT),       OSM(MOD_LALT),  OSM(MOD_LGUI), RDESK,
   _______, KC_PIPE, KC_4,    KC_5,    KC_6, KC_MINS,         _______,     KC_UNDS,       KC_SCLN,             _______,        KC_BSLS, _______,
                     _______, _______, _______, _______,      _______,     KC_MINS,  KC_UNDS,  EE_CLR
 ),
@@ -136,18 +136,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer 3 - FN_New
 // ============================================================
 [_MCR] = LAYOUT(
-  _______,  TASKMAN,  C(S(KC_V)), UNDO,   WPAST,        TO(_QWERTY),      KC_NUM,   KC_BRID,  KC_BRIU,  MBEEVU, MBEEVD, _______, 
-  _______,  _______,  CUT,        COPY,   PASTE,        C(KC_A),          KC_BTN3,  MBEEL,   MEH(KC_P), MBEER,   MBEE,    _______,
-  _______,  _______,  KC_MYCM,    REDO,   G(S(KC_S)),   _______,          _______,  KC_PSCR,   KC_SCRL, KC_PAUS, _______, _______,
-                                 _______,  _______, _______, _______,     _______,  C(KC_MINS),  C(KC_EQL),  EE_CLR
+  KC_ESC,   TASKMAN,  C(S(KC_V)), UNDO,   WPAST,        TO(_QWERTY),      KC_NUM,   KC_BRID,  KC_BRIU,  MBEEVD, MBEEVU, KC_DEL, 
+  _______,  _______,  CUT,        COPY,   PASTE,        C(KC_A),          _______,  MBEEL,   MEH(KC_P), MBEER,   MBEE,    _______,
+  _______,  _______,  KC_MYCM,    REDO,   G(S(KC_S)),   TO(_COLEMAK),          _______,  KC_PSCR,   KC_SCRL, KC_PAUS, _______, _______,
+                                 _______,  _______, _______, _______,     KC_BTN3,  C(KC_MINS),  C(KC_EQL),  EE_CLR
 ),
 
 // ============================================================
 // Layer 4 - NAV_NEW
 // ============================================================
 [_NAV] = LAYOUT(
-  EXITPARSEC,  _______, RGB_TOG, RGB_MOD, RGB_RMOD, _______,                                KC_INS,  KC_HOME,   KC_UP,    KC_END,   KC_BSPC,  KC_DEL,
-  _______,     OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LSFT), OSM(MOD_LCTL), OSM(MOD_MEH),    KC_PGUP, KC_LEFT,   KC_DOWN,  KC_RGHT,  KC_PGDN,  _______,
+  KC_ESC,      _______, RGB_TOG, RGB_MOD, RGB_RMOD, EXITPARSEC,                             KC_PGUP, KC_HOME,   KC_UP,    KC_END,   KC_DEL,   _______,
+  _______,     OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LSFT), OSM(MOD_LCTL), OSM(MOD_MEH),    KC_PGDN, KC_LEFT,   KC_DOWN,  KC_RGHT,  KC_BSPC,  KC_INS,
   KC_F12,      KC_F1,  KC_F2, KC_F3, KC_F4,  KC_F5,                                         KC_F6,   KC_F7,     KC_F8,    KC_F9,    KC_F10,   KC_F11,
                      QK_BOOT, _______, _______, _______,                                    _______, _______,   _______,  _______
 ),
@@ -231,11 +231,11 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 // ============================================================
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     if (host_keyboard_led_state().caps_lock) {
-        RGB_MATRIX_INDICATOR_SET_COLOR(1, 242, 242, 0); // CAPSLOCK ON | yellow / MCORRICK PAINTS CORAL #f2bfb4 https://encycolorpedia.com/f2bfb4
-        RGB_MATRIX_INDICATOR_SET_COLOR(40, 242, 242, 0); // CAPSLOCK ON | yellow / MCORRICK PAINTS CORAL #f2bfb4 https://encycolorpedia.com/f2bfb4
+        RGB_MATRIX_INDICATOR_SET_COLOR(16, 242, 242, 0); // CAPSLOCK ON | yellow / MCORRICK PAINTS CORAL #f2bfb4 https://encycolorpedia.com/f2bfb4
+        RGB_MATRIX_INDICATOR_SET_COLOR(25, 242, 242, 0); // CAPSLOCK ON | yellow / MCORRICK PAINTS CORAL #f2bfb4 https://encycolorpedia.com/f2bfb4
     } else {
-        RGB_MATRIX_INDICATOR_SET_COLOR(1, 0, 0, 0); // CAPSLOCK OFF | BLANK
-        RGB_MATRIX_INDICATOR_SET_COLOR(40, 0, 0, 0); // CAPSLOCK OFF | BLANK
+        RGB_MATRIX_INDICATOR_SET_COLOR(16, 0, 0, 0); // CAPSLOCK OFF | BLANK
+        RGB_MATRIX_INDICATOR_SET_COLOR(25, 0, 0, 0); // CAPSLOCK OFF | BLANK
     }
     if (host_keyboard_led_state().num_lock) {
         // RGB_MATRIX_INDICATOR_SET_COLOR(26, 242, 191, 180); // NUMLOCK ON | Reaper Master New Gold (9051) #e7bd42 https://encycolorpedia.com/e7bd42

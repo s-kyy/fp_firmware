@@ -27,6 +27,8 @@
  */
 
 // With the shift register, define the columns in the order of A-H as defined in the schematic
+// When comparing the v3.c, shift the columns by 1, for example first column here references the last column, 
+// Second column here references column 2 in the other file.
 #define LAYOUT( \
     K01, K02, K03, K04, K05, K06,           K07, K08, K09, K0A, K0B, K0C, \
     K11, K12, K13, K14, K15, K16,           K17, K18, K19, K1A, K1B, K1C, \

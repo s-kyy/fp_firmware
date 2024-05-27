@@ -126,10 +126,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer 2 - SYM_New
 // ============================================================
 [_SYM] = LAYOUT(
-  KC_ESC,  KC_LBRC, KC_7,    KC_8,     KC_9, KC_RBRC,        _______,     FP_SUPER_TAB,  FP_SUPER_CTRL_TAB,   _______,        KC_BSPC,       KC_DEL,
-  LDESK,   KC_EQL,  KC_1,    KC_2,    KC_3, KC_0,            KC_CALC,  OSM(MOD_LCTL), OSM(MOD_LSFT),       OSM(MOD_LALT),  OSM(MOD_LGUI), RDESK,
-  _______, KC_PIPE, KC_4,    KC_5,    KC_6, KC_MINS,         _______,     KC_UNDS,       KC_SCLN,             _______,        KC_BSLS, _______,
-                    _______, _______, _______, _______,      _______,     KC_MINS,  KC_UNDS,  EE_CLR
+  KC_ESC,  KC_BSPC, KC_7,    KC_8,    KC_9, KC_TAB,         _______, KC_MINS,  KC_UNDS, KC_EQL, KC_PLUS, KC_DEL,
+  LDESK,   KC_PIPE, KC_1,    KC_2,    KC_3, KC_0,           KC_CALC, KC_LPRN, KC_RPRN,  KC_LBRC, KC_RBRC, RDESK,
+  _______, _______, KC_4,    KC_5,    KC_6, KC_DOT,         _______, OSM(MOD_LSFT), OSM(MOD_LCTL), OSM(MOD_LALT), KC_BSLS, _______,
+                    _______, _______, _______, _______,     _______, FP_SUPER_TAB,  FP_SUPER_CTRL_TAB,  EE_CLR
 ),
 
 // ============================================================
@@ -138,7 +138,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_MCR] = LAYOUT(
   KC_ESC,   TASKMAN,  C(S(KC_V)), UNDO,   WPAST,        TO(_QWERTY),      KC_NUM,   KC_BRID,  KC_BRIU,  MBEEVD, MBEEVU, KC_DEL, 
   _______,  _______,  CUT,        COPY,   PASTE,        C(KC_A),          _______,  MBEEL,   MEH(KC_P), MBEER,   MBEE,    _______,
-  _______,  _______,  KC_MYCM,    REDO,   G(S(KC_S)),   TO(_COLEMAK),          _______,  KC_PSCR,   KC_SCRL, KC_PAUS, _______, _______,
+  _______,  _______,  KC_MYCM,    REDO,   G(S(KC_S)),   TO(_COLEMAK),     _______,  KC_PSCR,   KC_SCRL, KC_PAUS, _______, _______,
                                  _______,  _______, _______, _______,     KC_BTN3,  C(KC_MINS),  C(KC_EQL),  EE_CLR
 ),
 
@@ -146,8 +146,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer 4 - NAV_NEW
 // ============================================================
 [_NAV] = LAYOUT(
-  KC_ESC,      _______, RGB_TOG, RGB_MOD, RGB_RMOD, EXITPARSEC,                             KC_PGUP, KC_HOME,   KC_UP,    KC_END,   KC_DEL,   _______,
-  _______,     OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LSFT), OSM(MOD_LCTL), OSM(MOD_MEH),    KC_PGDN, KC_LEFT,   KC_DOWN,  KC_RGHT,  KC_BSPC,  KC_INS,
+  KC_ESC,      RGB_TOG, RGB_MOD, RGB_RMOD, RGB_HUD, RGB_HUI,                                KC_PGUP, KC_HOME,   KC_UP,    KC_END,   KC_DEL,   _______,
+  EXITPARSEC,  OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LSFT), OSM(MOD_LCTL), OSM(MOD_MEH),    KC_PGDN, KC_LEFT,   KC_DOWN,  KC_RGHT,  KC_BSPC,  KC_INS,
   KC_F12,      KC_F1,  KC_F2, KC_F3, KC_F4,  KC_F5,                                         KC_F6,   KC_F7,     KC_F8,    KC_F9,    KC_F10,   KC_F11,
                      QK_BOOT, _______, _______, _______,                                    _______, _______,   _______,  _______
 ),

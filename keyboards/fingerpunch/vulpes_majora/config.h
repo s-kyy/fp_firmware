@@ -31,7 +31,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define DEFAULT_RGB_LAYER_MODE RGBLIGHT_MODE_TWINKLE+2
 
   // 6 column rgb config
-  #define RGBLED_NUM 45
+  #define RGBLIGHT_LED_COUNT 45
   #define RGBLIGHT_HUE_STEP 4
   #define RGBLIGHT_SAT_STEP 8
   #define RGBLIGHT_VAL_STEP 16
@@ -39,26 +39,26 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   // 6 column rgb config with center leds
   #ifdef FP_VM_RGB_6COL_WITH_CENTER
-    #undef RGBLED_NUM
-    #define RGBLED_NUM 49
+    #undef RGBLIGHT_LED_COUNT
+    #define RGBLIGHT_LED_COUNT 49
   #endif
 
   // 5 column rgb config
   #ifdef FP_VM_RGB_5COL
-    #undef RGBLED_NUM
-    #define RGBLED_NUM 39
+    #undef RGBLIGHT_LED_COUNT
+    #define RGBLIGHT_LED_COUNT 39
   #endif
 
   // 5 column rgb config with center leds
   #ifdef FP_VM_RGB_5COL_WITH_CENTER
-    #undef RGBLED_NUM
-    #define RGBLED_NUM 43
+    #undef RGBLIGHT_LED_COUNT
+    #define RGBLIGHT_LED_COUNT 43
   #endif
 
   // VIK only rgb config
   #ifdef FP_VM_RGB_CENTER_ONLY
-    #undef RGBLED_NUM
-    #define RGBLED_NUM 4
+    #undef RGBLIGHT_LED_COUNT
+    #define RGBLIGHT_LED_COUNT 4
     #undef RGBLIGHT_LIMIT_VAL
     #define RGBLIGHT_LIMIT_VAL 255
   #endif

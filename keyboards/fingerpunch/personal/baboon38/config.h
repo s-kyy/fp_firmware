@@ -32,3 +32,5 @@
     // To dynamically control the backlight with BL_TOGG keycode
     #define BACKLIGHT_PIN GP24
 #endif
+
+#include "keyboards/fingerpunch/src/config_post.h"

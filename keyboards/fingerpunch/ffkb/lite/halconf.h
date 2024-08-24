@@ -17,7 +17,7 @@
 
 #pragma once
 
-#ifdef FP_CONVERT_TO_SVLINKY
+#if defined(FP_CONVERT_TO_SVLINKY_V01) || defined(FP_CONVERT_TO_SVLINKY_V02)
 #define HAL_USE_SPI TRUE
 #define HAL_USE_I2C TRUE
 #endif

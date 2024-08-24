@@ -19,6 +19,11 @@
 #ifdef QUANTUM_PAINTER_ENABLE
 #include "qp.h"
 
+
+#ifdef VIK_ILI9341
+#include "keyboards/fingerpunch/src/display/ili9341.h"
+#endif
+
 #ifdef VIK_WEACT_ST7735
 #include "keyboards/fingerpunch/src/display/st7735.h"
 #endif
@@ -51,7 +56,7 @@ void fp_post_init_qp(void) {
 
 /**
  * Display text on the screen in a specified location.
- * 
+ *
  * @param text The text to display
  * @param location The location to display the text, must use one of the FP_QP_* constants
  */
@@ -100,7 +105,7 @@ void fp_qp_display_text(char* text, int location) {
 //     lv_arc_set_value(obj, v);
 // }
 
-/** 
+/**
  * Create an arc which acts as a loader.
  */
 void fp_qp_load_initial_screen(void) {

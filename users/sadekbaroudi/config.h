@@ -172,8 +172,8 @@
 
 // To enable this, just pass RGB_LED_RING=yes at the command line when building
 #if defined(RGBLIGHT_ENABLE) && defined(RGB_LED_RING)
-#undef RGBLED_NUM
-#define RGBLED_NUM 12
+#undef RGBLIGHT_LED_COUNT
+#define RGBLIGHT_LED_COUNT 12
 #endif
 
 // To enable this, just pass RGB_MATRIX_BAND_VAL_LAYERS=yes at the command line when building

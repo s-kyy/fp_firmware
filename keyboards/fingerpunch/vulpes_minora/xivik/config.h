@@ -26,9 +26,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef FP_XIVIK_V01
     #define MATRIX_ROW_PINS { GP1, GP24, GP9, GP8 }
     #define MATRIX_COL_PINS { GP2, GP3, GP4, GP5, GP6 }
-#else
+#elif defined(FP_XIVIK_V02)
     #define MATRIX_ROW_PINS { GP1, GP23, GP20, GP22 }
     #define MATRIX_COL_PINS { GP2, GP3, GP5, GP6, GP4 }
+#else // If we're here, it's v03
+    #define MATRIX_ROW_PINS { GP1, GP23, GP20, GP22 }
+    #define MATRIX_COL_PINS { GP2, GP3, GP6, GP7, GP4 }
 #endif
 
 // VIK pin config
@@ -41,32 +44,42 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef FP_XIVIK_V01
     #define VIK_I2C_SDA_PIN   GP22
     #define VIK_I2C_SCL_PIN   GP23
-#else
+#else // v0.2 or v0.3
     #define VIK_I2C_SDA_PIN   GP8
     #define VIK_I2C_SCL_PIN   GP9
 #endif
+#if defined(FP_XIVIK_V01) || defined(FP_XIVIK_V02)
 #define VIK_GPIO_1        GP18
 #define VIK_GPIO_2        GP10
+#else // If we're here, it's v03
+#define VIK_GPIO_1        GP26
+#define VIK_GPIO_2        GP27
+#endif
 #define VIK_WS2812_DI_PIN GP16
 
-// Used only if you have a weact st7735 display, set to unused pin
-#define VIK_ST7735_UNUSED_PIN GP11
+// Used only if you have a display with RESET unconnected, set to unused pin
+#define VIK_DISPLAY_RST_UNUSED_PIN GP11
 
 // Split config
 #define SERIAL_PIO_USE_PIO1
 #ifdef FP_XIVIK_V01
     #define SERIAL_USART_TX_PIN GP7
-#else
+#else // v0.2 or v0.3
     // USART TX pin
     #define SERIAL_USART_TX_PIN GP21
 #endif
 
 #define WS2812_DI_PIN GP0
 
+// For VIK modules with encoders
 #ifdef ENCODER_ENABLE
-    // In case there is a VIK module that has an encode
-    #define ENCODERS_PAD_A { GP18 }
-    #define ENCODERS_PAD_B { GP10 }
+#if defined(FP_XIVIK_V01) || defined(FP_XIVIK_V02)
+#define ENCODERS_PAD_A { GP18 }
+#define ENCODERS_PAD_B { GP10 }
+#else // If we're here, it's v03
+#define ENCODERS_PAD_A { GP26 }
+#define ENCODERS_PAD_B { GP27 }
+#endif
 #endif
 
 #ifdef CIRQUE_ENABLE

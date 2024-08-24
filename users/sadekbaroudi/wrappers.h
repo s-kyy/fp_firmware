@@ -131,6 +131,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_ximi
 #endif
 
+// Since ximega uses the name LAYOUT_ximega instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_ximega))
+#    define LAYOUT LAYOUT_ximega
+#endif
+
 // Since badwings uses the name LAYOUT_badwings instead of LAYOUT
 #if (!defined(LAYOUT) && defined(LAYOUT_badwings))
 #    define LAYOUT LAYOUT_badwings
@@ -199,6 +204,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 // Since LAYOUT_kucheza uses the name LAYOUT_kucheza instead of LAYOUT
 #if (!defined(LAYOUT) && defined(LAYOUT_kucheza))
 #    define LAYOUT LAYOUT_kucheza
+#endif
+
+// Since LAYOUT_le_chiffre_democratique uses the name LAYOUT_le_chiffre_democratique instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_le_chiffre_democratique))
+#    define LAYOUT LAYOUT_le_chiffre_democratique
 #endif
 
 // clang-format off

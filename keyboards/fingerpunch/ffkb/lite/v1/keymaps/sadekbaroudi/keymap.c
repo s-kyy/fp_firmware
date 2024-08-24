@@ -80,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_MEDIA] = LAYOUT_wrapper(
-        _______, ___________________RGB_1___________________, _________________MACROS_1__________________, _______,
+        _______, ___________________RGB_1___________________, __MACROS_1_K1__, __MACROS_1_K2__, __MACROS_1_K3__, __MACROS_1_K4__, HF_TOGG, _______,
         _______, ___________________RGB_2___________________, _________________MACROS_2__________________, _______,
         _______, ___________________RGB_3___________________, _________________MACROS_3__________________, _______,
                                    _______, _______, _______, _______, _______, _______
@@ -94,4 +94,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
-
+// For my FFKB_LITE_SOLENOID build
+#ifdef HAPTIC_ENABLE
+bool get_haptic_enabled_key_user(uint16_t keycode, keyrecord_t *record) {
+    return true;
+}
+#endif

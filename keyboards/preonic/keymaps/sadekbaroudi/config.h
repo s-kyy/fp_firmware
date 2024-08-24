@@ -27,8 +27,8 @@
 /* ws2812 RGB LED */
 #undef RGB_DI_PIN
 #define RGB_DI_PIN B3 
-#undef RGBLED_NUM
-#define RGBLED_NUM 16      // Number of LEDs
+#undef RGBLIGHT_LED_COUNT
+#define RGBLIGHT_LED_COUNT 16      // Number of LEDs
 
 // See rgb_stuff.c for how these are applied - I wanted to flip these for my red themed keycaps
 #define BASE_LAYER_RGB_HUE 0

@@ -45,7 +45,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define WS2812_DI_PIN GP0
 
-#define VIK_ST7735_UNUSED_PIN GP11
+// Used only if you have a display with RESET unconnected, set to unused pin
+#define VIK_DISPLAY_RST_UNUSED_PIN GP11
 
 // https://github.com/sadekbaroudi/vik/tree/master/pcb/pers60-cirque-leds or https://github.com/sadekbaroudi/vik/tree/master/pcb/pers60-pmw3360-leds
 #ifdef FP_VIK_PERS60_MODULE

@@ -35,3 +35,7 @@ SERIAL_DRIVER = vendor
 ifeq ($(strip $(FP_XIVIK_V01)), yes)
    OPT_DEFS += -DFP_XIVIK_V01
 endif
+
+ifeq ($(strip $(FP_XIVIK_V02)), yes)
+   OPT_DEFS += -DFP_XIVIK_V02
+endif

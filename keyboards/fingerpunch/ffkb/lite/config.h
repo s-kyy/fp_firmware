@@ -29,7 +29,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef RGBLIGHT_ENABLE
   // #define DEFAULT_RGB_LAYER_MODE RGBLIGHT_MODE_TWINKLE+2
   #define WS2812_BYTE_ORDER WS2812_BYTE_ORDER_RGB
-  #define RGBLED_NUM 2
+  #define RGBLIGHT_LED_COUNT 2
   #define RGBLIGHT_HUE_STEP 16
   #define RGBLIGHT_SAT_STEP 16
   #define RGBLIGHT_VAL_STEP 16
@@ -51,7 +51,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
 
-#ifdef FP_CONVERT_TO_SVLINKY
+#if defined(FP_CONVERT_TO_SVLINKY_V01) || defined(FP_CONVERT_TO_SVLINKY_V02)
 // VIK pin config
 #define VIK_SPI_DRIVER    SPID1
 #define VIK_SPI_SCK_PIN   GP14
@@ -61,8 +61,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VIK_I2C_DRIVER    I2CD1
 #define VIK_I2C_SDA_PIN   GP10
 #define VIK_I2C_SCL_PIN   GP11
+#ifdef FP_CONVERT_TO_SVLINKY_V01
 #define VIK_GPIO_1        GP18
 #define VIK_GPIO_2        GP24
+#else // svlinky v0.2
+#define VIK_GPIO_1        GP26
+#define VIK_GPIO_2        GP27
+#endif
 #define VIK_WS2812_DI_PIN GP16
 
 #ifdef VIK_EC11_EVQWGD001

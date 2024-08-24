@@ -63,3 +63,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define I2C1_CLOCK_SPEED  400000
   #define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2
 #endif
+
+#include "keyboards/fingerpunch/src/config_post.h"

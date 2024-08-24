@@ -42,7 +42,7 @@
 
 #define RGB_DI_PIN F4
 #ifdef RGB_DI_PIN
-  #define RGBLED_NUM 13
+  #define RGBLIGHT_LED_COUNT 13
   #define RGBLIGHT_HUE_STEP 16
   #define RGBLIGHT_SAT_STEP 16
   #define RGBLIGHT_VAL_STEP 16

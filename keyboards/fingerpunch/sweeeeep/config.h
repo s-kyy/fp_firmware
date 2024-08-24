@@ -47,7 +47,7 @@
 
 #define WS2812_DI_PIN D3
 #ifdef RGBLIGHT_ENABLE
-  #define RGBLED_NUM 36
+  #define RGBLIGHT_LED_COUNT 36
   #define RGBLED_SPLIT {18, 18}
   #define RGBLIGHT_HUE_STEP 16
   #define RGBLIGHT_SAT_STEP 16
@@ -93,3 +93,5 @@
 
 /* Backwards compatibility with existing out-of-tree keymaps */
 #define LAYOUT_sweeeeep LAYOUT_split_3x5_3
+
+#include "keyboards/fingerpunch/src/config_post.h"

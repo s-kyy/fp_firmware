@@ -1,3 +1,3 @@
 #ifdef VIK_ENABLE
-    #include "keyboards/fingerpunch/src/vik/config.h"
+    #include "keyboards/fingerpunch/src/vik/config.vik.post.h"
 #endif

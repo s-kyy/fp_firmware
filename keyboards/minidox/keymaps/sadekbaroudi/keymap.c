@@ -111,7 +111,7 @@ bool rgb_base_layer_keymap(layer_state_t state) {
 
     // Instead of having two separate firmware files, you can use these two lines, but they are a bit buggier
     //rgblight_sethsv_range(HSV_PURPLE, 0, 9);
-    //rgblight_sethsv_range(16, 255, 255, 9, RGBLED_NUM);
+    //rgblight_sethsv_range(16, 255, 255, 9, RGBLIGHT_LED_COUNT);
     #endif
 
     return true;

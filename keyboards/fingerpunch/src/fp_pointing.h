@@ -47,6 +47,7 @@ void fp_zoom_keycode_toggle(void);
 void fp_zoom_keycode_set(bool zoom_value);
 bool fp_zoom_keycode_get(void);
 uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg);
+report_mouse_t fp_pre_process_scrolling_report(report_mouse_t mouse_report);
 layer_state_t fp_layer_state_set_pointing(layer_state_t state);
 bool fp_process_record_pointing(uint16_t keycode, keyrecord_t *record);
 
@@ -98,6 +99,10 @@ bool fp_process_record_pointing(uint16_t keycode, keyrecord_t *record);
 
 #    ifndef FP_POINTING_SCROLLING_DPI
 #        define FP_POINTING_SCROLLING_DPI 2
+#    endif
+
+#    ifndef FP_POINTING_SCROLLING_THRESHOLD
+#        define FP_POINTING_SCROLLING_THRESHOLD 10
 #    endif
 
 #    ifndef FP_POINTING_SCROLLING_LAYER

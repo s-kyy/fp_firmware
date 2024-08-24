@@ -23,14 +23,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_COLS 12
 
 // wiring
-#ifdef FP_CONVERT_TO_SVLINKY
+#ifdef FP_CONVERT_TO_SVLINKY_V01
 #define MATRIX_ROW_PINS \
     { GP0, GP1, GP23, GP21 }
 #define MATRIX_COL_PINS \
     { GP8, GP7, GP6, GP5, GP4, GP9, GP29, GP28, GP27, GP26, GP22, GP20 }
+#elif defined(FP_CONVERT_TO_SVLINKY_V02)
+#define MATRIX_ROW_PINS \
+    { GP0, GP1, GP23, GP21 }
+#define MATRIX_COL_PINS \
+    { GP8, GP7, GP6, GP5, GP4, GP9, GP29, GP28, GP18, GP24, GP22, GP20 }
 #else
 #define MATRIX_ROW_PINS \
     { D3, D2, B2, B6 }
 #define MATRIX_COL_PINS \
     { B4, E6, D7, C6, D4, B5, F4, F5, F6, F7, B1, B3 }
 #endif
+
+#include "keyboards/fingerpunch/src/config_post.h"

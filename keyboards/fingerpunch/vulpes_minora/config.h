@@ -39,11 +39,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define RGBLIGHT_SPLIT
     #if defined(VIK_PER56_CIRQUE_LEDS) || defined(VIK_PER56_PMW3360_LEDS) || defined(VIK_EC11_EVQWGD001)
     #define RGBLED_SPLIT { 10, 6 }
-    #define RGBLED_NUM 16
+    #define RGBLIGHT_LED_COUNT 16
     #define RGBLIGHT_LED_MAP { 5, 4, 3, 2, 1, 0, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 }
     #else
     #define RGBLED_SPLIT { 6, 6 }
-    #define RGBLED_NUM 12
+    #define RGBLIGHT_LED_COUNT 12
     #define RGBLIGHT_LED_MAP { 5, 4, 3, 2, 1, 0, 6, 7, 8, 9, 10, 11 }
     #endif
     #define RGBLIGHT_HUE_STEP 16
@@ -67,7 +67,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define RGB_MATRIX_SPLIT { 6, 6 }
     #define RGB_MATRIX_LED_COUNT 12
     #define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
-    #define RGB_DISABLE_WHEN_USB_SUSPENDED
+    #define RGB_MATRIX_SLEEP
     #define RGB_MATRIX_KEYPRESSES
     #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
     #define RGB_MATRIX_KEYREACTIVE_ENABLED

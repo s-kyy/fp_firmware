@@ -4,3 +4,7 @@
 #ifdef POINTING_DEVICE_ENABLE
 #define PMW33XX_CPI 1000
 #endif
+
+#ifdef VIK_ENABLE
+    #include "keyboards/fingerpunch/src/vik/config.vik.pre.h"
+#endif

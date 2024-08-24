@@ -36,8 +36,7 @@ AUDIO_ENABLE = no           # Audio output on port C6
 FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
 ENCODER_ENABLE = no
 OLED_ENABLE = no            # this can be yes or no depending on if you have an OLED
-# EXTRAFLAGS     += -flto     # macros disabled, as a lot of barobord features require more space, can move this line into all the individual rules.mk, only where needed
-                            # for instance, if you build "no_features", it's very unlikely you'll need to disable macros
+EXTRAFLAGS     += -flto     # needed for LVGL, can disable if you want, if not using display
 
 VIK_ENABLE = yes
 

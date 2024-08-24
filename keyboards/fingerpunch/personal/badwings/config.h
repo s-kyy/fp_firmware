@@ -27,3 +27,5 @@
   #define POINTING_DEVICE_TASK_THROTTLE_MS 5
   #define CIRQUE_PINNACLE_DIAMETER_MM 35
 #endif
+
+#include "keyboards/fingerpunch/src/config_post.h"

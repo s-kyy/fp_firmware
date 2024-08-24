@@ -32,6 +32,33 @@ static bool zooming_keycode_enabled = false;
 static bool zooming_layer_enabled = false;
 static bool zooming_hold = false;
 
+#ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
+// Define all the fingerpunch specific mouse keycodes
+bool is_mouse_record_kb(uint16_t keycode, keyrecord_t* record) {
+    switch(keycode) {
+#ifndef FP_DISABLE_CUSTOM_KEYCODES
+        // See fp_keyhandler.h for full list
+        case FP_ACCEL_TOG:
+        case FP_SCROLL_ON:
+        case FP_SCROLL_OFF:
+        case FP_SCROLL_MOMENT:
+        case FP_SNIPE_TOG:
+        case FP_SNIPE_ON:
+        case FP_SNIPE_OFF:
+        case FP_SNIPE_MOMENT:
+        case FP_ZOOM_TOG:
+        case FP_ZOOM_ON:
+        case FP_ZOOM_OFF:
+        case FP_ZOOM_MOMENT:
+            return true;
+#endif
+        default:
+            return false;
+    }
+    return  is_mouse_record_user(keycode, record);
+}
+#endif
+
 #ifdef POINTING_DEVICE_COMBINED
 void fp_compile_check_combined_default_modes(void) {
     // assert that either both LEFT values are false or only one of them is true
@@ -189,7 +216,7 @@ void fp_apply_dpi_defaults(void) {
     if (FP_POINTING_COMBINED_SNIPING_RIGHT) {
         right_mode = FP_SNIPING_MODE;
     }
-    
+
     fp_set_cpi_combined_by_mode(left_mode, right_mode);
 #else
     fp_set_cpi_by_mode(FP_POINTING_MODE);
@@ -287,6 +314,35 @@ uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg) {
     return 0;
 }
 
+report_mouse_t fp_pre_process_scrolling_report(report_mouse_t mouse_report) {
+    static int16_t scroll_buffer_x = 0;
+    static int16_t scroll_buffer_y = 0;
+
+    #ifdef FP_POINTING_SCROLLING_X_REVERSED
+    scroll_buffer_x -= mouse_report.x;
+    #else
+    scroll_buffer_x += mouse_report.x;
+    #endif
+    #ifdef FP_POINTING_SCROLLING_Y_REVERSED
+    scroll_buffer_y += mouse_report.y;
+    #else
+    scroll_buffer_y -= mouse_report.y;
+    #endif
+    if (abs(scroll_buffer_x) > FP_POINTING_SCROLLING_THRESHOLD) {
+        mouse_report.h = scroll_buffer_x > 0 ? 1 : -1;
+        scroll_buffer_x = 0;
+    }
+    if (abs(scroll_buffer_y) > FP_POINTING_SCROLLING_THRESHOLD) {
+        mouse_report.v = scroll_buffer_y > 0 ? 1 : -1;
+        scroll_buffer_y = 0;
+    }
+
+    mouse_report.x = 0;
+    mouse_report.y = 0;
+
+    return mouse_report;
+}
+
 report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
 #ifdef CONSOLE_ENABLE
     if (mouse_report.x != 0) {
@@ -297,10 +353,8 @@ report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
     }
 #endif
     if (fp_scroll_layer_get() || fp_scroll_keycode_get()) {
-        mouse_report.h = mouse_report.x;
-        mouse_report.v = -mouse_report.y;
-        mouse_report.x = 0;
-        mouse_report.y = 0;
+        // Important to preprocess the scrolling values to account for scrolling reverse or scrolling threshold
+        mouse_report = fp_pre_process_scrolling_report(mouse_report);
     } else if (fp_zoom_layer_get() || fp_zoom_keycode_get()) {
         bool zoom_in = false;
         mouse_xy_report_t zoom_value = mouse_report.y;
@@ -364,17 +418,13 @@ report_mouse_t pointing_device_task_combined_kb(report_mouse_t left_report, repo
         right_report = pointing_device_task_kb(right_report);
     } else {
         if (FP_POINTING_COMBINED_SCROLLING_LEFT) {
-            left_report.h = left_report.x;
-            left_report.v = -left_report.y;
-            left_report.x = 0;
-            left_report.y = 0;
+            // Important to preprocess the scrolling values to account for scrolling reverse or scrolling threshold
+            left_report = fp_pre_process_scrolling_report(left_report);
         }
 
         if (FP_POINTING_COMBINED_SCROLLING_RIGHT) {
-            right_report.h = right_report.x;
-            right_report.v = -right_report.y;
-            right_report.x = 0;
-            right_report.y = 0;
+            // Important to preprocess the scrolling values to account for scrolling reverse or scrolling threshold
+            right_report = fp_pre_process_scrolling_report(right_report);
         }
     }
 

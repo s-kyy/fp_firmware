@@ -60,4 +60,8 @@ ifeq ($(strip $(CIRQUE_ENABLE)), yes)
    OPT_DEFS += -DCIRQUE_ENABLE
 endif
 
+ifeq ($(strip $(FP_SVLINKY_V01)), yes)
+   OPT_DEFS += -DFP_SVLINKY_V01
+endif
+
 include keyboards/fingerpunch/src/rules.mk

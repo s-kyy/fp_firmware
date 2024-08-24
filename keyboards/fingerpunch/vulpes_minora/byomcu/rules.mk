@@ -14,9 +14,13 @@ SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
 # if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 NKRO_ENABLE = no            # USB Nkey Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
+# LTO must be disabled for RP2040 builds
+LTO_ENABLE = no
 
 # Either do RGBLIGHT_ENABLE or RGB_MATRIX_ENABLE and RGB_MATRIX_DRIVER
 RGBLIGHT_ENABLE ?= no
+RGB_MATRIX_ENABLE ?= no      # not supported yet, but will add
+RGB_MATRIX_DRIVER = ws2812
 WS2812_DRIVER = vendor
 
 MIDI_ENABLE = no            # MIDI support

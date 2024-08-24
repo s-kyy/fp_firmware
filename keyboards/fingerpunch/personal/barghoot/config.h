@@ -71,7 +71,7 @@
 #endif //BACKLIGHT_ENABLE
 
 #define WS2812_DI_PIN GP25
-#define RGBLED_NUM 63
+#define RGBLIGHT_LED_COUNT 63
 
 #define RGBLIGHT_DEFAULT_HUE 180
 #define RGBLIGHT_DEFAULT_SAT 255
@@ -91,3 +91,5 @@
 #define RGB_MATRIX_LED_COUNT 63
 
 #endif // defined(RGB_MATRIX_ENABLE)
+
+#include "keyboards/fingerpunch/src/config_post.h"

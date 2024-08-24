@@ -74,13 +74,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // └─────────────────────────────────────────────────┘
 
 #define WS2812_DI_PIN D3
-#ifndef RGBLED_NUM
-#     define RGBLED_NUM 42
+#ifndef RGBLIGHT_LED_COUNT
+#     define RGBLIGHT_LED_COUNT 42
 #endif
 #ifndef RGBLED_SPLIT
 #     define RGBLED_SPLIT { 21, 21 }
 #endif
-#define RGB_MATRIX_LED_COUNT RGBLED_NUM
+#define RGB_MATRIX_LED_COUNT RGBLIGHT_LED_COUNT
 
 #ifdef RGB_MATRIX_ENABLE
 #    define SPLIT_TRANSPORT_MIRROR
@@ -93,7 +93,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define RGB_MATRIX_MAXIMUM_BRIGHTNESS 180
 #    define RGB_MATRIX_STARTUP_HUE 35
 #    define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
-#    define RGB_DISABLE_WHEN_USB_SUSPENDED
+#    define RGB_MATRIX_SLEEP
 #    define RGB_MATRIX_KEYPRESSES
 #endif
 
@@ -133,3 +133,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define F_LRA 150 // resonance freq
 #    define DRV_GREETING       alert_750ms
 #endif
+
+#include "keyboards/fingerpunch/src/config_post.h"

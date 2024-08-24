@@ -16,7 +16,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 // NOTE: All logic for the modules can be found in:
-// keyboards/fingerpunch/src/vik/config.h
+// keyboards/fingerpunch/src/vik/config.vik.pre.h
+// keyboards/fingerpunch/src/vik/config.vik.post.h
 // keyboards/fingerpunch/src/vik/rules.mk
 
 #pragma once
@@ -48,24 +49,32 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef FP_XIVIK_V01
     #define VIK_I2C_SDA_PIN   GP22
     #define VIK_I2C_SCL_PIN   GP23
-#else
+#else // v0.2 or v0.3
     #define VIK_I2C_SDA_PIN   GP8
     #define VIK_I2C_SCL_PIN   GP9
 #endif
+#if defined(FP_XIVIK_V01) || defined(FP_XIVIK_V02)
 #define VIK_GPIO_1        GP18
 #define VIK_GPIO_2        GP10
+#else // If we're here, it's v03
+#define VIK_GPIO_1        GP26
+#define VIK_GPIO_2        GP27
+#endif
 #define VIK_WS2812_DI_PIN GP16
 
-// Used only if you have a weact st7735 display, set to unused pin
-#define VIK_ST7735_UNUSED_PIN GP11
+// Used only if you have a display with RESET unconnected, set to unused pin
+#define VIK_DISPLAY_RST_UNUSED_PIN GP11
 
 // All the through hole pins from the controller
 #ifdef FP_XIVIK_V01
 #define MATRIX_ROW_PINS { GP24, GP9, GP8, GP7 }
 #define MATRIX_COL_PINS { GP0, GP1, GP2, GP3, GP4, GP5, GP6 }
-#else
+#elif defined(FP_XIVIK_V02)
 #define MATRIX_ROW_PINS { GP23, GP20, GP22, GP21 }
 #define MATRIX_COL_PINS { GP0, GP1, GP2, GP3, GP5, GP6, GP4 }
+#else // If we're here, it's v03
+#define MATRIX_ROW_PINS { GP23, GP20, GP22, GP21 }
+#define MATRIX_COL_PINS { GP0, GP1, GP2, GP3, GP6, GP7, GP4 }
 #endif
 
 /* COL2ROW or ROW2COL */
@@ -73,8 +82,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // For VIK modules with encoders
 #ifdef ENCODER_ENABLE
+#if defined(FP_XIVIK_V01) || defined(FP_XIVIK_V02)
 #define ENCODERS_PAD_A { GP18 }
 #define ENCODERS_PAD_B { GP10 }
+#else // If we're here, it's v03
+#define ENCODERS_PAD_A { GP26 }
+#define ENCODERS_PAD_B { GP27 }
+#endif
 #endif
 
 #ifdef CIRQUE_ENABLE
@@ -95,7 +109,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define WS2812_DI_PIN GP16
 #ifdef RGBLIGHT_ENABLE
-    #define RGBLED_NUM 10 // Arbitrary number, gets overridden by the vik module stuff below
+    #define RGBLIGHT_LED_COUNT 10 // Arbitrary number, gets overridden by the vik module stuff below
     #define RGBLIGHT_HUE_STEP 16
     #define RGBLIGHT_SAT_STEP 16
     #define RGBLIGHT_VAL_STEP 16

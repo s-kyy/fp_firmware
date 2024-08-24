@@ -9,10 +9,16 @@
 MCU = atmega32u4
 BOOTLOADER = atmel-dfu
 
-ifeq ($(strip $(FP_CONVERT_TO)), svlinky)
-   VIK_ENABLE = yes
-   OPT_DEFS += -DFP_CONVERT_TO_SVLINKY
-endif
+## Moved to keyboards/fingerpunch/src/rules.mk
+# ifeq ($(strip $(FP_CONVERT_TO)), svlinky_v01)
+#    VIK_ENABLE = yes
+#    OPT_DEFS += -DFP_CONVERT_TO_SVLINKY_V01
+# endif
+
+# ifeq ($(strip $(FP_CONVERT_TO)), svlinky_v02)
+#    VIK_ENABLE = yes
+#    OPT_DEFS += -DFP_CONVERT_TO_SVLINKY_V02
+# endif
 
 # $(info $(MCU))
 # $(info $(BOOTLOADER))

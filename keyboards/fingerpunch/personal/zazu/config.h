@@ -108,3 +108,5 @@
   #define ENABLE_RGB_MATRIX_SOLID_SPLASH
   #define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
 #endif
+
+#include "keyboards/fingerpunch/src/config_post.h"

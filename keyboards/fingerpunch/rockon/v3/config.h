@@ -30,10 +30,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define WS2812_DI_PIN D3
 #ifdef RGBLIGHT_ENABLE
-  #ifdef RGBLED_NUM
-    #undef RGBLED_NUM
+  #ifdef RGBLIGHT_LED_COUNT
+    #undef RGBLIGHT_LED_COUNT
   #endif
-  #define RGBLED_NUM 69
+  #define RGBLIGHT_LED_COUNT 69
 #endif
 
 #ifdef RGB_MATRIX_ENABLE
@@ -132,3 +132,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define POINTING_DEVICE_INVERT_Y
 #endif
 
+#include "keyboards/fingerpunch/src/config_post.h"

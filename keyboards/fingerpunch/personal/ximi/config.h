@@ -52,7 +52,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_SPLIT
     #define RGBLED_SPLIT { 21, 21 }
-    #define RGBLED_NUM 42
+    #define RGBLIGHT_LED_COUNT 42
     #define RGBLIGHT_HUE_STEP 16
     #define RGBLIGHT_SAT_STEP 16
     #define RGBLIGHT_VAL_STEP 16
@@ -76,7 +76,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 180
     #define RGB_MATRIX_STARTUP_HUE 35
     #define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
-    #define RGB_DISABLE_WHEN_USB_SUSPENDED
+    #define RGB_MATRIX_SLEEP
     #define RGB_MATRIX_KEYPRESSES
     #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
     #define RGB_MATRIX_KEYREACTIVE_ENABLED
@@ -213,3 +213,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     defined(FP_TRACKBALL_RIGHT_ONLY)
         #define POINTING_DEVICE_INVERT_X_RIGHT
 #endif
+
+#include "keyboards/fingerpunch/src/config_post.h"

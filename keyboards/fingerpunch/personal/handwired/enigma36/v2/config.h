@@ -19,4 +19,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define DEVICE_VER      0x0002
 
-#define RGBLED_NUM 36
+#define RGBLIGHT_LED_COUNT 36

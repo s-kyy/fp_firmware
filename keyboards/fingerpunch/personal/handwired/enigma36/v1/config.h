@@ -17,7 +17,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-#define RGBLED_NUM 12
+#define RGBLIGHT_LED_COUNT 12
 
 #ifdef THUMBSTICK_ENABLE
 #    define ANALOG_JOYSTICK_X_AXIS_PIN F4

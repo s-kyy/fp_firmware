@@ -18,5 +18,9 @@
 #include QMK_KEYBOARD_H
 #include "keyboards/fingerpunch/src/fp.h"
 
-#define FP_QP_DISPLAY_WIDTH 240
-#define FP_QP_DISPLAY_HEIGHT 240
+#ifndef FP_QP_DISPLAY_WIDTH
+    #define FP_QP_DISPLAY_WIDTH 240
+#endif
+#ifndef FP_QP_DISPLAY_HEIGHT
+    #define FP_QP_DISPLAY_HEIGHT 240
+#endif

@@ -36,8 +36,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #undef SSD1306OLED
 
 #ifdef RGBLIGHT_ENABLE
-    #undef RGBLED_NUM
-    #define RGBLED_NUM 27
+    #undef RGBLIGHT_LED_COUNT
+    #define RGBLIGHT_LED_COUNT 27
     //#define RGBLED_SPLIT { 27, 27 }
     #define RGBLIGHT_LIMIT_VAL 120
     #define RGBLIGHT_LAYERS

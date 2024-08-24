@@ -43,7 +43,15 @@ get_valid_keyboards() {
 			if [[ -e "${line}/v${i}/fp_build.json" ]]; then
 			    echo -n "${line}/v${i} "
 			fi
-			
+
+			# handle format with subversions, like v3_1
+			for j in {0..9}
+			do
+				if [[ -e "${line}/v${i}_${j}/fp_build.json" ]]; then
+					echo -n "${line}/v${i}_${j} "
+				fi
+			done
+
 			# special case for pinkies out v2 extended
 			if [[ -e "${line}/v${i}_ext/fp_build.json" ]]; then
 			    echo -n "${line}/v${i}_ext "
@@ -57,6 +65,21 @@ get_valid_keyboards() {
 			    echo -n "${line}/${i}x12 "
 			fi
 		done
+
+		# special case for vulpes minora byomcu
+		if [[ -e "${line}/byomcu/fp_build.json" ]]; then
+			echo -n "${line}/byomcu "
+		fi
+
+		# special case for vulpes minora rp2040zero
+		if [[ -e "${line}/rp2040zero" ]]; then
+			echo -n "${line}/rp2040zero "
+		fi
+
+		# special case for vulpes minora xivik
+		if [[ -e "${line}/xivik" ]]; then
+			echo -n "${line}/xivik "
+		fi
 
 		# if we have a second parameter, then we don't want to recurse again
 		if [ "$#" -lt 2 ]; then

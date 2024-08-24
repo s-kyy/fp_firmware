@@ -75,3 +75,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef OLED_ENABLE
 #define OLED_DISPLAY_128X64
 #endif
+
+#include "keyboards/fingerpunch/src/config_post.h"

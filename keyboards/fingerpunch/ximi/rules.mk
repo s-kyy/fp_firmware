@@ -123,6 +123,9 @@ ifeq ($(strip $(FP_SPLIT_RIGHT)), yes)
    OPT_DEFS += -DFP_SPLIT_RIGHT
 endif
 
+# include here so that if VIK enables the PMW3360, the OPT_DEFS get set appropriately for ximi
+include keyboards/fingerpunch/src/rules.mk
+
 ifeq ($(strip $(CIRQUE_ENABLE)), yes)
    POINTING_DEVICE_ENABLE := yes
    POINTING_DEVICE_DRIVER := cirque_pinnacle_spi
@@ -135,5 +138,3 @@ ifeq ($(strip $(PMW3360_ENABLE)), yes)
    QUANTUM_LIB_SRC += spi_master.c
    OPT_DEFS += -DFP_TRACKBALL_ENABLE
 endif
-
-include keyboards/fingerpunch/src/rules.mk

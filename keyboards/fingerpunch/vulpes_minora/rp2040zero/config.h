@@ -40,7 +40,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VIK_WS2812_DI_PIN GP0
 
 // Note that this is the top pad on the back of the RP2040-Zero, change this if you end up using that pad
-#define VIK_ST7735_UNUSED_PIN GP25
+// Used only if you have a display with RESET unconnected, set to unused pin
+#define VIK_DISPLAY_RST_UNUSED_PIN GP25
 
 // Split config
 #define SERIAL_PIO_USE_PIO1

@@ -2,7 +2,7 @@
 
 #include_next "mcuconf.h"
 
-#ifdef FP_CONVERT_TO_SVLINKY
+#if defined(FP_CONVERT_TO_SVLINKY_V01) || defined(FP_CONVERT_TO_SVLINKY_V02)
 #undef RP_SPI_USE_SPI1
 #define RP_SPI_USE_SPI1 TRUE
 

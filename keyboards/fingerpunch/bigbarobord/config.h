@@ -40,7 +40,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef RGBLIGHT_ENABLE
   // Use twinkle as the default rgb mode for the layers
   #define DEFAULT_RGB_LAYER_MODE RGBLIGHT_MODE_TWINKLE+2
-  #define RGBLED_NUM 52
+  #define RGBLIGHT_LED_COUNT 52
   #define RGBLIGHT_HUE_STEP 16
   #define RGBLIGHT_SAT_STEP 16
   #define RGBLIGHT_VAL_STEP 16
@@ -121,3 +121,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // If using encoder type 2, uncomment this
 // #define ENCODERS_B_REVERSE
 
+#include "keyboards/fingerpunch/src/config_post.h"

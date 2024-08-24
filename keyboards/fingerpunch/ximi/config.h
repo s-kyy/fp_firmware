@@ -26,17 +26,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_ROWS 8
 #define MATRIX_COLS 8
 
-// For shift register (and optionally trackball)
+/* COL2ROW or ROW2COL */
+#define DIODE_DIRECTION COL2ROW
+
+// For General SPI pins and VIK on v2
+#define SPI_DRIVER SPID0
 #define SPI_SCK_PIN GP22
 #define SPI_MOSI_PIN GP23
 #define SPI_MISO_PIN GP20
-
-// wiring of each half
-#define MATRIX_ROW_PINS { GP29, GP28, GP27, GP24 }
-#define MATRIX_COL_PINS { GP10, GP11, GP26, GP12, GP13, GP14, GP15, GP16 }
-
-/* COL2ROW or ROW2COL */
-#define DIODE_DIRECTION COL2ROW
 
 #define ENCODERS_PAD_A { GP7 }
 #define ENCODERS_PAD_B { GP8 }
@@ -57,7 +54,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_SPLIT
     #define RGBLED_SPLIT { 21, 21 }
-    #define RGBLED_NUM 42
+    #define RGBLIGHT_LED_COUNT 42
     #define RGBLIGHT_HUE_STEP 16
     #define RGBLIGHT_SAT_STEP 16
     #define RGBLIGHT_VAL_STEP 16
@@ -81,7 +78,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 130
     #define RGB_MATRIX_STARTUP_HUE 35
     #define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
-    #define RGB_DISABLE_WHEN_USB_SUSPENDED
+    #define RGB_MATRIX_SLEEP
     #define RGB_MATRIX_KEYPRESSES
     #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
     #define RGB_MATRIX_KEYREACTIVE_ENABLED
@@ -179,12 +176,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define PMW33XX_CS_PIN GP9
     #define PMW33XX_CPI 1000
     #define PMW33XX_CS_DIVISOR 8
-
-    /* SPI config for pmw3360 sensor. */
-    #define SPI_DRIVER SPID0
-    // #define SPI_SCK_PAL_MODE 5 // already defined in chibios
-    // #define SPI_MOSI_PAL_MODE 5 // already defined in chibios
-    // #define SPI_MISO_PAL_MODE 5 // already defined in chibios
 #endif
 
 // All the possible configurations of pointing devices

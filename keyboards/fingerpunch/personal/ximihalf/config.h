@@ -41,7 +41,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define WS2812_DI_PIN GP26
 #ifdef RGBLIGHT_ENABLE
-    #define RGBLED_NUM 21
+    #define RGBLIGHT_LED_COUNT 21
     #define RGBLIGHT_HUE_STEP 16
     #define RGBLIGHT_SAT_STEP 16
     #define RGBLIGHT_VAL_STEP 16
@@ -63,7 +63,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 180
     #define RGB_MATRIX_STARTUP_HUE 35
     #define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
-    #define RGB_DISABLE_WHEN_USB_SUSPENDED
+    #define RGB_MATRIX_SLEEP
     #define RGB_MATRIX_KEYPRESSES
     #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
     #define RGB_MATRIX_KEYREACTIVE_ENABLED
@@ -168,3 +168,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     #define POINTING_DEVICE_INVERT_Y // This inverts the Y on the left side only
 #endif
+
+#include "keyboards/fingerpunch/src/config_post.h"

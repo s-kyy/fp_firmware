@@ -45,7 +45,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #ifdef RGBLIGHT_ANIMATIONS
   #undef RGBLIGHT_ANIMATIONS
   #endif
-  #define RGBLED_NUM 36
+  #define RGBLIGHT_LED_COUNT 36
   #define RGBLIGHT_HUE_STEP 16
   #define RGBLIGHT_SAT_STEP 16
   #define RGBLIGHT_VAL_STEP 16
@@ -99,3 +99,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_ONESHOT
 //#define NO_ACTION_MACRO
 //#define NO_ACTION_FUNCTION
+
+#include "keyboards/fingerpunch/src/config_post.h"

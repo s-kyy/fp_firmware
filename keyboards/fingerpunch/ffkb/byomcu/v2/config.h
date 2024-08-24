@@ -67,9 +67,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef AUDIO_ENABLE
     #define AUDIO_VOICES
     #define AUDIO_PIN F0
+    #if defined(CONVERT_TO_ELITE_PI) || defined(CONVERT_TO_RP2040_CE) || defined(CONVERT_TO_HELIOS) || defined(CONVERT_TO_LIATRIS) || defined(CONVERT_TO_KB2040) || defined(CONVERT_TO_PROMICRO_RP2040)
+    #define AUDIO_PWM_DRIVER PWMD0
+    #define AUDIO_PWM_CHANNEL RP2040_PWM_CHANNEL_A
+    #else
     #define AUDIO_PWM_DRIVER PWMD2
     #define AUDIO_PWM_CHANNEL 1
     #define AUDIO_STATE_TIMER GPTD4
+    #endif
     #define AUDIO_VOICES
     // #define AUDIO_PWM_PAL_MODE 42 // only if using AUDIO_DRIVER = pwm_hardware
     // #define NO_MUSIC_MODE
@@ -96,3 +101,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define FP_HAPTIC_CUT_COPY_PASTE
     #define FP_HAPTIC_SAVE
 #endif
+
+#include "keyboards/fingerpunch/src/config_post.h"

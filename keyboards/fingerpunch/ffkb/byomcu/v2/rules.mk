@@ -40,7 +40,21 @@ EXTRAFLAGS     += -flto     # macros disabled, as a lot of barobord features req
 MOUSEKEY_ENABLE = no
 
 AUDIO_ENABLE ?= no
+ifeq ($(strip $(CONVERT_TO)), stemcell)
 AUDIO_DRIVER = pwm_software
+endif
+ifeq ($(strip $(CONVERT_TO)), elite_pi)
+AUDIO_DRIVER = pwm_hardware
+endif
+ifeq ($(strip $(CONVERT_TO)), rp2040_ce)
+AUDIO_DRIVER = pwm_hardware
+endif
+ifeq ($(strip $(CONVERT_TO)), helios)
+AUDIO_DRIVER = pwm_hardware
+endif
+ifeq ($(strip $(CONVERT_TO)), liatris)
+AUDIO_DRIVER = pwm_hardware
+endif
 
 HAPTIC_ENABLE ?= no
 HAPTIC_DRIVER = drv2605l

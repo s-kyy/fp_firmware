@@ -84,6 +84,7 @@ Note: if you are using a userspace, and you have custom keycodes, you will need 
     || defined(KEYBOARD_fingerpunch_sweeeeep) \
     || defined(KEYBOARD_fingerpunch_vulpes_minora) \
     || defined(KEYBOARD_fingerpunch_vulpes_majora_v1) \
+    || defined(KEYBOARD_fingerpunch_ximega) \
     || defined(KEYBOARD_fingerpunch_ximi)
 #    define PLACEHOLDER_SAFE_RANGE FP_SAFE_RANGE
 #else
@@ -171,7 +172,10 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
 
 ### General Settings
 
-**Note: Pointing device DPI is specified in increments of 1, but is multiplied by 100 when applied. So, a DPI of 3 would be 300**
+**Notes:**  
+* Pointing device DPI is specified in increments of 1, but is multiplied by 100 when applied. So, a DPI of 3 would be 300
+* `FP_POINTING_SCROLLING_THRESHOLD` is used to throttle the speed of scrolling. You can slow down the scroll by increasing this value. You can speed it up by decreasing this value.
+* If the DPI for scrolling is set high enough, and you move the trackball fast enough, it may result in more movement than the threshold in one report event. This will cap the scrolling speed.
 
 | Setting                                      | Description                                                                                                                 | Default                          |
 | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
@@ -180,6 +184,9 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
 | `FP_POINTING_MIN_DPI`                        | (Required) Sets the minimum DPI for your pointing device                                                                    | `2`                              |
 | `FP_POINTING_MAX_DPI`                        | (Required) Sets the maximum DPI for your pointing device                                                                    | `60`                             |
 | `FP_POINTING_SCROLLING_DPI`                  | (Required) Sets the default DPI for scrolling                                                                               | `2`                              |
+| `FP_POINTING_SCROLLING_THRESHOLD`            | (Required) Sets the number of 'ticks' to trigger a single scroll                                                            | `10`                             |
+| `FP_POINTING_SCROLLING_X_REVERSED`           | (Required) Reverses the direction of X scrolling                                                                            | `undefined`                      |
+| `FP_POINTING_SCROLLING_Y_REVERSED`           | (Required) Reverses the direction of Y scrolling                                                                            | `undefined`                      |
 | `FP_POINTING_SCROLLING_MIN_DPI`              | (Required) Sets the minimum DPI for scrolling                                                                               | `2`                              |
 | `FP_POINTING_SCROLLING_MAX_DPI`              | (Required) Sets the maximum DPI for scrolling                                                                               | `10`                             |
 | `FP_POINTING_SCROLLING_LAYER_ENABLE`         | (Optional) Enables scrolling mode for the layer `FP_POINTING_SCROLLING_LAYER`                                               | `undefined`                      |
@@ -328,7 +335,7 @@ When using a fingerpunch board, the get_haptic_enabled_key is completely overrid
 * NO_HAPTIC_PUNCTUATION
 * etc...
 
-See https://github.com/qmk/qmk_firmware/blob/master/docs/feature_haptic_feedback.md#haptic-key-exclusion for details
+See https://github.com/qmk/qmk_firmware/blob/master/docs/features/haptic_feedback.md#haptic-key-exclusion for details
 
 If you'd like to override this, you'll need to create a function as follows:
 `bool get_haptic_enabled_key_user(uint16_t keycode, keyrecord_t *record)`
@@ -358,15 +365,45 @@ Note that the ctrl-X audio responses will use control as the modifier, so it won
 
 | Setting                                 | Description                                                                     | Default                         |
 | --------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------- |
-| `FP_AUDIO_MOUSE_BUTTONS`               | (Optional) Enable audio response for Mouse 1, 2, and 3                           | `undefined`                     |
-| `FP_AUDIO_CUT_COPY_PASTE`              | (Optional) Enable audio response for ctrl-x, ctrl-c, ctrl-v                      | `undefined`                     |
-| `FP_AUDIO_SAVE`                        | (Optional) Enable audio response for ctrl-s                                      | `undefined`                     |
+| `FP_AUDIO_MOUSE_BUTTONS`                | (Optional) Enable audio response for Mouse 1, 2, and 3                          | `undefined`                     |
+| `FP_AUDIO_CUT_COPY_PASTE`               | (Optional) Enable audio response for ctrl-x, ctrl-c, ctrl-v                     | `undefined`                     |
+| `FP_AUDIO_SAVE`                         | (Optional) Enable audio response for ctrl-s                                     | `undefined`                     |
 
+## VIK
 
-## Keymap
+VIK features are automatically integrated when a keyboard is properly configured using the fingerpunch VIK library. If you'd like to support these VIK features, please see the [FP_LIBRARY_SUPPORT](./FP_LIBRARY_SUPPORT.md) page
 
-If you are looking to use process_record_kb() or process_record
+All fingerpunch boards with a VIK connector support the features below. When compiling, you can add the flags below. Please note that the `*_RIGHT` features are for split boards only, and that pointing devices will require additional configuration to change orientation or invert the axis. See the [QMK documentation for pointing devices](https://github.com/qmk/qmk_firmware/blob/master/docs/features/pointing_device.md#common-configuration) if you need to change the pointing orientation.
 
+Important notes:
+* For split keyboards with **different** pointing devices (i.e. cirque on left, and trackball on right), you must build two separate firmwares, one for each half. You must specify `VIK_BUILD_LEFT=yes` as a parameter when compiling the left, and `VIK_BUILD_RIGHT=yes` when compiling the right. Then you need to flash each firmware on each respective half.
+* For split keyboards, the fingerpunch VIK logic will set `VIK_BUILD_LEFT` and `VIK_BUILD_RIGHT` so that you can check what the user configured. This can be checked with `#ifdef VIK_BUILD_LEFT` or `#ifdef VIK_BUILD_RIGHT`
+* All encoder functions in VIK modules do not support any click function of the encoder.
+* For all of the items below, please see the [VIK repository certifications](https://github.com/sadekbaroudi/vik?tab=readme-ov-file#known-list-of-vik-certifications) in the modules section for details on the hardware.
+
+| Rules.mk                                |  Split Use  | Description                                                                                                                                                                                         |
+| --------------------------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `VIK_ENABLE=yes`                        |    Both     | Enables the VIK code, this should always be yes if the keyboard has a VIK connector that meets specifications                                                                                       |
+| `VIK_BUILD_LEFT=yes`                    |    Left     | **If and only if** you have different pointing devices on each half, you must specify this when compiling firmware for the left, and then flash that firmware on the left only                      |
+| `VIK_BUILD_RIGHT=yes`                   |    Right    | **If and only if** you have different pointing devices on each half, you must specify this when compiling firmware for the right, and then flash that firmware on the right only                    |
+| `VIK_HAPTIC=yes`                        |    Both     | Enables haptic feedback on both sides of the keyboard, requires `#define SPLIT_HAPTIC_ENABLE`                                                                                                       |
+| `VIK_ILI9341=yes`                       |    Left     | Enables ILI9341 display, see [qmk quantum painter](https://github.com/qmk/qmk_firmware/blob/master/docs/quantum_painter.md)                                                                         |
+| `VIK_PER56_CIRQUE_LEDS=yes`             |    Left     | Enables PER56 encoder and cirque trackpad, note that the keyboard firmware should enable RGB leds since the number of LEDs can vary, use `#ifdef VIK_PER56_CIRQUE_LEDS` to check if this is enabled |
+| `VIK_PER56_PMW3360_LEDS=yes`            |    Left     | Enables PER56 encoder and pmw3360, note that the keyboard firmware should enable RGB leds since the number of LEDs can vary, use `#ifdef VIK_PER56_PMW3360_LEDS` to check if this is enabled        |
+| `VIK_PMW3360=yes`                       |    Left     | Enables pmw3360, note that the keyboard firmware should set orientation, use `#ifdef VIK_PMW3360` to check if this is enabled                                                                       |
+| `VIK_WEACT_ST7735=yes`                  |    Left     | Enables WeAct ST7735 display, see [qmk quantum painter](https://github.com/qmk/qmk_firmware/blob/master/docs/quantum_painter.md)                                                                    |
+| `VIK_GC9A01=yes`                        |    Left     | Enables GC9A01 display, see [qmk quantum painter](https://github.com/qmk/qmk_firmware/blob/master/docs/quantum_painter.md)       .                                                                  |
+| `VIK_WAVESHARE_22224=yes`               |    Left     | Enables Waveshare 22224 display, see [qmk quantum painter](https://github.com/qmk/qmk_firmware/blob/master/docs/quantum_painter.md)                                                                 |
+| `VIK_AZOTEQ=yes`                        |    Left     | Enables azoteq trackpad, note that the keyboard firmware should set orientation and trackpade size, use `#ifdef VIK_AZOTEQ` to check if this is enabled                                             |
+| `VIK_EC11_EVQWGD001=yes`                |    Left     | Enables encoders in QMK. Because a keyboard can have existing encoders, the pin configuration must happen at the keyboard. Use `#ifdef VIK_EC11_EVQWGD001` to check if this is enabled.             |
+| `VIK_CIRQUE=yes`                        |    Left     | Enables cirque trackpad via SPI, note that the keyboard firmware should set orientation, use `#ifdef VIK_CIRQUE` to check if this is enabled                                                        |
+| `VIK_TRACKPOINT=yes`                    |    Left     | Enables PS/2 trackpoint. This does **not** support split pointing, so it must be on the master half                                                                                                 |
+| `VIK_CIRQUE_RIGHT=yes`                  |    Right    | Same as above, but equivalent for the right half of a split board. Do not set this if you aren't using a split keyboard. See section header above about determining which device is on which half.  |
+| `VIK_PER56_CIRQUE_LEDS_RIGHT=yes`       |    Right    | Same as above, but equivalent for the right half of a split board. Do not set this if you aren't using a split keyboard. See section header above about determining which device is on which half.  |
+| `VIK_PER56_PMW3360_LEDS_RIGHT=yes`      |    Right    | Same as above, but equivalent for the right half of a split board. Do not set this if you aren't using a split keyboard. See section header above about determining which device is on which half.  |
+| `VIK_PMW3360_RIGHT=yes`                 |    Right    | Same as above, but equivalent for the right half of a split board. Do not set this if you aren't using a split keyboard. See section header above about determining which device is on which half.  |
+| `VIK_AZOTEQ_RIGHT=yes`                  |    Right    | Same as above, but equivalent for the right half of a split board. Do not set this if you aren't using a split keyboard. See section header above about determining which device is on which half.  |
+| `VIK_EC11_EVQWGD001_RIGHT=yes`          |    Right    | Same as above, but equivalent for the right half of a split board. Do not set this if you aren't using a split keyboard.                                                                            |
 
 ## Debugging
 

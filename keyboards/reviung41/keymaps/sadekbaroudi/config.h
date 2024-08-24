@@ -20,6 +20,6 @@
 
 #define RGB_DI_PIN D3
 #ifdef RGB_DI_PIN
-  #define RGBLED_NUM 11
+  #define RGBLIGHT_LED_COUNT 11
 #endif
 

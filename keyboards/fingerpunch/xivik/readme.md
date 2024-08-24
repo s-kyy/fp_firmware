@@ -21,6 +21,7 @@ Options are:
     RGBLIGHT_ENABLE=yes
     HAPTIC_FEEDBACK=yes
     // for the options below, select only one, or none, used for testing [VIK modules](https://github.com/sadekbaroudi/vik#known-list-of-vik-certifications)
+    VIK_ILI9341=yes
     VIK_PER56_CIRQUE_LEDS=yes
     VIK_PER56_PMW3360_LEDS=yes
     VIK_PMW3360=yes

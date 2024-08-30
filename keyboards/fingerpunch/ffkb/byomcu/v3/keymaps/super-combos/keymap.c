@@ -111,6 +111,7 @@ enum combos {
   IO_LCBR,
   HD_BSLS,
   KH_SEMI,
+  CDOT_ALT,
   SDOT_WIN,
   // DC_SLSH,
   // CENTER - COLDH
@@ -138,6 +139,7 @@ const uint16_t PROGMEM yd_combo[] = {KC_Y, KC_DEL, COMBO_END};
 const uint16_t PROGMEM io_combo[] = {KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM kh_combo[] = {KC_K, KC_H, COMBO_END};
 const uint16_t PROGMEM hd_combo[] = {KC_H, KC_COMM, COMBO_END};
+const uint16_t PROGMEM dc_combo[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM ds_combo[] = {KC_DOT, KC_SLSH, COMBO_END};
 // const uint16_t PROGMEM dc_combo[] = {KC_COMM, KC_DOT, COMBO_END};
 //CENTER - COLDH
@@ -161,6 +163,7 @@ combo_t key_combos[] = {
   [IO_LCBR] = COMBO(io_combo, KC_LCBR),
   [KH_SEMI] = COMBO(kh_combo, KC_SCLN),
   [HD_BSLS] = COMBO(hd_combo, KC_BSLS),
+  [CDOT_ALT] = COMBO(dc_combo, OSM(MOD_LALT)),
   [SDOT_WIN] = COMBO(ds_combo, OSM(MOD_RGUI)),
   // [DC_SLSH] = COMBO(dc_combo, KC_SLSH),
   //CENTER - COLDH

@@ -28,11 +28,12 @@ uint16_t alt_tab_timer = 0;
 enum layer_names {
     _COLEMAK, //0
     _QWERTY,  //1
-    _SYM,     //2
-    _MCR,     //3
-    _NAV,     //4
-    // _RGB,     //5
-    // _MOUSE,  //6
+    _TQWERY,  //2
+    _SYM,     //2, 3
+    _MCR,     //3, 4
+    _NAV,     //4, 5
+    // _RGB,     //5, 6
+    // _MOUSE,  //6, 7
     _NEW_SAFE_LAYER  //7
 };
 
@@ -106,10 +107,12 @@ enum combos {
   NE_LPRN,
   UY_RBRC,
   EI_LBRC,
-  YS_RCBR,
+  YD_RCBR,
   IO_LCBR,
   HD_BSLS,
-  DC_SLSH,
+  KH_SEMI,
+  SDOT_WIN,
+  // DC_SLSH,
   // CENTER - COLDH
   GM_CAPS,
 
@@ -131,10 +134,12 @@ const uint16_t PROGMEM lu_combo[] = {KC_L, KC_U, COMBO_END};
 const uint16_t PROGMEM ne_combo[] = {KC_N, KC_E, COMBO_END};
 const uint16_t PROGMEM uy_combo[] = {KC_U, KC_Y, COMBO_END};
 const uint16_t PROGMEM ei_combo[] = {KC_E, KC_I, COMBO_END};
-const uint16_t PROGMEM ys_combo[] = {KC_Y, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM yd_combo[] = {KC_Y, KC_DEL, COMBO_END};
 const uint16_t PROGMEM io_combo[] = {KC_I, KC_O, COMBO_END};
+const uint16_t PROGMEM kh_combo[] = {KC_K, KC_H, COMBO_END};
 const uint16_t PROGMEM hd_combo[] = {KC_H, KC_COMM, COMBO_END};
-const uint16_t PROGMEM dc_combo[] = {KC_COMM, KC_DOT, COMBO_END};
+const uint16_t PROGMEM ds_combo[] = {KC_DOT, KC_SLSH, COMBO_END};
+// const uint16_t PROGMEM dc_combo[] = {KC_COMM, KC_DOT, COMBO_END};
 //CENTER - COLDH
 const uint16_t PROGMEM gm_combo[] = {KC_G, KC_M, COMBO_END};
 
@@ -152,10 +157,12 @@ combo_t key_combos[] = {
   [NE_LPRN] = COMBO(ne_combo, KC_LPRN),
   [UY_RBRC] = COMBO(uy_combo, KC_RBRC),
   [EI_LBRC] = COMBO(ei_combo, KC_LBRC),
-  [YS_RCBR] = COMBO(ys_combo, KC_RCBR),
+  [YD_RCBR] = COMBO(yd_combo, KC_RCBR),
   [IO_LCBR] = COMBO(io_combo, KC_LCBR),
+  [KH_SEMI] = COMBO(kh_combo, KC_SCLN),
   [HD_BSLS] = COMBO(hd_combo, KC_BSLS),
-  [DC_SLSH] = COMBO(dc_combo, KC_SLSH),
+  [SDOT_WIN] = COMBO(ds_combo, OSM(MOD_RGUI)),
+  // [DC_SLSH] = COMBO(dc_combo, KC_SLSH),
   //CENTER - COLDH
   [GM_CAPS] = COMBO(gm_combo, KC_CAPS)
 
@@ -171,17 +178,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ============================================================
 [_COLEMAK] = LAYOUT(
   KC_MS_BTN1,     KC_Q,     KC_W,        KC_F,     KC_P,    KC_B,                         KC_J,   KC_L,    KC_U,     KC_Y,     KC_DEL,       KC_BSPC,
-  OSM(MOD_LCTL),  KC_A,     KC_R,        KC_S,     KC_T,    KC_G,                         KC_M,   KC_N,    KC_E,     KC_I,     KC_O,         KC_SCLN,
-  KC_MS_BTN2,     KC_Z,     KC_X,        KC_C,     KC_D,    KC_V,                         KC_K,   KC_H,    KC_COMM,  KC_DOT,   KC_QUOT,      KC_APP,
+  OSM(MOD_LCTL),  KC_A,     KC_R,        KC_S,     KC_T,    KC_G,                         KC_M,   KC_N,    KC_E,     KC_I,     KC_O,         KC_QUOT,
+  OSM(MOD_LSFT),  KC_Z,     KC_X,        KC_C,     KC_D,    KC_V,                         KC_K,   KC_H,    KC_COMM,  KC_DOT,   KC_SLSH,      KC_MS_BTN2,
                   KC_MUTE,  KC_LALT,  LT(_SYM, KC_ENT),   LT(_MCR,FP_SUPER_CTRL_TAB),     OSM(MOD_LSFT), LT(_NAV,KC_SPC), KC_BSPC, KC_RALT
 ),
 // ============================================================
 // Layer 1 - QWERTY
 // ============================================================
 [_QWERTY] = LAYOUT(
-  KC_TAB,        KC_Q,   KC_W,   KC_E,     KC_R,     KC_T,    KC_Y,                KC_U,     KC_I,     KC_O,     KC_P,       _______,
-  OSM(MOD_LCTL), KC_A,   KC_S,   KC_D,     KC_F,     KC_G,    KC_H,                KC_J,     KC_K,     KC_L,     KC_SCLN,    _______,
-  OSM(MOD_LSFT), KC_Z,   KC_X,   KC_C,     KC_V,     KC_B,    KC_N,                KC_M,     _______,  _______,  _______,    KC_BTN2,
+  KC_TAB,        KC_Q,   KC_W,   KC_E,     KC_R,     KC_T,                       KC_Y,  KC_U,     KC_I,     KC_O,     KC_P,       _______,
+  OSM(MOD_LCTL), KC_A,   KC_S,   KC_D,     KC_F,     KC_G,                       KC_H,  KC_J,     KC_K,     KC_L,     KC_SCLN,    _______,
+  OSM(MOD_LSFT), KC_Z,   KC_X,   KC_C,     KC_V,     KC_B,                       KC_N,  KC_M,     _______,  _______,  _______,    KC_BTN2,
+                _______,  _______,  LT(_SYM,KC_SPC),   LT(_MCR, KC_MS_BTN1),     KC_SPC,  _______,  KC_ENT,  _______
+),
+// ============================================================
+// Layer 2 - TQWERY
+// ============================================================
+[_TQWERY] = LAYOUT(
+  KC_TAB,        KC_T,  KC_Q,   KC_W,   KC_E,     KC_R,                         KC_Y,    KC_U,     KC_I,     KC_O,     KC_P,       _______,
+  OSM(MOD_LCTL), KC_G,  KC_A,   KC_S,   KC_D,     KC_F,                         KC_H,    KC_J,     KC_K,     KC_L,     KC_SCLN,    _______,
+  OSM(MOD_LSFT), KC_B,  KC_Z,   KC_X,   KC_C,     KC_V,                         KC_N,    KC_M,     _______,  _______,  _______,    KC_BTN2,
                 _______,  _______,  LT(_SYM,KC_SPC),   LT(_MCR, KC_MS_BTN1),    KC_SPC,  _______,  KC_ENT,  _______
 ),
 // ============================================================
@@ -198,7 +214,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ============================================================
 [_MCR] = LAYOUT(
   KC_ESC,   TASKMAN,  C(S(KC_V)), UNDO,   WPAST,        TO(_QWERTY),      _______,    KC_BRID, KC_BRIU,   MBEEVD,  MBEEVU,  _______, 
-  LDESK,    C(KC_A),  CUT,        COPY,   PASTE,        _______,          C(KC_EQL),  MBEEL,   MEH(KC_P), MBEER,   MBEE,    RDESK,
+  LDESK,    C(KC_A),  CUT,        COPY,   PASTE,        TO(_TQWERY),          C(KC_EQL),  MBEEL,   MEH(KC_P), MBEER,   MBEE,    RDESK,
   _______,  _______,  _______,    REDO,   G(S(KC_S)),   TO(_COLEMAK),     C(KC_MINS), KC_PSCR, KC_SCRL,   KC_PAUS, _______, _______,
                                  _______,  _______, _______, _______,     KC_BTN3,  _______,  _______,  EE_CLR
 ),

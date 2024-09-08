@@ -20,11 +20,11 @@ layout:
   # qmk_layout: LAYOUT
 layers:
   COLEMAK:
-    - [M1, Q, W, F, P, B, J, L, U, Y, DEL, BKSP]
-    - [CTRL, A, R, S, T, G, M, N, E, I, O, /]
-    - [M2, Z, X, C, D, V, K, H, ',', ., "'", Menu]
+    - [M1,   Q, W, F, P, B,   J, L, U, Y, DEL, BKSP]
+    - [CTRL, A, R, S, T, G,   M, N, E, I, O, "'"]
+    - [SHFT, Z, X, C, D, V,   K, H, ',', ., '/?', M2]
     - {t: Mute, type: ghost}
-    - {h: "", t: LAlt }
+    - "LAlt"
     - {h: SYM Scroll, t: Enter}
     - {h: MCR, t: "Ctrl Tab"}
     - {h: "", t: Shift}
@@ -32,33 +32,33 @@ layers:
     - "BKSP"
     - {t: RAlt, type: ghost}
   SYMBOL:
-    - [null, 1, 2, 3, 4, 5, Num, 7, 8, 9, null, null]
-    - [LDesk, "|", "=", "_", "-", "*", ".", 4, 5, 6, "+", RDesk]
-    - [null, null,  null, "&", "^", null, 0, 1, 2, 3, \,null]
+    - [null, 1, 2, 3, 4, 5,               Num, 7, 8, 9, null, null]
+    - [LDesk, "|", "=", "_", "-", "*",    ".", 4, 5, 6, "+", RDesk]
+    - [null, null,  null, "&", "^", null, 0, 1, 2, 3, \, null]
     - {t: Mute, type: ghost}
     - null
-    - {type: held, h: SYM}
+    - {type: held, h: SYM, t: Scroll}
     - null
     - null
     - null
     - 'Alt-Tab'
     - {t: EE_CLR, type: ghost}
   Macros:
-    - [Esc, null, Ctrl Shift V, Undo, G-Paste, TO( QWERTY),  null, Bright +, Bright -, MusicB Vol-, MusicB Vol+, null]
-    - [LDESK, Ctrl A, Cut, Copy, Paste, null,                    Zoom In, MusicB Prev, MusicB Play/ Pause, MusicB Next, Music Bee, RDESK]
-    - [null, null, null, Redo, Screen Shot, TO( COLEMAK),     Zoom Out, Print Screen, Scroll Lock, Pause, null, null ]
+    - [Esc, TASK MAN, Ctrl Shift V, Undo, Paste History, TO( QWERTY),  null, Bright +, Bright -, MusicB Vol-, MusicB Vol+, null]
+    - [LDESK, Ctrl A, Cut, Copy, Paste, TO( TQERY),                    Zoom In, MusicB Prev, MusicB Play/ Pause, MusicB Next, Music Bee, RDESK]
+    - [null, null, null, Redo, Screen Shot, TO( COLEMAK),              Zoom Out, Print Screen, Scroll Lock, Pause, null, null ]
     - {t: Mute, type: ghost}
     - null
     - null
     - {type: held, h: MCR}
-    - null
+    - "M3"
     - null
     - null
     - {t: EE_CLR, type: ghost}
   Navigation:
-    - [Esc, RGB_ TOG, RGB_ MOD-, RGB_ MOD+, RGB_HU-, RGB_HU+, PgUp, Home, Up, End, Del, null]
-    - [EXIT PARSEC, Gui,  Alt,  Shift, Ctrl, MEH,    PgDn, Left, Down, Right, Bspace, Insert]
-    - [F12,  F1, F2, F3, F4, F5,                     F6, F7, F8, F9, F10, F11]
+    - [Esc, RGB_ TOG, RGB_ MOD-, RGB_ MOD+, RGB_ HU-, RGB_ HU+, PgUp, Home, Up, End, Del, null]
+    - [EXIT PARSEC, Gui,  Alt,  Shift, Ctrl, MEH,             PgDn, Left, Down, Right, Bspace, Insert]
+    - [F12,  F1, F2, F3, F4, F5,                              F6, F7, F8, F9, F10, F11]
     - {t: Boot, type: ghost}
     - null
     - null
@@ -67,23 +67,50 @@ layers:
     - {type: held, h: NAV}
     - null
     - {t: RAlt, type: ghost}
-  QWERTY:
+  TQWERY:
     - [Tab, Q, W, E, R, T, Y, U, I, O, P, Bspace]
     - [Ctrl, A, S, D, F, G, H, J, K, L, ;, "'"]
-    - [Shift, Z, X, C, V, B, N, M, ',', ., /, Mouse2]
+    - [Shift, Z, X, C, V, B, N, M, ',', ., '/?', M2]
     - {t: Mute, type: ghost}
-    - "Mouse1"
+    - "LAlt"
     - {h: SYM Scroll, t: Space}
-    - {h: MCR, t: Enter}
+    - {h: MCR, t: M1}
     - "Space"
     - {h: Nav, t: Space}
+    - "Enter"
+    - {t: RAlt, type: ghost}
+  HSR:
+    - [Tab,   T, Q, W, E, R,    Y, U, I, O, P, Bspace]
+    - [Ctrl,  G, A, S, D, F,    H, J, K, L, ;, "'"]
+    - [Shift, B, Z, X, C, V,    N, M, ',', ., '/?', M2]
+    - {t: Mute, type: ghost}
     - "LAlt"
+    - {h: SYM Scroll, t: Space}
+    - {h: MCR, t: M1}
+    - "Space"
+    - {h: Nav, t: Space}
+    - "Enter"
     - {t: RAlt, type: ghost}
 combos: 
   - {p: [25,26], k: 'Gui', l: [COLEMAK]}
   - {p: [26,27], k: 'Alt', l: [COLEMAK]}
+  - {p: [27,28], k: 'Ctrl', l: [COLEMAK]}
+  - {p: [16,17], k: '`', l: [COLEMAK]}
+  - {p: [1,2],   k: 'Esc', l: [COLEMAK]}
+  - {p: [14,16], k: 'Tab', l: [COLEMAK]}
+  - {p: [18,19], k: '~', l: [COLEMAK]}
+  - {p: [ 7, 8], k: ')', l: [COLEMAK]}
+  - {p: [19,20], k: '(', l: [COLEMAK]}
+  - {p: [ 8, 9], k: ']', l: [COLEMAK]}
+  - {p: [20,21], k: '[', l: [COLEMAK]}
+  - {p: [ 9,10], k: '}', l: [COLEMAK]}
+  - {p: [21,22], k: '{', l: [COLEMAK]}
+  - {p: [30,31], k: ';', l: [COLEMAK]}
+  - {p: [31,32], k: '|\', l: [COLEMAK]}
   - {p: [32,33], k: 'Alt', l: [COLEMAK]}
   - {p: [33,34], k: 'Gui', l: [COLEMAK]}
-  - {p: [16,17], k: '`', l: [COLEMAK]}
-  - {p: [18,19], k: '~', l: [COLEMAK]}
   - {p: [17,18], k: 'CAPS', l: [COLEMAK]}
+
+# - [0,  1,   2,  3,  4,  5,     6,  7,  8,  9,  10, 11]
+# - [12, 13,  14, 15, 16, 17,    18, 19, 20, 21, 22, 23]
+# - [24, 25,  26, 27, 28, 29,    30, 31, 32, 33, 34, 35]

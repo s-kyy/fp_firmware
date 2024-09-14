@@ -26,21 +26,21 @@ layers:
     - {t: Mute, type: ghost}
     - "LAlt"
     - {h: SYM Scroll, t: Enter}
-    - {h: MCR, t: "Ctrl Tab"}
+    - {h: MCR, t: "M1"}
     - {h: "", t: Shift}
     - {h: NAV, t: Space}
     - "BKSP"
     - {t: RAlt, type: ghost}
   SYMBOL:
     - [null, 1, 2, 3, 4, 5,               Num, 7, 8, 9, null, null]
-    - [LDesk, "|", "=", "_", "-", "*",    ".", 4, 5, 6, "+", RDesk]
-    - [null, null,  null, "&", "^", null, 0, 1, 2, 3, \, null]
+    - [LDesk, "|", "=", "_", "-", "*",    null, 4, 5, 6, "+", RDesk]
+    - [null, null,  null, "&", "^", null, ".", 1, 2, 3, \, null]
     - {t: Mute, type: ghost}
     - null
     - {type: held, h: SYM, t: Scroll}
     - null
-    - null
-    - null
+    - 'Ctrl Tab'
+    - '0'
     - 'Alt-Tab'
     - {t: EE_CLR, type: ghost}
   Macros:

@@ -56,39 +56,39 @@ enum layer_names {
 #define MBEEVU C(S(A(KC_UP)))
 #define MBEEVD C(S(A(KC_DOWN)))
 
-enum custom_keycodes {
-  QMK_BEST = SAFE_RANGE,
-  GITCOMM, 
-  GITPUSH,
-  R_ASSIGN,
-  NEW_SAFE_RANGE
-};
+// enum custom_keycodes {
+//   QMK_BEST = SAFE_RANGE,
+//   GITCOMM, 
+//   GITPUSH,
+//   R_ASSIGN,
+//   NEW_SAFE_RANGE
+// };
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-    case GITCOMM:
-        if (record->event.pressed) {
-          // when keycode is pressed
-            SEND_STRING("git commit -m ''");
-        } else {
-          // when keycode is released
-        }
-        break;
+// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+//     switch (keycode) {
+//     case GITCOMM:
+//         if (record->event.pressed) {
+//           // when keycode is pressed
+//             SEND_STRING("git commit -m ''");
+//         } else {
+//           // when keycode is released
+//         }
+//         break;
 
-    case GITPUSH:
-        if (record->event.pressed) {
-            SEND_STRING("git push -u origin ");
-        } 
-        break;
+//     case GITPUSH:
+//         if (record->event.pressed) {
+//             SEND_STRING("git push -u origin ");
+//         } 
+//         break;
     
-    case R_ASSIGN:
-        if (record->event.pressed) {
-            SEND_STRING("<- ");
-        } 
-        break;
-    }
-    return true;
-};
+//     case R_ASSIGN:
+//         if (record->event.pressed) {
+//             SEND_STRING("<- ");
+//         } 
+//         break;
+//     }
+//     return true;
+// };
 
 // ============================================================
 // Combos
@@ -183,7 +183,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_MS_BTN1,     KC_Q,     KC_W,        KC_F,     KC_P,    KC_B,                         KC_J,   KC_L,    KC_U,     KC_Y,     KC_DEL,       KC_BSPC,
   OSM(MOD_LCTL),  KC_A,     KC_R,        KC_S,     KC_T,    KC_G,                         KC_M,   KC_N,    KC_E,     KC_I,     KC_O,         KC_QUOT,
   OSM(MOD_LSFT),  KC_Z,     KC_X,        KC_C,     KC_D,    KC_V,                         KC_K,   KC_H,    KC_COMM,  KC_DOT,   KC_SLSH,      KC_MS_BTN2,
-                  KC_MUTE,  KC_LALT,  LT(_SYM, KC_ENT),   LT(_MCR,FP_SUPER_CTRL_TAB),     OSM(MOD_LSFT), LT(_NAV,KC_SPC), KC_BSPC, KC_RALT
+                  KC_MUTE,  KC_LALT,  LT(_SYM, KC_ENT),   LT(_MCR,KC_MS_BTN1),     OSM(MOD_LSFT), LT(_NAV,KC_SPC), KC_BSPC, KC_RALT
 ),
 // ============================================================
 // Layer 1 - QWERTY
@@ -208,16 +208,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ============================================================
 [_SYM] = LAYOUT(
   _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,            KC_NUM,   KC_7,     KC_8,     KC_9, _______, _______,
-  LDESK,   KC_PIPE, KC_EQL, KC_UNDS, KC_MINS, KC_PAST,          KC_DOT,   KC_4,     KC_5,     KC_6, KC_PLUS, RDESK,
-  _______, _______, _______, KC_AMPR, KC_CIRC, _______,         KC_0,     KC_1,     KC_2,     KC_3, KC_SLSH, _______,
-                    _______, _______, _______, _______,         _______,  _______,  FP_SUPER_TAB,  EE_CLR
+  LDESK,   KC_PIPE, KC_EQL, KC_UNDS, KC_MINS, KC_PAST,          _______,  KC_4,     KC_5,     KC_6, KC_PLUS, RDESK,
+  _______, _______, _______, KC_AMPR, KC_CIRC, _______,         KC_DOT,   KC_1,     KC_2,     KC_3, KC_SLSH, _______,
+                    _______, _______, _______, _______,         FP_SUPER_CTRL_TAB,  KC_0,  FP_SUPER_TAB,  EE_CLR
 ),
 // ============================================================
 // Layer 3 - Macros
 // ============================================================
 [_MCR] = LAYOUT(
   KC_ESC,   TASKMAN,  C(S(KC_V)), UNDO,   WPAST,        TO(_QWERTY),      _______,    KC_BRID, KC_BRIU,   MBEEVD,  MBEEVU,  _______, 
-  LDESK,    C(KC_A),  CUT,        COPY,   PASTE,        TO(_TQWERY),          C(KC_EQL),  MBEEL,   MEH(KC_P), MBEER,   MBEE,    RDESK,
+  LDESK,    C(KC_A),  CUT,        COPY,   PASTE,        TO(_TQWERY),      C(KC_EQL),  MBEEL,   MEH(KC_P), MBEER,   MBEE,    RDESK,
   _______,  _______,  _______,    REDO,   G(S(KC_S)),   TO(_COLEMAK),     C(KC_MINS), KC_PSCR, KC_SCRL,   KC_PAUS, _______, _______,
                                  _______,  _______, _______, _______,     KC_BTN3,  _______,  _______,  EE_CLR
 ),
@@ -271,14 +271,14 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         // tap_code16(FP_SUPER_TAB);
         // tap_code16(KC_TAB);
         // tap_code16(KC_PGUP);
-        tap_code16(MBEEL);
+        tap_code16(MBEEVU);
         // press_super_tab(false);
       }
       else{
         // tap_code16(LSFT_T(FP_SUPER_TAB));
         // tap_code16(LSFT_T(KC_TAB));
         // tap_code16(KC_PGDN);
-        tap_code16(MBEER);
+        tap_code16(MBEEVD);
         // press_super_tab(true);
       }
     }

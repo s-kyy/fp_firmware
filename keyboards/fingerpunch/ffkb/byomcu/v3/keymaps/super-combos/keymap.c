@@ -97,20 +97,19 @@ enum combos {
   // LEFT - COLDH
   ZX_WIN,
   XC_ALT,
-  CD_CTRL,
+  CD_TAB,
+  ST_RPRN,
+  RS_RBRC,
+  FP_RCBR,
   TG_TICK,
   QW_ESC,
-  RT_TAB,
   // RIGHT - COLDH
   MN_TILDE,
-  LU_RPRN,
+  LU_LCBR,
   NE_LPRN,
-  UY_RBRC,
   EI_LBRC,
-  YD_RCBR,
-  IO_LCBR,
-  HD_BSLS,
   KH_SEMI,
+  HD_BSLS,
   CDOT_ALT,
   SDOT_WIN,
   // DC_SLSH,
@@ -126,17 +125,20 @@ uint16_t COMBO_LEN = COMBO_LENGTH;
 const uint16_t PROGMEM zx_combo[] = {KC_Z, KC_X, COMBO_END};
 const uint16_t PROGMEM xc_combo[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM cd_combo[] = {KC_C, KC_D, COMBO_END};
+const uint16_t PROGMEM st_combo[] = {KC_S, KC_T, COMBO_END};
+const uint16_t PROGMEM rs_combo[] = {KC_R, KC_S, COMBO_END};
+const uint16_t PROGMEM fp_combo[] = {KC_F, KC_P, COMBO_END};
 const uint16_t PROGMEM tg_combo[] = {KC_T, KC_G, COMBO_END};
 const uint16_t PROGMEM qw_combo[] = {KC_Q, KC_W, COMBO_END};
-const uint16_t PROGMEM rt_combo[] = {KC_R, KC_T, COMBO_END};
+// const uint16_t PROGMEM rt_combo[] = {KC_R, KC_T, COMBO_END};
 // RIGHT - COLDH
 const uint16_t PROGMEM mn_combo[] = {KC_M, KC_N, COMBO_END};
 const uint16_t PROGMEM lu_combo[] = {KC_L, KC_U, COMBO_END};
 const uint16_t PROGMEM ne_combo[] = {KC_N, KC_E, COMBO_END};
-const uint16_t PROGMEM uy_combo[] = {KC_U, KC_Y, COMBO_END};
+// const uint16_t PROGMEM uy_combo[] = {KC_U, KC_Y, COMBO_END};
 const uint16_t PROGMEM ei_combo[] = {KC_E, KC_I, COMBO_END};
-const uint16_t PROGMEM yd_combo[] = {KC_Y, KC_DEL, COMBO_END};
-const uint16_t PROGMEM io_combo[] = {KC_I, KC_O, COMBO_END};
+// const uint16_t PROGMEM yd_combo[] = {KC_Y, KC_DEL, COMBO_END};
+// const uint16_t PROGMEM io_combo[] = {KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM kh_combo[] = {KC_K, KC_H, COMBO_END};
 const uint16_t PROGMEM hd_combo[] = {KC_H, KC_COMM, COMBO_END};
 const uint16_t PROGMEM dc_combo[] = {KC_COMM, KC_DOT, COMBO_END};
@@ -149,18 +151,18 @@ combo_t key_combos[] = {
   // LEFT - COLDH
   [ZX_WIN] = COMBO(zx_combo, OSM(MOD_LGUI)),
   [XC_ALT] = COMBO(xc_combo, OSM(MOD_LALT)),
-  [CD_CTRL] = COMBO(cd_combo, OSM(MOD_LCTL)),
+  [CD_TAB] = COMBO(cd_combo, KC_TAB),
+  [ST_RPRN] = COMBO(st_combo, KC_RPRN),
+  [RS_RBRC] = COMBO(rs_combo, KC_RBRC),
+  [FP_RCBR] = COMBO(fp_combo, KC_RCBR),
   [TG_TICK] = COMBO(tg_combo, KC_GRV),
   [QW_ESC] = COMBO(qw_combo, KC_ESC),
-  [RT_TAB] = COMBO(rt_combo, KC_TAB),
+  // [RT_TAB] = COMBO(rt_combo, KC_TAB),
   // RIGHT - COLDH
   [MN_TILDE] = COMBO(mn_combo, KC_TILD),
-  [LU_RPRN] = COMBO(lu_combo, KC_RPRN),
+  [LU_LCBR] = COMBO(lu_combo, KC_LCBR),
   [NE_LPRN] = COMBO(ne_combo, KC_LPRN),
-  [UY_RBRC] = COMBO(uy_combo, KC_RBRC),
   [EI_LBRC] = COMBO(ei_combo, KC_LBRC),
-  [YD_RCBR] = COMBO(yd_combo, KC_RCBR),
-  [IO_LCBR] = COMBO(io_combo, KC_LCBR),
   [KH_SEMI] = COMBO(kh_combo, KC_SCLN),
   [HD_BSLS] = COMBO(hd_combo, KC_BSLS),
   [CDOT_ALT] = COMBO(dc_combo, OSM(MOD_LALT)),
@@ -208,9 +210,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ============================================================
 [_SYM] = LAYOUT(
   _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,            KC_NUM,   KC_7,     KC_8,     KC_9, _______, _______,
-  LDESK,   KC_PIPE, KC_EQL, KC_UNDS, KC_MINS, KC_PAST,          _______,  KC_4,     KC_5,     KC_6, KC_PLUS, RDESK,
+  LDESK,   KC_PIPE, KC_EQL, KC_UNDS, KC_MINS, KC_PAST,          KC_TAB,   KC_4,     KC_5,     KC_6, KC_PLUS, RDESK,
   _______, _______, _______, KC_AMPR, KC_CIRC, _______,         KC_DOT,   KC_1,     KC_2,     KC_3, KC_SLSH, _______,
-                    _______, _______, _______, _______,         FP_SUPER_CTRL_TAB,  KC_0,  FP_SUPER_TAB,  EE_CLR
+                    _______, _______, _______, _______,         _______,  KC_0,  FP_SUPER_TAB,  EE_CLR
 ),
 // ============================================================
 // Layer 3 - Macros
@@ -219,7 +221,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,   TASKMAN,  C(S(KC_V)), UNDO,   WPAST,        TO(_QWERTY),      _______,    KC_BRID, KC_BRIU,   MBEEVD,  MBEEVU,  _______, 
   LDESK,    C(KC_A),  CUT,        COPY,   PASTE,        TO(_TQWERY),      C(KC_EQL),  MBEEL,   MEH(KC_P), MBEER,   MBEE,    RDESK,
   _______,  _______,  _______,    REDO,   G(S(KC_S)),   TO(_COLEMAK),     C(KC_MINS), KC_PSCR, KC_SCRL,   KC_PAUS, _______, _______,
-                                 _______,  _______, _______, _______,     KC_BTN3,  _______,  _______,  EE_CLR
+                                 _______,  _______, _______, _______,     KC_BTN3,  _______,  FP_SUPER_CTRL_TAB,  EE_CLR
 ),
 // ============================================================
 // Layer 4 - NAV_NEW

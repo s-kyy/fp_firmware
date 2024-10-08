@@ -182,34 +182,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer 0 - Colemak-DH
 // ============================================================
 [_COLEMAK] = LAYOUT(
-  KC_MS_BTN1,     KC_Q,     KC_W,        KC_F,     KC_P,    KC_B,                         KC_J,   KC_L,    KC_U,     KC_Y,     KC_DEL,       KC_BSPC,
-  OSM(MOD_LCTL),  KC_A,     KC_R,        KC_S,     KC_T,    KC_G,                         KC_M,   KC_N,    KC_E,     KC_I,     KC_O,         KC_QUOT,
-  OSM(MOD_LSFT),  KC_Z,     KC_X,        KC_C,     KC_D,    KC_V,                         KC_K,   KC_H,    KC_COMM,  KC_DOT,   KC_SLSH,      KC_MS_BTN2,
+  KC_MS_BTN1,     KC_Q,     KC_W,        KC_F,     KC_P,    KC_B,                  KC_J,   KC_L,    KC_U,     KC_Y,     KC_DEL,       KC_BSPC,
+  OSM(MOD_LCTL),  KC_A,     KC_R,        KC_S,     KC_T,    KC_G,                  KC_M,   KC_N,    KC_E,     KC_I,     KC_O,         KC_QUOT,
+  OSM(MOD_LSFT),  KC_Z,     KC_X,        KC_C,     KC_D,    KC_V,                  KC_K,   KC_H,    KC_COMM,  KC_DOT,   KC_SLSH,      KC_APP,
                   KC_MUTE,  KC_LALT,  LT(_SYM, KC_ENT),   LT(_MCR,KC_MS_BTN1),     OSM(MOD_LSFT), LT(_NAV,KC_SPC), KC_BSPC, KC_RALT
 ),
 // ============================================================
 // Layer 1 - QWERTY
 // ============================================================
 [_QWERTY] = LAYOUT(
-  KC_TAB,        KC_Q,   KC_W,   KC_E,     KC_R,     KC_T,                       KC_Y,  KC_U,     KC_I,     KC_O,     KC_P,       _______,
-  OSM(MOD_LCTL), KC_A,   KC_S,   KC_D,     KC_F,     KC_G,                       KC_H,  KC_J,     KC_K,     KC_L,     KC_SCLN,    _______,
-  OSM(MOD_LSFT), KC_Z,   KC_X,   KC_C,     KC_V,     KC_B,                       KC_N,  KC_M,     _______,  _______,  _______,    KC_BTN2,
+  KC_MS_BTN1,       KC_Q,   KC_W,   KC_E,     KC_R,     KC_T,                       KC_Y,  KC_U,     KC_I,     KC_O,     KC_P,      _______,
+  OSM(MOD_LCTL), KC_A,   KC_S,   KC_D,     KC_F,     KC_G,                       KC_H,  KC_J,     KC_K,     KC_L,     KC_SCLN,   _______,
+  OSM(MOD_LSFT), KC_Z,   KC_X,   KC_C,     KC_V,     KC_B,                       KC_N,  KC_M,     _______,  _______,  _______,   _______,
                 _______,  _______,  LT(_SYM,KC_SPC),   LT(_MCR, KC_MS_BTN1),     KC_SPC,  _______,  KC_ENT,  _______
 ),
 // ============================================================
 // Layer 2 - TQWERY
 // ============================================================
 [_TQWERY] = LAYOUT(
-  KC_TAB,        KC_T,  KC_Q,   KC_W,   KC_E,     KC_R,                         KC_Y,    KC_U,     KC_I,     KC_O,     KC_P,       _______,
+  KC_MS_BTN1,       KC_T,  KC_Q,   KC_W,   KC_E,     KC_R,                         KC_Y,    KC_U,     KC_I,     KC_O,     KC_P,       _______,
   OSM(MOD_LCTL), KC_G,  KC_A,   KC_S,   KC_D,     KC_F,                         KC_H,    KC_J,     KC_K,     KC_L,     KC_SCLN,    _______,
-  OSM(MOD_LSFT), KC_B,  KC_Z,   KC_X,   KC_C,     KC_V,                         KC_N,    KC_M,     _______,  _______,  _______,    KC_BTN2,
+  OSM(MOD_LSFT), KC_B,  KC_Z,   KC_X,   KC_C,     KC_V,                         KC_N,    KC_M,     _______,  _______,  _______,    _______,
                 _______,  _______,  LT(_SYM,KC_SPC),   LT(_MCR, KC_MS_BTN1),    KC_SPC,  _______,  KC_ENT,  _______
 ),
 // ============================================================
 // Layer 2 - SYM
 // ============================================================
 [_SYM] = LAYOUT(
-  _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,            KC_NUM,   KC_7,     KC_8,     KC_9, _______, _______,
+  KC_BTN2, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,            KC_NUM,   KC_7,     KC_8,     KC_9, _______, _______,
   LDESK,   KC_PIPE, KC_EQL, KC_UNDS, KC_MINS, KC_PAST,          KC_TAB,   KC_4,     KC_5,     KC_6, KC_PLUS, RDESK,
   _______, _______, _______, KC_AMPR, KC_CIRC, _______,         KC_DOT,   KC_1,     KC_2,     KC_3, KC_SLSH, _______,
                     _______, _______, _______, _______,         _______,  KC_0,  FP_SUPER_TAB,  EE_CLR
@@ -218,7 +218,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer 3 - Macros
 // ============================================================
 [_MCR] = LAYOUT(
-  KC_ESC,   TASKMAN,  C(S(KC_V)), UNDO,   WPAST,        TO(_QWERTY),      _______,    KC_BRID, KC_BRIU,   MBEEVD,  MBEEVU,  _______, 
+  KC_BTN2,  TASKMAN,  C(S(KC_V)), UNDO,   WPAST,        TO(_QWERTY),      _______,    KC_BRID, KC_BRIU,   MBEEVD,  MBEEVU,  _______, 
   LDESK,    C(KC_A),  CUT,        COPY,   PASTE,        TO(_TQWERY),      C(KC_EQL),  MBEEL,   MEH(KC_P), MBEER,   MBEE,    RDESK,
   _______,  _______,  _______,    REDO,   G(S(KC_S)),   TO(_COLEMAK),     C(KC_MINS), KC_PSCR, KC_SCRL,   KC_PAUS, _______, _______,
                                  _______,  _______, _______, _______,     KC_BTN3,  _______,  FP_SUPER_CTRL_TAB,  EE_CLR
@@ -227,7 +227,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer 4 - NAV_NEW
 // ============================================================
 [_NAV] = LAYOUT(
-  KC_ESC,      RGB_TOG, RGB_MOD, RGB_RMOD, RGB_HUD, RGB_HUI,                                KC_PGUP, KC_HOME,   KC_UP,    KC_END,   KC_DEL,   _______,
+  KC_BTN2,     RGB_TOG, RGB_MOD, RGB_RMOD, RGB_HUD, RGB_HUI,                                KC_PGUP, KC_HOME,   KC_UP,    KC_END,   KC_DEL,   _______,
   EXITPARSEC,  OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LSFT), OSM(MOD_LCTL), OSM(MOD_MEH),    KC_PGDN, KC_LEFT,   KC_DOWN,  KC_RGHT,  KC_BSPC,  KC_INS,
   KC_F12,      KC_F1,  KC_F2, KC_F3, KC_F4,  KC_F5,                                         KC_F6,   KC_F7,     KC_F8,    KC_F9,    KC_F10,   KC_F11,
                      QK_BOOT, _______, _______, _______,                                    _______, _______,   _______,  _______

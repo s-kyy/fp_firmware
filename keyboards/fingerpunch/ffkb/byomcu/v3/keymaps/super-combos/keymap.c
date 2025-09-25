@@ -165,7 +165,7 @@ combo_t key_combos[] = {
   [EI_LBRC] = COMBO(ei_combo, KC_LBRC),
   [KH_SEMI] = COMBO(kh_combo, KC_SCLN),
   [HD_BSLS] = COMBO(hd_combo, KC_BSLS),
-  [CDOT_ALT] = COMBO(dc_combo, OSM(MOD_LALT)),
+  [CDOT_ALT] = COMBO(dc_combo, OSM(MOD_RALT)),
   [SDOT_WIN] = COMBO(ds_combo, OSM(MOD_RGUI)),
   // [DC_SLSH] = COMBO(dc_combo, KC_SLSH),
   //CENTER - COLDH
@@ -185,7 +185,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_MS_BTN1,     KC_Q,     KC_W,        KC_F,     KC_P,    KC_B,                  KC_J,   KC_L,    KC_U,     KC_Y,     KC_DEL,       KC_BSPC,
   OSM(MOD_LCTL),  KC_A,     KC_R,        KC_S,     KC_T,    KC_G,                  KC_M,   KC_N,    KC_E,     KC_I,     KC_O,         KC_QUOT,
   OSM(MOD_LSFT),  KC_Z,     KC_X,        KC_C,     KC_D,    KC_V,                  KC_K,   KC_H,    KC_COMM,  KC_DOT,   KC_SLSH,      KC_APP,
-                  KC_MUTE,  KC_LALT,  LT(_SYM, KC_ENT),   LT(_MCR,KC_MS_BTN1),     OSM(MOD_LSFT), LT(_NAV,KC_SPC), KC_BSPC, KC_RALT
+                  KC_MUTE,  KC_RALT,  LT(_SYM, KC_ENT),   LT(_MCR,KC_MS_BTN1),     OSM(MOD_LSFT), LT(_NAV,KC_SPC), KC_RALT, KC_RALT
 ),
 // ============================================================
 // Layer 1 - QWERTY
@@ -210,8 +210,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ============================================================
 [_SYM] = LAYOUT(
   KC_BTN2, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,            KC_NUM,   KC_7,     KC_8,     KC_9, _______, _______,
-  LDESK,   KC_PIPE, KC_EQL, KC_UNDS, KC_MINS, KC_PAST,          KC_TAB,   KC_4,     KC_5,     KC_6, KC_PLUS, RDESK,
-  _______, _______, _______, KC_AMPR, KC_CIRC, _______,         KC_DOT,   KC_1,     KC_2,     KC_3, KC_SLSH, _______,
+  LDESK,   _______, KC_EQL, KC_UNDS, KC_MINS, KC_PAST,          KC_TAB,   KC_4,     KC_5,     KC_6, KC_PLUS, RDESK,
+  _______, _______, KC_PIPE, KC_AMPR, KC_CIRC, _______,         KC_DOT,   KC_1,     KC_2,     KC_3, KC_SLSH, _______,
                     _______, _______, _______, _______,         _______,  KC_0,  FP_SUPER_TAB,  EE_CLR
 ),
 // ============================================================
@@ -230,7 +230,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_BTN2,     RGB_TOG, RGB_MOD, RGB_RMOD, RGB_HUD, RGB_HUI,                                KC_PGUP, KC_HOME,   KC_UP,    KC_END,   KC_DEL,   _______,
   EXITPARSEC,  OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LSFT), OSM(MOD_LCTL), OSM(MOD_MEH),    KC_PGDN, KC_LEFT,   KC_DOWN,  KC_RGHT,  KC_BSPC,  KC_INS,
   KC_F12,      KC_F1,  KC_F2, KC_F3, KC_F4,  KC_F5,                                         KC_F6,   KC_F7,     KC_F8,    KC_F9,    KC_F10,   KC_F11,
-                     QK_BOOT, _______, _______, _______,                                    _______, _______,   _______,  _______
+                     QK_BOOT, _______, KC_WBAK, KC_WFWD,                                    _______, _______,   _______,  _______
 ),
 // ============================================================
 // Empty Layer

@@ -32,7 +32,7 @@ enum layer_names {
     _SYM,     //2, 3
     _MCR,     //3, 4
     _NAV,     //4, 5
-    // _RGB,     //5, 6
+    _LIN,     //5, 6
     // _MOUSE,  //6, 7
     _NEW_SAFE_LAYER  //7
 };
@@ -171,7 +171,7 @@ combo_t key_combos[] = {
   //CENTER - COLDH
   [GM_CAPS] = COMBO(gm_combo, KC_CAPS)
 
-};
+}; 
 
 // ============================================================
 // Keymap
@@ -185,7 +185,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_MS_BTN1,     KC_Q,     KC_W,        KC_F,     KC_P,    KC_B,                  KC_J,   KC_L,    KC_U,     KC_Y,     KC_DEL,       KC_BSPC,
   OSM(MOD_LCTL),  KC_A,     KC_R,        KC_S,     KC_T,    KC_G,                  KC_M,   KC_N,    KC_E,     KC_I,     KC_O,         KC_QUOT,
   OSM(MOD_LSFT),  KC_Z,     KC_X,        KC_C,     KC_D,    KC_V,                  KC_K,   KC_H,    KC_COMM,  KC_DOT,   KC_SLSH,      KC_APP,
-                  KC_MUTE,  KC_RALT,  LT(_SYM, KC_ENT),   LT(_MCR,KC_MS_BTN1),     OSM(MOD_LSFT), LT(_NAV,KC_SPC), KC_RALT, KC_RALT
+                  KC_MUTE,  KC_RALT,  LT(_SYM, KC_ENT),   LT(_MCR,KC_MS_BTN1),     OSM(MOD_LSFT), LT(_NAV,KC_SPC), LT(_LIN,KC_RALT), KC_RALT
 ),
 // ============================================================
 // Layer 1 - QWERTY
@@ -231,6 +231,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   EXITPARSEC,  OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LSFT), OSM(MOD_LCTL), OSM(MOD_MEH),    KC_PGDN, KC_LEFT,   KC_DOWN,  KC_RGHT,  KC_BSPC,  KC_INS,
   KC_F12,      KC_F1,  KC_F2, KC_F3, KC_F4,  KC_F5,                                         KC_F6,   KC_F7,     KC_F8,    KC_F9,    KC_F10,   KC_F11,
                      QK_BOOT, _______, KC_WBAK, KC_WFWD,                                    _______, _______,   _______,  _______
+),
+// ============================================================
+// LINUX MACRO LAYER
+// ============================================================
+[_LIN] = LAYOUT(
+  _______, G(KC_PPLS), G(KC_P7), G(KC_P8), G(KC_P9), _______,         _______,  _______,  _______,  _______, _______, _______,
+  _______, G(KC_PMNS), G(KC_P4), G(KC_P5), G(KC_P6), _______,         _______,  _______,  _______,  _______, _______, _______,
+  _______, _______, G(KC_P1), G(KC_P2), G(KC_P3), _______,         _______,  _______,  _______,  _______, _______, _______,
+                    _______, _______, G(KC_P0), _______,         _______,  _______,  _______,  _______
 ),
 // ============================================================
 // Empty Layer
